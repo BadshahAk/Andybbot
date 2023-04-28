@@ -1,0 +1,2 @@
+DEV_USERS = ["5591734243"]
+SUPPORT_CHAT = "TeamLegendXD"
