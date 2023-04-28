@@ -6,3 +6,5 @@ API_HASH = os.env.get("API_HASH", None)
 BOT_TOKEN = os.env.get("BOT_TOKEN" None)
 LOAD = []
 NO_LOAD =[]
+DEL_CMDS = bool(os.environ.get("DEL_CMDS", False)) 
+
