@@ -716,7 +716,7 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 
 def main():
-    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+    """if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.send_photo(
                 chat_id=f"@{SUPPORT_CHAT}",
@@ -738,7 +738,7 @@ def main():
             )
         except BadRequest as e:
             LOGGER.warning(e.message)
-
+"""
     start_handler = CommandHandler("start", start)
 
     help_handler = CommandHandler("help", get_help)
