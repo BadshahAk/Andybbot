@@ -6,11 +6,11 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from KannadigaBot import DRAGONS, dispatcher
-from KannadigaBot.modules.disable import DisableAbleCommandHandler
-from KannadigaBot.modules.helper_funcs.admin_rights import user_can_changeinfo
-from KannadigaBot.modules.helper_funcs.alternate import send_message
-from KannadigaBot.modules.helper_funcs.chat_status import (
+from TeamLegend import DRAGONS, dispatcher
+from TeamLegend.modules.disable import DisableAbleCommandHandler
+from TeamLegend.modules.helper_funcs.admin_rights import user_can_changeinfo
+from TeamLegend.modules.helper_funcs.alternate import send_message
+from TeamLegend.modules.helper_funcs.chat_status import (
     ADMIN_CACHE,
     bot_admin,
     can_pin,
@@ -18,11 +18,11 @@ from KannadigaBot.modules.helper_funcs.chat_status import (
     connection_status,
     user_admin,
 )
-from KannadigaBot.modules.helper_funcs.extraction import (
+from TeamLegend.modules.helper_funcs.extraction import (
     extract_user,
     extract_user_and_text,
 )
-from KannadigaBot.modules.log_channel import loggable
+from TeamLegend.modules.log_channel import loggable
 
 
 @run_async

@@ -7,15 +7,15 @@ from telegram import ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async
 
-# from KannadigaBot.modules.sql import warns_sql as warnssql
+# from TeamLegend.modules.sql import warns_sql as warnssql
 import TeamLegend.modules.sql.blacklist_sql as blacklistsql
 
-# from KannadigaBot.modules.sql import cust_filters_sql as filtersql
-# import KannadigaBot.modules.sql.welcome_sql as welcsql
+# from TeamLegend.modules.sql import cust_filters_sql as filtersql
+# import TeamLegend.modules.sql.welcome_sql as welcsql
 import TeamLegend.modules.sql.locks_sql as locksql
 import TeamLegend.modules.sql.notes_sql as sql
 
-# from KannadigaBott.modules.rules import get_rules
+# from TeamLegendt.modules.rules import get_rules
 import TeamLegend.modules.sql.rules_sql as rulessql
 from TeamLegend import EVENT_LOGS, LOGGER, OWNER_ID, SUPPORT_CHAT, dispatcher
 from TeamLegend.__main__ import DATA_IMPORT
@@ -325,7 +325,7 @@ def export_data(update, context):
         },
     }
     baccinfo = json.dumps(backup, indent=4)
-    with open("KannadigaBot{}.backup".format(chat_id), "w") as f:
+    with open("TeamLegend{}.backup".format(chat_id), "w") as f:
         f.write(str(baccinfo))
     context.bot.sendChatAction(current_chat_id, "upload_document")
     tgl = time.strftime("%H:%M:%S - %d/%m/%Y", time.localtime(time.time()))
@@ -341,15 +341,15 @@ def export_data(update, context):
         pass
     context.bot.sendDocument(
         current_chat_id,
-        document=open("KannadigaBot{}.backup".format(chat_id), "rb"),
-        caption="📤*Successfully Exported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`\n\nNote: This `KannadigaBot-Backup` was specially made for notes 📚.".format(
+        document=open("TeamLegend{}.backup".format(chat_id), "rb"),
+        caption="📤*Successfully Exported backup:*\nChat: `{}`\nChat ID: `{}`\nOn: `{}`\n\nNote: This `TeamLegend-Backup` was specially made for notes 📚.".format(
             chat.title, chat_id, tgl
         ),
         timeout=360,
         reply_to_message_id=msg.message_id,
         parse_mode=ParseMode.MARKDOWN,
     )
-    os.remove("KannadigaBot{}.backup".format(chat_id))  # Cleaning file
+    os.remove("TeamLegend{}.backup".format(chat_id))  # Cleaning file
 
 
 # Temporary data

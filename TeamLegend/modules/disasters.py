@@ -25,7 +25,7 @@ from TeamLegend.modules.helper_funcs.chat_status import (
 from TeamLegend.modules.helper_funcs.extraction import extract_user
 from TeamLegend.modules.log_channel import gloggable
 
-ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "KannadigaBot/elevated_users.json")
+ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "TeamLegend/elevated_users.json")
 
 
 def check_user_id(user_id: int, context: CallbackContext) -> Optional[str]:
