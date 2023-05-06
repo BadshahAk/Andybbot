@@ -10,7 +10,7 @@ from TeamLegend.events import register
 Agora = "Kannadiga"
 TMP_DOWNLOAD_DIRECTORY = "./"
 telegraph = Telegraph()
-r = telegraph.create_account(short_name=Anonymous)
+r = telegraph.create_account(short_name=Agora)
 auth_url = r["auth_url"]
 
 
