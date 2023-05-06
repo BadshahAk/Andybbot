@@ -5,7 +5,7 @@ from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 from TeamLegend import MONGO_DB_URI
 
 mongo = MongoCli(MONGO_DB_URI)
-db = mongo.KannadigaBot
+db = mongo.TeamLegend
 
 coupledb = db.couple
 karmadb = db.karma
