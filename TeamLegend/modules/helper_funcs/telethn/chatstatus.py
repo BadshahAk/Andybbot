@@ -43,7 +43,7 @@ async def is_user_admin(user_id: int, chat_id):
     return status
 
 
-async def KannadigaBot_is_admin(chat_id: int):
+async def TeamLegend_is_admin(chat_id: int):
     status = False
     kannadiga = await telethn.get_me()
     async for user in telethn.iter_participants(
