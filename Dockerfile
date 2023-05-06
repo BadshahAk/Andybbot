@@ -64,12 +64,12 @@ RUN apt update && apt upgrade -y && \
 # Pypi package Repo upgrade
 RUN pip3 install --upgrade pip setuptools
 
-# Copy Python Requirements to /root/KannadigaBot
-RUN git clone https://github.com/kannadigaxd/KANNADIGXDBOT /root/KannadigaBot
-WORKDIR /root/KannadigaBot
+# Copy Python Requirements to /root/TeamLegend
+RUN git clone https://github.com/kannadigaxd/KANNADIGXDBOT /root/TeamLegend
+WORKDIR /root/TeamLegend
 
-#Copy config file to /root/KannadigaBot/KannadigaBot
-COPY ./KannadigaBot/config.py ./KannadigaBot/config.py* /root/KannadigaBot/KannadigaBot/
+#Copy config file to /root/TeamLegend/TeamLegend
+COPY ./TeamLegend/config.py ./TeamLegend/config.py* /root/TeamLegend/TeamLegend/
 
 ENV PATH="/home/bot/bin:$PATH"
 
@@ -77,4 +77,4 @@ ENV PATH="/home/bot/bin:$PATH"
 RUN pip3 install -U -r requirements.txt
 
 # Starting Worker
-CMD ["python3","-m","KannadigaBot"]
+CMD ["python3","-m","TeamLegend"]
