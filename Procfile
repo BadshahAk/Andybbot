@@ -1,1 +1,1 @@
-worker: python3 -m TeamLegend
+worker: python3 -m KannadigaBot
