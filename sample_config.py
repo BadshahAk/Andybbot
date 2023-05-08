@@ -12,16 +12,13 @@ INFOPIC = bool(os.environ.get("INFOPIC", "True"))
 LOAD = os.environ.get("LOAD", "").split()
 MONGO_DB_URI = os.environ.get("MONGO_DB_URI", None)
 NO_LOAD = os.environ.get("NO_LOAD", "").split()
-START_IMG = os.environ.get( 
-    "START_IMG", "https://telegra.ph/file/b84e865d639912ee28f73.jpg" 
-)
+START_IMG = os.environ.get("START_IMG", "https://telegra.ph/file/b84e865d639912ee28f73.jpg")
 STRICT_GBAN = bool(os.environ.get("STRICT_GBAN", True))
 SUPPORT_CHAT = os.environ.get("SUPPORT_CHAT", "LegendBot_OP")
 TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./")
 TOKEN = os.environ.get("TOKEN", None)
 TIME_API_KEY = os.environ.get("TIME_API_KEY", None)
-WORKERS = int(os.environ.get("WORKERS", 8))
-  
+WORKERS = int(os.environ.get("WORKERS", 8)) 
 try: 
     OWNER_ID = int(os.environ.get("OWNER_ID", None))
 except ValueError:
