@@ -1,7 +1,6 @@
 import os
 
 API_ID = os.environ.get("API_ID", None)
-
 API_HASH = os.environ.get("API_HASH", None) 
 ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True) 
 ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False) 
