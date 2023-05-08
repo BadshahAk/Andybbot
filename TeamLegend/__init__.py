@@ -7,7 +7,7 @@ from aiohttp import ClientSession
 from pyrogram import Client, errors
 from telethon import TelegramClient
 from .core.clients import *
-
+from .Config import *
 StartTime = time.time()
 
 
