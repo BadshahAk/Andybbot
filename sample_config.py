@@ -1,5 +1,5 @@
 import os
-
+"""
 API_ID = os.environ.get("API_ID", None)
 API_HASH = os.environ.get("API_HASH", None)
 ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
@@ -47,3 +47,4 @@ try:
     WOLVES = set(int(x) for x in os.environ.get("WOLVES", "").split())
 except ValueError:
     raise Exception("Your whitelisted users list does not contain valid integers.")
+"""
