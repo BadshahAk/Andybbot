@@ -6,7 +6,7 @@ from cachetools import TTLCache
 from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
 
-from TeamLegend import (
+from TeamLegend.Config import (
     DEL_CMDS,
     DEMONS,
     DEV_USERS,
@@ -14,9 +14,10 @@ from TeamLegend import (
     SUPPORT_CHAT,
     TIGERS,
     WOLVES,
-    dispatcher,
+
 )
 
+from TeamLegend.core.clients import dispatcher
 # stores admemes in memory for 10 min.
 ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
 THREAD_LOCK = RLock()
