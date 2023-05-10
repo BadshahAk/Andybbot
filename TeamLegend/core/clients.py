@@ -2,14 +2,11 @@ from telegram import ext as tg
 from aiohttp import ClientSession
 from pyrogram import Client, errors
 from telethon import TelegramClient
-from TeamLegend.Config import *
+from TeamLegend.Config import TOKEN, WORKERS, API_ID, API_HASH
 
 import logging
 
-logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
-    level=logging.INFO)
+logging.basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()], level=logging.INFO)
 
 logging.getLogger("apscheduler").setLevel(logging.ERROR)
 logging.getLogger("telethon").setLevel(logging.ERROR)
