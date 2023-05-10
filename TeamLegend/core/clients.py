@@ -1,4 +1,4 @@
-import telegram.ext as tg
+from telegram import ext as tg
 from aiohttp import ClientSession
 from pyrogram import Client, errors
 from telethon import TelegramClient
