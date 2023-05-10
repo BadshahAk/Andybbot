@@ -27,20 +27,22 @@ from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
 import TeamLegend.sql.users_sql as sql
-from TeamLegend import (
+from TeamLegend.Config import (
     BOT_NAME,
     BOT_USERNAME,
-    LOGS,
+
     OWNER_ID,
     START_IMG,
     SUPPORT_CHAT,
     TOKEN,
-    StartTime,
-    dispatcher,
-    pbot,
-    telethn,
-    updater,
+    
+  
+
+    
 )
+from TeamLegend import StartTime
+from TeamLegend.core.clients import *1
+
 from TeamLegend.modules import ALL_MODULES
 from TeamLegend.helpers.chat_status import is_user_admin
 from TeamLegend.helpers.misc import paginate_modules
