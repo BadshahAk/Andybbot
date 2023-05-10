@@ -10,8 +10,8 @@ from sqlalchemy import (
     func,
 )
 
-from TeamLegend import dispatcher
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.core.clients import dispatcher
+from TeamLegend.sql import BASE, SESSION
 
 
 class Users(BASE):
