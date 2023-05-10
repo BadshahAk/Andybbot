@@ -41,7 +41,7 @@ from TeamLegend.Config import (
     
 )
 from TeamLegend import StartTime
-from TeamLegend.core.clients import *1
+from TeamLegend.core.clients import *
 
 from TeamLegend.modules import ALL_MODULES
 from TeamLegend.helpers.chat_status import is_user_admin
