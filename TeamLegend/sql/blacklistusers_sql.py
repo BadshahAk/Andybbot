@@ -1,9 +1,8 @@
-#this file is used in helpers/handlers.py
 import threading
 
 from sqlalchemy import Column, String, UnicodeText
 
-from TeamLegend.sql import BASE, SESSION
+from TeamLegend.modules.sql import BASE, SESSION
 
 
 class BlacklistUsers(BASE):
