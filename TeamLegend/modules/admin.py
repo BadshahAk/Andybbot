@@ -6,11 +6,12 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from TeamLegend import DRAGONS, dispatcher
+from TeamLegend.Config import DRAGONS
+from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.admin_rights import user_can_changeinfo
-from TeamLegend.modules.helper_funcs.alternate import send_message
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.admin_rights import user_can_changeinfo
+from TeamLegend.helpers.alternate import send_message
+from TeamLegend.helpers.chat_status import (
     ADMIN_CACHE,
     bot_admin,
     can_pin,
@@ -18,7 +19,7 @@ from TeamLegend.modules.helper_funcs.chat_status import (
     connection_status,
     user_admin,
 )
-from TeamLegend.modules.helper_funcs.extraction import (
+from TeamLegend.helpers.extraction import (
     extract_user,
     extract_user_and_text,
 )
