@@ -13,8 +13,8 @@ from telegram.ext import (
 from telegram.utils.helpers import escape_markdown
 
 from TeamLegend import dispatcher
-from TeamLegend.helpers.handlers import CMD_STARTERS, SpamChecker
-from TeamLegend.helpers.misc import is_module_loaded
+from TeamLegend.modules.helper_funcs.handlers import CMD_STARTERS, SpamChecker
+from TeamLegend.modules.helper_funcs.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -22,12 +22,12 @@ FILENAME = __name__.rsplit(".", 1)[-1]
 if is_module_loaded(FILENAME):
     from telegram.ext.dispatcher import run_async
 
-    from TeamLegend.helpers.chat_status import (
+    from TeamLegend.modules.helper_funcs.chat_status import (
         connection_status,
         is_user_admin,
         user_admin,
     )
-    from TeamLegend.sql import disable_sql as sql
+    from TeamLegend.modules.sql import disable_sql as sql
 
     DISABLE_CMDS = []
     DISABLE_OTHER = []
