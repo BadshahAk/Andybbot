@@ -1,5 +1,4 @@
-from TeamLegend.Config import LOAD, NO_LOAD
-from TeamLegend.core.clients import LOGS as LOGGER
+from TeamLegend import LOAD, LOGGER, NO_LOAD
 
 
 def __list_all_modules():
