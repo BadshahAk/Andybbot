@@ -9,7 +9,7 @@ from TeamLegend import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
-    LOGGER,
+    LOGS,
     OWNER_ID,
     TIGERS,
     WOLVES,
@@ -127,8 +127,8 @@ def ban(update: Update, context: CallbackContext) -> str:
             message.reply_text("ʙᴀɴɴᴇᴅ !", quote=False)
             return log
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR banning user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,
@@ -216,8 +216,8 @@ def temp_ban(update: Update, context: CallbackContext) -> str:
             )
             return log
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR banning user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,

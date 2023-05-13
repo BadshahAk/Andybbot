@@ -24,13 +24,13 @@ from telegram.ext import (
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
 import TeamLegend
-import TeamLegend.modules.sql.welcome_sql as sql
+import TeamLegend.sql.welcome_sql as sql
 from TeamLegend import (
     DEMONS,
     DEV_USERS,
     DRAGONS,
     EVENT_LOGS,
-    LOGGER,
+    LOGS,
     OWNER_ID,
     TIGERS,
     WOLVES,
@@ -129,9 +129,9 @@ def send(update, message, keyboard, backup_message):
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
-            LOGGER.warning(message)
-            LOGGER.warning(keyboard)
-            LOGGER.exception("Could not parse! got invalid url host errors")
+            LOGS.warning(message)
+            LOGS.warning(keyboard)
+            LOGS.exception("Could not parse! got invalid url host errors")
         elif excp.message == "Have no rights to send a message":
             return
         else:
@@ -143,7 +143,7 @@ def send(update, message, keyboard, backup_message):
                 parse_mode=ParseMode.MARKDOWN,
                 reply_to_message_id=reply,
             )
-            LOGGER.exception()
+            LOGS.exception()
     return msg
 
 

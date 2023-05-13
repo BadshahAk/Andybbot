@@ -8,16 +8,16 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async
 
 # from TeamLegend.sql import warns_sql as warnssql
-import TeamLegend.modules.sql.blacklist_sql as blacklistsql
+import TeamLegend.sql.blacklist_sql as blacklistsql
 
 # from TeamLegend.sql import cust_filters_sql as filtersql
-# import TeamLegend.modules.sql.welcome_sql as welcsql
-import TeamLegend.modules.sql.locks_sql as locksql
-import TeamLegend.modules.sql.notes_sql as sql
+# import TeamLegend.sql.welcome_sql as welcsql
+import TeamLegend.sql.locks_sql as locksql
+import TeamLegend.sql.notes_sql as sql
 
 # from TeamLegendt.modules.rules import get_rules
-import TeamLegend.modules.sql.rules_sql as rulessql
-from TeamLegend import EVENT_LOGS, LOGGER, OWNER_ID, SUPPORT_CHAT, dispatcher
+import TeamLegend.sql.rules_sql as rulessql
+from TeamLegend import EVENT_LOGS, LOGS, OWNER_ID, SUPPORT_CHAT, dispatcher
 from TeamLegend.__main__ import DATA_IMPORT
 from TeamLegend.modules.connection import connected
 from TeamLegend.helpers.alternate import typing_action
@@ -102,7 +102,7 @@ def import_data(update, context):
                 f"An error occurred while recovering your data. The process failed. If you experience a problem with this, please take it to @{SUPPORT_CHAT}"
             )
 
-            LOGGER.exception(
+            LOGS.exception(
                 "Imprt for the chat %s with the name %s failed.",
                 str(chat.id),
                 str(chat.title),

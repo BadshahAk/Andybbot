@@ -6,8 +6,8 @@ from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters, MessageHandler, run_async
 from telegram.utils.helpers import mention_html
 
-import TeamLegend.modules.sql.blacklist_sql as sql
-from TeamLegend import LOGGER, dispatcher
+import TeamLegend.sql.blacklist_sql as sql
+from TeamLegend import LOGS, dispatcher
 from TeamLegend.modules.connection import connected
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.alternate import send_message, typing_action
@@ -423,7 +423,7 @@ def del_blacklist(update, context):
                     return
             except BadRequest as excp:
                 if excp.message != "Message to delete not found":
-                    LOGGER.exception("Error while deleting blacklist message.")
+                    LOGS.exception("Error while deleting blacklist message.")
             break
 
 

@@ -155,8 +155,8 @@ def rban(update: Update, context: CallbackContext):
         elif excp.message in RBAN_ERRORS:
             message.reply_text(excp.message)
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR banning user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,
@@ -240,8 +240,8 @@ def runban(update: Update, context: CallbackContext):
         elif excp.message in RUNBAN_ERRORS:
             message.reply_text(excp.message)
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR unbanning user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,
@@ -323,8 +323,8 @@ def rkick(update: Update, context: CallbackContext):
         elif excp.message in RKICK_ERRORS:
             message.reply_text(excp.message)
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR punching user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,
@@ -408,8 +408,8 @@ def rmute(update: Update, context: CallbackContext):
         elif excp.message in RMUTE_ERRORS:
             message.reply_text(excp.message)
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR mute user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,
@@ -506,8 +506,8 @@ def runmute(update: Update, context: CallbackContext):
         elif excp.message in RUNMUTE_ERRORS:
             message.reply_text(excp.message)
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR unmnuting user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,

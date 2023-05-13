@@ -4,7 +4,7 @@ from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 
-from TeamLegend import LOGGER, dispatcher
+from TeamLegend import LOGS, dispatcher
 from TeamLegend.helpers.chat_status import dev_plus
 
 
@@ -26,10 +26,10 @@ def shell(update: Update, context: CallbackContext):
     stdout = stdout.decode()
     if stdout:
         reply += f"*Stdout*\n`{stdout}`\n"
-        LOGGER.info(f"Shell - {cmd} - {stdout}")
+        LOGS.info(f"Shell - {cmd} - {stdout}")
     if stderr:
         reply += f"*Stderr*\n`{stderr}`\n"
-        LOGGER.error(f"Shell - {cmd} - {stderr}")
+        LOGS.error(f"Shell - {cmd} - {stderr}")
     if len(reply) > 3000:
         with open("shell_output.txt", "w") as file:
             file.write(reply)

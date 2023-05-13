@@ -18,7 +18,7 @@ from telethon import events
 from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 
-import TeamLegend.modules.sql.userinfo_sql as sql
+import TeamLegend.sql.userinfo_sql as sql
 from TeamLegend import (
     DEMONS,
     DEV_USERS,

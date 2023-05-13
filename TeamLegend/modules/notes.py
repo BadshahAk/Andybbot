@@ -20,8 +20,8 @@ from telegram.ext import (
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown, mention_markdown
 
-import TeamLegend.modules.sql.notes_sql as sql
-from TeamLegend import DRAGONS, EVENT_LOGS, LOGGER, SUPPORT_CHAT, dispatcher
+import TeamLegend.sql.notes_sql as sql
+from TeamLegend import DRAGONS, EVENT_LOGS, LOGS, SUPPORT_CHAT, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import connection_status, user_admin
 from TeamLegend.helpers.misc import build_keyboard, revert_buttons
@@ -71,7 +71,7 @@ def get(update, context, notename, show_none=True, no_format=False):
             if EVENT_LOGS:
                 try:
                     bot.forward_message(
-                        chat_id=chat_id, from_chat_id=JOIN_LOGGER, message_id=note.value
+                        chat_id=chat_id, from_chat_id=JOIN_LOGS, message_id=note.value
                     )
                 except BadRequest as excp:
                     if excp.message == "Message to forward not found":
@@ -193,10 +193,10 @@ def get(update, context, notename, show_none=True, no_format=False):
                         "This note could not be sent, as it is incorrectly formatted. Ask in "
                         f"@{SUPPORT_CHAT} if you can't figure out why!"
                     )
-                    LOGGER.exception(
+                    LOGS.exception(
                         "Could not parse message #%s in chat %s", notename, str(chat_id)
                     )
-                    LOGGER.warning("Message was: %s", str(note.value))
+                    LOGS.warning("Message was: %s", str(note.value))
         return
     elif show_none:
         message.reply_text("This note doesn't exist")

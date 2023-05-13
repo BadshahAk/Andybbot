@@ -11,8 +11,8 @@ from telegram.ext import (
     run_async,
 )
 
-import TeamLegend.modules.sql.users_sql as sql
-from TeamLegend import DEV_USERS, LOGGER, OWNER_ID, dispatcher
+import TeamLegend.sql.users_sql as sql
+from TeamLegend import DEV_USERS, LOGS, OWNER_ID, dispatcher
 from TeamLegend.helpers.chat_status import dev_plus, sudo_plus
 from TeamLegend.sql.users_sql import get_all_users
 
@@ -48,7 +48,7 @@ def get_user_id(username):
                 if excp.message == "Chat not found":
                     pass
                 else:
-                    LOGGER.exception("Error extracting user ID")
+                    LOGS.exception("Error extracting user ID")
 
     return None
 

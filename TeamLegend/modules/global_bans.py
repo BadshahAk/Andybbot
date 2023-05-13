@@ -14,7 +14,7 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import mention_html
 
-import TeamLegend.modules.sql.global_bans_sql as sql
+import TeamLegend.sql.global_bans_sql as sql
 from TeamLegend import (
     DEMONS,
     DEV_USERS,

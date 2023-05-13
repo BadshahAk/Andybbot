@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from TeamLegend import LOGGER, TIGERS, dispatcher
+from TeamLegend import LOGS, TIGERS, dispatcher
 from TeamLegend.helpers.chat_status import (
     bot_admin,
     can_restrict,
@@ -227,8 +227,8 @@ def temp_mute(update: Update, context: CallbackContext) -> str:
             message.reply_text(f"Muted for {time_val}!", quote=False)
             return log
         else:
-            LOGGER.warning(update)
-            LOGGER.exception(
+            LOGS.warning(update)
+            LOGS.exception(
                 "ERROR muting user %s in chat %s (%s) due to %s",
                 user_id,
                 chat.title,

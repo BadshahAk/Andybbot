@@ -116,7 +116,7 @@ async def job_close():
                 )
             )
         except Exception as e:
-            logger.info(f"Unable To Close Group {warner} - {e}")
+            LOGS.info(f"Unable To Close Group {warner} - {e}")
 
 
 # Run everyday at 12am
@@ -141,7 +141,7 @@ async def job_open():
                 )
             )
         except Exception as e:
-            logger.info(f"Unable To Open Group {warner.chat_id} - {e}")
+            LOGS.info(f"Unable To Open Group {warner.chat_id} - {e}")
 
 
 # Run everyday at 06

@@ -13,7 +13,7 @@ if is_module_loaded(FILENAME):
     from telegram.ext import CommandHandler, JobQueue, run_async
     from telegram.utils.helpers import escape_markdown
 
-    from TeamLegend import EVENT_LOGS, LOGGER, dispatcher
+    from TeamLegend import EVENT_LOGS, LOGS, dispatcher
     from TeamLegend.helpers.chat_status import user_admin
     from TeamLegend.sql import log_channel_sql as sql
 
@@ -89,9 +89,9 @@ if is_module_loaded(FILENAME):
                 )
                 sql.stop_chat_logging(orig_chat_id)
             else:
-                LOGGER.warning(excp.message)
-                LOGGER.warning(result)
-                LOGGER.exception("Could not parse")
+                LOGS.warning(excp.message)
+                LOGS.warning(result)
+                LOGS.exception("Could not parse")
 
                 bot.send_message(
                     log_chat_id,
@@ -137,7 +137,7 @@ if is_module_loaded(FILENAME):
                 if excp.message == "Message to delete not found":
                     pass
                 else:
-                    LOGGER.exception(
+                    LOGS.exception(
                         "Error deleting message in log channel. Should work anyway though."
                     )
 
@@ -150,7 +150,7 @@ if is_module_loaded(FILENAME):
                 if excp.message == "Forbidden: bot is not a member of the channel chat":
                     bot.send_message(chat.id, "Successfully set log channel!")
                 else:
-                    LOGGER.exception("ERROR in setting the log channel.")
+                    LOGS.exception("ERROR in setting the log channel.")
 
             bot.send_message(chat.id, "Successfully set log channel!")
 

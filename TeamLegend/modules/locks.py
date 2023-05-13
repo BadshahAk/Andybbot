@@ -7,8 +7,8 @@ from telegram.ext import CommandHandler, Filters, MessageHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import mention_html
 
-import TeamLegend.modules.sql.locks_sql as sql
-from TeamLegend import DRAGONS, LOGGER, dispatcher
+import TeamLegend.sql.locks_sql as sql
+from TeamLegend import DRAGONS, LOGS, dispatcher
 from TeamLegend.modules.connection import connected
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.alternate import send_message, typing_action
@@ -376,7 +376,7 @@ def del_lockables(update, context):
                             if excp.message == "Message to delete not found":
                                 pass
                             else:
-                                LOGGER.exception("ERROR in lockables")
+                                LOGS.exception("ERROR in lockables")
                         break
                 if message.text:
                     check = al_detect("{}".format(message.text))
@@ -387,7 +387,7 @@ def del_lockables(update, context):
                             if excp.message == "Message to delete not found":
                                 pass
                             else:
-                                LOGGER.exception("ERROR in lockables")
+                                LOGS.exception("ERROR in lockables")
                         break
             continue
         if lockable == "button":
@@ -399,7 +399,7 @@ def del_lockables(update, context):
                         if excp.message == "Message to delete not found":
                             pass
                         else:
-                            LOGGER.exception("ERROR in lockables")
+                            LOGS.exception("ERROR in lockables")
                     break
             continue
         if lockable == "inline":
@@ -411,7 +411,7 @@ def del_lockables(update, context):
                         if excp.message == "Message to delete not found":
                             pass
                         else:
-                            LOGGER.exception("ERROR in lockables")
+                            LOGS.exception("ERROR in lockables")
                     break
             continue
         if (
@@ -444,7 +444,7 @@ def del_lockables(update, context):
                     if excp.message == "Message to delete not found":
                         pass
                     else:
-                        LOGGER.exception("ERROR in lockables")
+                        LOGS.exception("ERROR in lockables")
 
                 break
 

@@ -9,7 +9,7 @@ from contextlib import redirect_stdout
 from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
-from TeamLegend import LOGGER, dispatcher
+from TeamLegend import LOGS, dispatcher
 from TeamLegend.helpers.chat_status import dev_plus
 
 namespaces = {}
@@ -32,7 +32,7 @@ def namespace_of(chat, update, bot):
 def log_input(update):
     user = update.effective_user.id
     chat = update.effective_chat.id
-    LOGGER.info(f"IN: {update.effective_message.text} (user={user}, chat={chat})")
+    LOGS.info(f"IN: {update.effective_message.text} (user={user}, chat={chat})")
 
 
 def send(msg, bot, update):
@@ -41,7 +41,7 @@ def send(msg, bot, update):
             out_file.name = "output.txt"
             bot.send_document(chat_id=update.effective_chat.id, document=out_file)
     else:
-        LOGGER.info(f"OUT: '{msg}'")
+        LOGS.info(f"OUT: '{msg}'")
         bot.send_message(
             chat_id=update.effective_chat.id,
             text=f"`{msg}`",

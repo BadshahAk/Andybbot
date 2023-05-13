@@ -15,7 +15,7 @@ from telegram.ext import (
 )
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from TeamLegend import DRAGONS, LOGGER, dispatcher
+from TeamLegend import DRAGONS, LOGS, dispatcher
 from TeamLegend.modules.connection import connected
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.alternate import send_message, typing_action
@@ -328,7 +328,7 @@ def reply_filter(update, context):
                                 )
                                 return
                             else:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGS.exception("Error in filters: " + excp.message)
                                 return
                     valid_format = escape_invalid_curly_brackets(
                         text, VALID_WELCOME_FORMATTERS
@@ -388,7 +388,7 @@ def reply_filter(update, context):
                                     reply_markup=keyboard,
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGS.exception("Error in filters: " + excp.message)
                                 send_message(
                                     update.effective_message,
                                     get_exception(excp, filt, chat),
@@ -400,7 +400,7 @@ def reply_filter(update, context):
                                     get_exception(excp, filt, chat),
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception(
+                                LOGS.exception(
                                     "Failed to send message: " + excp.message
                                 )
                 else:
@@ -456,7 +456,7 @@ def reply_filter(update, context):
                                     "again...",
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGS.exception("Error in filters: " + excp.message)
                         elif excp.message == "Reply message not found":
                             try:
                                 context.bot.send_message(
@@ -467,7 +467,7 @@ def reply_filter(update, context):
                                     reply_markup=keyboard,
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception("Error in filters: " + excp.message)
+                                LOGS.exception("Error in filters: " + excp.message)
                         else:
                             try:
                                 send_message(
@@ -475,11 +475,11 @@ def reply_filter(update, context):
                                     "This message couldn't be sent as it's incorrectly formatted.",
                                 )
                             except BadRequest as excp:
-                                LOGGER.exception("Error in filters: " + excp.message)
-                            LOGGER.warning(
+                                LOGS.exception("Error in filters: " + excp.message)
+                            LOGS.warning(
                                 "Message %s could not be parsed", str(filt.reply)
                             )
-                            LOGGER.exception(
+                            LOGS.exception(
                                 "Could not parse filter %s in chat %s",
                                 str(filt.keyword),
                                 str(chat.id),
@@ -490,7 +490,7 @@ def reply_filter(update, context):
                     try:
                         send_message(update.effective_message, filt.reply)
                     except BadRequest as excp:
-                        LOGGER.exception("Error in filters: " + excp.message)
+                        LOGS.exception("Error in filters: " + excp.message)
                 break
 
 
@@ -567,8 +567,8 @@ def get_exception(excp, filt, chat):
     elif excp.message == "Reply message not found":
         return "noreply"
     else:
-        LOGGER.warning("Message %s could not be parsed", str(filt.reply))
-        LOGGER.exception(
+        LOGS.warning("Message %s could not be parsed", str(filt.reply))
+        LOGS.exception(
             "Could not parse filter %s in chat %s", str(filt.keyword), str(chat.id)
         )
         return "This data could not be sent because it is incorrectly formatted."

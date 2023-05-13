@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-import TeamLegend.modules.sql.blacklistusers_sql as sql
+import TeamLegend.sql.blacklistusers_sql as sql
 from TeamLegend import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, TIGERS, WOLVES, dispatcher
 from TeamLegend.helpers.chat_status import dev_plus
 from TeamLegend.helpers.extraction import (

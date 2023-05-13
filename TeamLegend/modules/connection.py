@@ -5,7 +5,7 @@ from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CallbackQueryHandler, CommandHandler, run_async
 
-import TeamLegend.modules.sql.connection_sql as sql
+import TeamLegend.sql.connection_sql as sql
 from TeamLegend import DEV_USERS, DRAGONS, dispatcher
 from TeamLegend.helpers import chat_status
 from TeamLegend.helpers.alternate import send_message, typing_action

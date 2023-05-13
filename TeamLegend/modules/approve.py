@@ -5,7 +5,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 from telegram.utils.helpers import mention_html
 
-import TeamLegend.modules.sql.approve_sql as sql
+import TeamLegend.sql.approve_sql as sql
 from TeamLegend import DRAGONS, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import user_admin
