@@ -8,7 +8,7 @@ from pyrate_limiter import (
 from telegram import Update
 from telegram.ext import CommandHandler, Filters, MessageHandler, RegexHandler
 
-import TeamLegend.modules.sql.blacklistusers_sql as sql
+import TeamLegend.sql.blacklistusers_sql as sql
 from TeamLegend import ALLOW_EXCL, DEMONS, DEV_USERS, DRAGONS, TIGERS, WOLVES
 
 if ALLOW_EXCL:
