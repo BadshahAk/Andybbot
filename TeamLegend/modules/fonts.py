@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 from TeamLegend import pbot as Client
-from TeamLegend.utils.fonts import Fonts
+from TeamLegend.helpers.utils.fonts import Fonts
 
 
 @Client.on_message(filters.command(["font", "fonts"]))

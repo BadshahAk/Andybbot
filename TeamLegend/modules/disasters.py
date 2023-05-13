@@ -17,12 +17,12 @@ from TeamLegend import (
     WOLVES,
     dispatcher,
 )
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.chat_status import (
     dev_plus,
     sudo_plus,
     whitelist_plus,
 )
-from TeamLegend.modules.helper_funcs.extraction import extract_user
+from TeamLegend.helpers.extraction import extract_user
 from TeamLegend.modules.log_channel import gloggable
 
 ELEVATED_USERS_FILE = os.path.join(os.getcwd(), "TeamLegend/elevated_users.json")

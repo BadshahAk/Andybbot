@@ -27,24 +27,24 @@ from telegram.utils.helpers import mention_html
 
 from TeamLegend import TIGERS, WOLVES, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.chat_status import (
     bot_admin,
     can_restrict,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from TeamLegend.modules.helper_funcs.extraction import (
+from TeamLegend.helpers.extraction import (
     extract_text,
     extract_user,
     extract_user_and_text,
 )
-from TeamLegend.modules.helper_funcs.filters import CustomFilters
-from TeamLegend.modules.helper_funcs.misc import split_message
-from TeamLegend.modules.helper_funcs.string_handling import split_quotes
+from TeamLegend.helpers.filters import CustomFilters
+from TeamLegend.helpers.misc import split_message
+from TeamLegend.helpers.string_handling import split_quotes
 from TeamLegend.modules.log_channel import loggable
-from TeamLegend.modules.sql import warns_sql as sql
-from TeamLegend.modules.sql.approve_sql import is_approved
+from TeamLegend.sql import warns_sql as sql
+from TeamLegend.sql.approve_sql import is_approved
 
 WARN_HANDLER_GROUP = 9
 CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"

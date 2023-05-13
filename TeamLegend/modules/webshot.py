@@ -6,7 +6,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from TeamLegend import pbot as app
-from TeamLegend.utils.post import post
+from TeamLegend.helpers.utils.post import post
 
 
 async def take_screenshot(url: str, full: bool = False):

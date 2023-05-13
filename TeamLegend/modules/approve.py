@@ -8,8 +8,8 @@ from telegram.utils.helpers import mention_html
 import TeamLegend.modules.sql.approve_sql as sql
 from TeamLegend import DRAGONS, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import user_admin
-from TeamLegend.modules.helper_funcs.extraction import extract_user
+from TeamLegend.helpers.chat_status import user_admin
+from TeamLegend.helpers.extraction import extract_user
 from TeamLegend.modules.log_channel import loggable
 
 

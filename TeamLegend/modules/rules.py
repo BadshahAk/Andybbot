@@ -5,8 +5,8 @@ from telegram.utils.helpers import escape_markdown
 
 import TeamLegend.modules.sql.rules_sql as sql
 from TeamLegend import dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import connection_status, user_admin
-from TeamLegend.modules.helper_funcs.string_handling import markdown_parser
+from TeamLegend.helpers.chat_status import connection_status, user_admin
+from TeamLegend.helpers.string_handling import markdown_parser
 
 
 @connection_status

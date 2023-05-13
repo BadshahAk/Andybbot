@@ -23,10 +23,10 @@ from telegram.utils.helpers import escape_markdown, mention_markdown
 import TeamLegend.modules.sql.notes_sql as sql
 from TeamLegend import DRAGONS, EVENT_LOGS, LOGGER, SUPPORT_CHAT, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import connection_status, user_admin
-from TeamLegend.modules.helper_funcs.misc import build_keyboard, revert_buttons
-from TeamLegend.modules.helper_funcs.msg_types import get_note_type
-from TeamLegend.modules.helper_funcs.string_handling import (
+from TeamLegend.helpers.chat_status import connection_status, user_admin
+from TeamLegend.helpers.misc import build_keyboard, revert_buttons
+from TeamLegend.helpers.msg_types import get_note_type
+from TeamLegend.helpers.string_handling import (
     escape_invalid_curly_brackets,
 )
 

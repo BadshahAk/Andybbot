@@ -16,7 +16,7 @@ from TeamLegend import (
     dispatcher,
 )
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.chat_status import (
     bot_admin,
     can_delete,
     can_restrict,
@@ -27,8 +27,8 @@ from TeamLegend.modules.helper_funcs.chat_status import (
     user_admin,
     user_can_ban,
 )
-from TeamLegend.modules.helper_funcs.extraction import extract_user_and_text
-from TeamLegend.modules.helper_funcs.string_handling import extract_time
+from TeamLegend.helpers.extraction import extract_user_and_text
+from TeamLegend.helpers.string_handling import extract_time
 from TeamLegend.modules.log_channel import gloggable, loggable
 
 

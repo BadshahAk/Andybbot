@@ -15,17 +15,17 @@ from telegram.utils.helpers import mention_html
 
 from TeamLegend import TIGERS, WOLVES, dispatcher
 from TeamLegend.modules.connection import connected
-from TeamLegend.modules.helper_funcs.alternate import send_message
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.alternate import send_message
+from TeamLegend.helpers.chat_status import (
     bot_admin,
     is_user_admin,
     user_admin,
     user_admin_no_reply,
 )
-from TeamLegend.modules.helper_funcs.string_handling import extract_time
+from TeamLegend.helpers.string_handling import extract_time
 from TeamLegend.modules.log_channel import loggable
-from TeamLegend.modules.sql import antiflood_sql as sql
-from TeamLegend.modules.sql.approve_sql import is_approved
+from TeamLegend.sql import antiflood_sql as sql
+from TeamLegend.sql.approve_sql import is_approved
 
 FLOOD_GROUP = 3
 

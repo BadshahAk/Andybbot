@@ -11,8 +11,8 @@ import TeamLegend.modules.sql.locks_sql as sql
 from TeamLegend import DRAGONS, LOGGER, dispatcher
 from TeamLegend.modules.connection import connected
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.alternate import send_message, typing_action
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.alternate import send_message, typing_action
+from TeamLegend.helpers.chat_status import (
     can_delete,
     is_bot_admin,
     is_user_admin,
@@ -20,7 +20,7 @@ from TeamLegend.modules.helper_funcs.chat_status import (
     user_not_admin,
 )
 from TeamLegend.modules.log_channel import loggable
-from TeamLegend.modules.sql.approve_sql import is_approved
+from TeamLegend.sql.approve_sql import is_approved
 
 
 def al_detect(unistr):

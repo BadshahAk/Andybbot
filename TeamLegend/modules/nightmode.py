@@ -5,7 +5,7 @@ from telethon.tl.types import ChatBannedRights
 from TeamLegend import BOT_NAME
 from TeamLegend import telethn as tbot
 from TeamLegend.events import register
-from TeamLegend.modules.sql.night_mode_sql import (
+from TeamLegend.sql.night_mode_sql import (
     add_nightmode,
     get_all_chat_id,
     is_nightmode_indb,

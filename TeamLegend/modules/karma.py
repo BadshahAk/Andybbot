@@ -3,9 +3,9 @@ import asyncio
 from pyrogram import filters
 
 from TeamLegend import OWNER_ID, pbot
-from TeamLegend.utils.admins import can_change_info
-from TeamLegend.utils.errors import capture_err
-from TeamLegend.utils.mongo import (
+from TeamLegend.helpers.utils.admins import can_change_info
+from TeamLegend.helpers.utils.errors import capture_err
+from TeamLegend.helpers.utils.mongo import (
     alpha_to_int,
     get_karma,
     get_karmas,

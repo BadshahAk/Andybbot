@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from TeamLegend import pbot
-from TeamLegend.utils.admins import can_restrict
+from TeamLegend.helpers.utils.admins import can_restrict
 
 
 @pbot.on_message(filters.command(["zombies", "ghosts"]))

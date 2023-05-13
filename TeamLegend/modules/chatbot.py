@@ -25,7 +25,7 @@ from telegram.utils.helpers import mention_html
 
 import TeamLegend.modules.sql.chatbot_sql as sql
 from TeamLegend import BOT_ID, BOT_NAME, BOT_USERNAME, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import user_admin, user_admin_no_reply
+from TeamLegend.helpers.chat_status import user_admin, user_admin_no_reply
 from TeamLegend.modules.log_channel import gloggable
 
 

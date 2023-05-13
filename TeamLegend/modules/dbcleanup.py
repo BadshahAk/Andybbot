@@ -12,7 +12,7 @@ from telegram.ext import (
 import TeamLegend.modules.sql.global_bans_sql as gban_sql
 import TeamLegend.modules.sql.users_sql as user_sql
 from TeamLegend import DEV_USERS, OWNER_ID, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus
+from TeamLegend.helpers.chat_status import dev_plus
 
 
 def get_invalid_chats(update: Update, context: CallbackContext, remove: bool = False):

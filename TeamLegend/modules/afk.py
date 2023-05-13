@@ -10,7 +10,7 @@ from TeamLegend.modules.disable import (
     DisableAbleCommandHandler,
     DisableAbleMessageHandler,
 )
-from TeamLegend.modules.sql import afk_sql as sql
+from TeamLegend.sql import afk_sql as sql
 from TeamLegend.modules.users import get_user_id
 
 AFK_GROUP = 7

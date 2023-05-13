@@ -7,10 +7,10 @@ from telegram import ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async
 
-# from TeamLegend.modules.sql import warns_sql as warnssql
+# from TeamLegend.sql import warns_sql as warnssql
 import TeamLegend.modules.sql.blacklist_sql as blacklistsql
 
-# from TeamLegend.modules.sql import cust_filters_sql as filtersql
+# from TeamLegend.sql import cust_filters_sql as filtersql
 # import TeamLegend.modules.sql.welcome_sql as welcsql
 import TeamLegend.modules.sql.locks_sql as locksql
 import TeamLegend.modules.sql.notes_sql as sql
@@ -20,9 +20,9 @@ import TeamLegend.modules.sql.rules_sql as rulessql
 from TeamLegend import EVENT_LOGS, LOGGER, OWNER_ID, SUPPORT_CHAT, dispatcher
 from TeamLegend.__main__ import DATA_IMPORT
 from TeamLegend.modules.connection import connected
-from TeamLegend.modules.helper_funcs.alternate import typing_action
-from TeamLegend.modules.helper_funcs.chat_status import user_admin
-from TeamLegend.modules.sql import disable_sql as disabledsql
+from TeamLegend.helpers.alternate import typing_action
+from TeamLegend.helpers.chat_status import user_admin
+from TeamLegend.sql import disable_sql as disabledsql
 
 
 @run_async

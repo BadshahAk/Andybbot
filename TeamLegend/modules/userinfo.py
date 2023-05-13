@@ -32,11 +32,11 @@ from TeamLegend import (
 from TeamLegend import telethn as KannadigaTelethonClient
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import sudo_plus
-from TeamLegend.modules.helper_funcs.extraction import extract_user
-from TeamLegend.modules.sql.afk_sql import check_afk_status, is_afk
-from TeamLegend.modules.sql.global_bans_sql import is_user_gbanned
-from TeamLegend.modules.sql.users_sql import get_user_num_chats
+from TeamLegend.helpers.chat_status import sudo_plus
+from TeamLegend.helpers.extraction import extract_user
+from TeamLegend.sql.afk_sql import check_afk_status, is_afk
+from TeamLegend.sql.global_bans_sql import is_user_gbanned
+from TeamLegend.sql.users_sql import get_user_num_chats
 
 
 def no_by_per(totalhp, percentage):

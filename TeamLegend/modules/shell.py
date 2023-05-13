@@ -5,7 +5,7 @@ from telegram.ext import CallbackContext, CommandHandler
 from telegram.ext.dispatcher import run_async
 
 from TeamLegend import LOGGER, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus
+from TeamLegend.helpers.chat_status import dev_plus
 
 
 @dev_plus

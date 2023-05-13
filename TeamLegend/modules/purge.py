@@ -3,7 +3,7 @@ import time
 from telethon import events
 
 from TeamLegend import telethn
-from TeamLegend.modules.helper_funcs.telethn.chatstatus import (
+from TeamLegend.helpers.telethn.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )

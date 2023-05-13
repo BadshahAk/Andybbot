@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.enums import ChatType
 
 from TeamLegend import pbot
-from TeamLegend.utils.mongo import get_couple, save_couple
+from TeamLegend.helpers.utils.mongo import get_couple, save_couple
 
 
 # Date and time

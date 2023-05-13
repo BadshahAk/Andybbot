@@ -13,8 +13,8 @@ from telegram.ext import (
 
 import TeamLegend.modules.sql.users_sql as sql
 from TeamLegend import DEV_USERS, LOGGER, OWNER_ID, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus, sudo_plus
-from TeamLegend.modules.sql.users_sql import get_all_users
+from TeamLegend.helpers.chat_status import dev_plus, sudo_plus
+from TeamLegend.sql.users_sql import get_all_users
 
 USERS_GROUP = 4
 CHAT_GROUP = 5

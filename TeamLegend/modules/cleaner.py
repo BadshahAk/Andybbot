@@ -11,13 +11,13 @@ from telegram.ext import (
 
 from TeamLegend import ALLOW_EXCL, CustomCommandHandler, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import (
+from TeamLegend.helpers.chat_status import (
     bot_can_delete,
     connection_status,
     dev_plus,
     user_admin,
 )
-from TeamLegend.modules.sql import cleaner_sql as sql
+from TeamLegend.sql import cleaner_sql as sql
 
 CMD_STARTERS = ("/", "!") if ALLOW_EXCL else "/"
 BLUE_TEXT_CLEAN_GROUP = 13

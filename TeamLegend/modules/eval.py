@@ -10,7 +10,7 @@ from telegram import ParseMode, Update
 from telegram.ext import CallbackContext, CommandHandler, run_async
 
 from TeamLegend import LOGGER, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus
+from TeamLegend.helpers.chat_status import dev_plus
 
 namespaces = {}
 

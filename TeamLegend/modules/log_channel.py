@@ -3,7 +3,7 @@ from functools import wraps
 
 from telegram.ext import CallbackContext
 
-from TeamLegend.modules.helper_funcs.misc import is_module_loaded
+from TeamLegend.helpers.misc import is_module_loaded
 
 FILENAME = __name__.rsplit(".", 1)[-1]
 
@@ -14,8 +14,8 @@ if is_module_loaded(FILENAME):
     from telegram.utils.helpers import escape_markdown
 
     from TeamLegend import EVENT_LOGS, LOGGER, dispatcher
-    from TeamLegend.modules.helper_funcs.chat_status import user_admin
-    from TeamLegend.modules.sql import log_channel_sql as sql
+    from TeamLegend.helpers.chat_status import user_admin
+    from TeamLegend.sql import log_channel_sql as sql
 
     def loggable(func):
         @wraps(func)

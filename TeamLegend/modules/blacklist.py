@@ -10,13 +10,13 @@ import TeamLegend.modules.sql.blacklist_sql as sql
 from TeamLegend import LOGGER, dispatcher
 from TeamLegend.modules.connection import connected
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.alternate import send_message, typing_action
-from TeamLegend.modules.helper_funcs.chat_status import user_admin, user_not_admin
-from TeamLegend.modules.helper_funcs.extraction import extract_text
-from TeamLegend.modules.helper_funcs.misc import split_message
-from TeamLegend.modules.helper_funcs.string_handling import extract_time
+from TeamLegend.helpers.alternate import send_message, typing_action
+from TeamLegend.helpers.chat_status import user_admin, user_not_admin
+from TeamLegend.helpers.extraction import extract_text
+from TeamLegend.helpers.misc import split_message
+from TeamLegend.helpers.string_handling import extract_time
 from TeamLegend.modules.log_channel import loggable
-from TeamLegend.modules.sql.approve_sql import is_approved
+from TeamLegend.sql.approve_sql import is_approved
 from TeamLegend.modules.warns import warn
 
 BLACKLIST_GROUP = 11

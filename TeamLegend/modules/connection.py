@@ -7,8 +7,8 @@ from telegram.ext import CallbackQueryHandler, CommandHandler, run_async
 
 import TeamLegend.modules.sql.connection_sql as sql
 from TeamLegend import DEV_USERS, DRAGONS, dispatcher
-from TeamLegend.modules.helper_funcs import chat_status
-from TeamLegend.modules.helper_funcs.alternate import send_message, typing_action
+from TeamLegend.helpers import chat_status
+from TeamLegend.helpers.alternate import send_message, typing_action
 
 user_admin = chat_status.user_admin
 

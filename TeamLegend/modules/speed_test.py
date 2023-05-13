@@ -4,7 +4,7 @@ from telegram.ext import CallbackContext, CallbackQueryHandler, run_async
 
 from TeamLegend import DEV_USERS, dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus
+from TeamLegend.helpers.chat_status import dev_plus
 
 
 def convert(speed):

@@ -2,7 +2,7 @@ from aiohttp import ClientSession
 from pyrogram import filters
 
 from TeamLegend import pbot
-from TeamLegend.utils.errors import capture_err
+from TeamLegend.helpers.utils.errors import capture_err
 
 
 @pbot.on_message(filters.command("github"))

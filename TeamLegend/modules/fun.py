@@ -9,8 +9,8 @@ from telegram.ext import CallbackContext, run_async
 import TeamLegend.modules.fun_strings as fun_strings
 from TeamLegend import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.modules.helper_funcs.chat_status import is_user_admin
-from TeamLegend.modules.helper_funcs.extraction import extract_user
+from TeamLegend.helpers.chat_status import is_user_admin
+from TeamLegend.helpers.extraction import extract_user
 
 GIF_ID = "CgACAgQAAx0CSVUvGgAC7KpfWxMrgGyQs-GUUJgt-TSO8cOIDgACaAgAAlZD0VHT3Zynpr5nGxsE"
 

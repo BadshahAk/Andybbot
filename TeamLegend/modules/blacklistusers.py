@@ -8,8 +8,8 @@ from telegram.utils.helpers import mention_html
 
 import TeamLegend.modules.sql.blacklistusers_sql as sql
 from TeamLegend import DEMONS, DEV_USERS, DRAGONS, OWNER_ID, TIGERS, WOLVES, dispatcher
-from TeamLegend.modules.helper_funcs.chat_status import dev_plus
-from TeamLegend.modules.helper_funcs.extraction import (
+from TeamLegend.helpers.chat_status import dev_plus
+from TeamLegend.helpers.extraction import (
     extract_user,
     extract_user_and_text,
 )

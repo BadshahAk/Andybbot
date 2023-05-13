@@ -9,8 +9,8 @@ from pyrogram.types import InlineKeyboardButton
 
 from TeamLegend import aiohttpsession as session
 from TeamLegend import pbot as app
-from TeamLegend.utils.errors import capture_err
-from TeamLegend.utils.pastebin import paste
+from TeamLegend.helpers.utils.errors import capture_err
+from TeamLegend.helpers.utils.pastebin import paste
 
 pattern = re.compile(r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$")
 

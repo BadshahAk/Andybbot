@@ -1,8 +1,8 @@
 from pyrogram import filters
 
 from TeamLegend import pbot
-from TeamLegend.utils.errors import capture_err
-from TeamLegend.utils.functions import make_carbon
+from TeamLegend.helpers.utils.errors import capture_err
+from TeamLegend.helpers.utils.functions import make_carbon
 
 
 @pbot.on_message(filters.command("carbon"))
