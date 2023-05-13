@@ -1,7 +1,7 @@
 import flag
 from countryinfo import CountryInfo
 
-from TeamLegend import BOT_NAME, telethn
+from TeamLegend import BOT_NAME, legendtbot
 from TeamLegend.events import register
 
 
@@ -100,7 +100,7 @@ async def msg(event):
 <u>Information Gathered By {BOT_NAME}</u>
 """
 
-    await telethn.send_message(
+    await legendtbot.send_message(
         event.chat_id,
         caption,
         parse_mode="HTML",

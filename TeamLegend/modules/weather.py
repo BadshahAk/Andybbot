@@ -3,7 +3,7 @@ import io
 import aiohttp
 from telethon.tl import functions, types
 
-from TeamLegend import telethn as tbot
+from TeamLegend import legendtbot as tbot
 from TeamLegend.events import register
 
 

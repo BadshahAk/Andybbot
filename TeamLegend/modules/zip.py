@@ -6,7 +6,7 @@ from telethon import types
 from telethon.tl import functions
 
 from TeamLegend import TEMP_DOWNLOAD_DIRECTORY
-from TeamLegend import telethn as client
+from TeamLegend import legendtbot as client
 from TeamLegend.events import register
 
 

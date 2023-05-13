@@ -2,8 +2,8 @@ import time
 
 from telethon import events
 
-from TeamLegend import telethn
-from TeamLegend.helpers.telethn.chatstatus import (
+from TeamLegend import legendtbot
+from TeamLegend.helpers.legendtbot.chatstatus import (
     can_delete_messages,
     user_is_admin,
 )
@@ -79,8 +79,8 @@ __help__ = """
 PURGE_HANDLER = purge_messages, events.NewMessage(pattern="^[!/]purge$")
 DEL_HANDLER = delete_messages, events.NewMessage(pattern="^[!/]del$")
 
-telethn.add_event_handler(*PURGE_HANDLER)
-telethn.add_event_handler(*DEL_HANDLER)
+legendtbot.add_event_handler(*PURGE_HANDLER)
+legendtbot.add_event_handler(*DEL_HANDLER)
 
 __mod_name__ = "Pᴜʀɢᴇ"
 __command_list__ = ["del", "purge"]

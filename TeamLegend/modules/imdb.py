@@ -2,10 +2,10 @@ import requests
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from TeamLegend import pbot
+from TeamLegend import legendpbot
 
 
-@pbot.on_message(filters.command(["imdb", "tmdb"]))
+@legendpbot.on_message(filters.command(["imdb", "tmdb"]))
 async def imdb(_, message):
     if len(message.command) < 2:
         return await message.reply_text("Give me some Movie Name\n\nEx. /imdb Kgf")

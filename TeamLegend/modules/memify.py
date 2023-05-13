@@ -3,7 +3,7 @@ import textwrap
 
 from PIL import Image, ImageDraw, ImageFont
 
-from TeamLegend import telethn as bot
+from TeamLegend import legendtbot as bot
 from TeamLegend.events import register
 
 Credit = "kannadigaXD"

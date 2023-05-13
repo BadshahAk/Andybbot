@@ -3,7 +3,7 @@ from telethon import functions, types
 from telethon.tl.types import ChatBannedRights
 
 from TeamLegend import BOT_NAME
-from TeamLegend import telethn as tbot
+from TeamLegend import legendtbot as tbot
 from TeamLegend.events import register
 from TeamLegend.sql.night_mode_sql import (
     add_nightmode,

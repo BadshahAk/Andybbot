@@ -3,7 +3,7 @@ import os
 import cv2
 from PIL import Image
 
-from TeamLegend import telethn as tbot
+from TeamLegend import legendtbot as tbot
 from TeamLegend.events import register
 
 

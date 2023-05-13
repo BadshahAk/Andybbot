@@ -1,11 +1,11 @@
 from pyrogram import filters
 
-from TeamLegend import pbot
+from TeamLegend import legendpbot
 from TeamLegend.helpers.utils.errors import capture_err
 from TeamLegend.helpers.utils.functions import make_carbon
 
 
-@pbot.on_message(filters.command("carbon"))
+@legendpbot.on_message(filters.command("carbon"))
 @capture_err
 async def carbon_func(_, message):
     if not message.reply_to_message:
@@ -15,7 +15,7 @@ async def carbon_func(_, message):
     m = await message.reply_text("ɢᴇɴᴇʀᴀᴛɪɴɢ ᴄᴀʀʙᴏɴ...")
     carbon = await make_carbon(message.reply_to_message.text)
     await m.edit_text("ᴜᴩʟᴏᴀᴅɪɴɢ ɢᴇɴᴇʀᴀᴛᴇᴅ ᴄᴀʀʙᴏɴ...")
-    await pbot.send_photo(message.chat.id, carbon)
+    await legendpbot.send_photo(message.chat.id, carbon)
     await m.delete()
     carbon.close()
 

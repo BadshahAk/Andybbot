@@ -5,7 +5,7 @@ from io import BytesIO
 from pyrogram import filters
 from pyrogram.types import Message
 
-from TeamLegend import pbot as app
+from TeamLegend import legendpbot as app
 from TeamLegend.helpers.utils.post import post
 
 

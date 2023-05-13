@@ -1,11 +1,11 @@
 from aiohttp import ClientSession
 from pyrogram import filters
 
-from TeamLegend import pbot
+from TeamLegend import legendpbot
 from TeamLegend.helpers.utils.errors import capture_err
 
 
-@pbot.on_message(filters.command("github"))
+@legendpbot.on_message(filters.command("github"))
 @capture_err
 async def github(_, message):
     if len(message.command) != 2:

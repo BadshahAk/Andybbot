@@ -29,7 +29,7 @@ from TeamLegend import (
     WOLVES,
     dispatcher,
 )
-from TeamLegend import telethn as KannadigaTelethonClient
+from TeamLegend import legendtbot as KannadigaTelethonClient
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import sudo_plus

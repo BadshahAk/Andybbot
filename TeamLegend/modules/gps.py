@@ -3,7 +3,7 @@ from telethon import *
 from telethon.tl import *
 
 from TeamLegend import *
-from TeamLegend import telethn as tbot
+from TeamLegend import legendtbot as tbot
 from TeamLegend.events import register
 
 GMAPS_LOC = "https://maps.googleapis.com/maps/api/geocode/json"

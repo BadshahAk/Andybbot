@@ -8,7 +8,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton
 
 from TeamLegend import aiohttpsession as session
-from TeamLegend import pbot as app
+from TeamLegend import legendpbot as app
 from TeamLegend.helpers.utils.errors import capture_err
 from TeamLegend.helpers.utils.pastebin import paste
 

@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-from TeamLegend import pbot as Client
+from TeamLegend import legendpbot as Client
 from TeamLegend.helpers.utils.fonts import Fonts
 
 

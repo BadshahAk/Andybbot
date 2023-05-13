@@ -6,7 +6,7 @@ import random
 import requests
 from PIL import Image, ImageDraw, ImageFont
 
-from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, telethn
+from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, legendtbot
 from TeamLegend.events import register
 
 LOGO_LINKS = [
@@ -276,7 +276,7 @@ async def lego(event):
         )
         fname = "kannadiga.png"
         img.save(fname, "png")
-        await telethn.send_file(
+        await legendtbot.send_file(
             event.chat_id,
             file=fname,
             caption=f"ʟᴏɢᴏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ [{BOT_NAME}](https://t.me/{BOT_USERNAME})",
@@ -309,7 +309,7 @@ async def lego(event):
         )
         fname = "kannadiga.png"
         img.save(fname, "png")
-        await telethn.send_file(
+        await legendtbot.send_file(
             event.chat_id,
             file=fname,
             caption=f"ʟᴏɢᴏ ɢᴇɴᴇʀᴀᴛᴇᴅ ʙʏ [{BOT_NAME}](https://t.me/{BOT_USERNAME})",

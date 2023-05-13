@@ -6,10 +6,10 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from telegram import __version__ as o
 from telethon import __version__ as s
 
-from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, START_IMG, pbot
+from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, START_IMG, legendpbot
 
 
-@pbot.on_message(filters.command(["repo", "source"]))
+@legendpbot.on_message(filters.command(["repo", "source"]))
 async def repo(_, message: Message):
     await message.reply_photo(
         photo=START_IMG,

@@ -2,7 +2,7 @@ import asyncio
 
 from pyrogram import filters
 
-from TeamLegend import OWNER_ID, pbot
+from TeamLegend import OWNER_ID, legendpbot
 from TeamLegend.helpers.utils.admins import can_change_info
 from TeamLegend.helpers.utils.errors import capture_err
 from TeamLegend.helpers.utils.mongo import (
@@ -23,7 +23,7 @@ karma_positive_group = 3
 karma_negative_group = 4
 
 
-@pbot.on_message(
+@legendpbot.on_message(
     filters.text
     & filters.group
     & filters.incoming
@@ -62,7 +62,7 @@ async def upvote(_, message):
     )
 
 
-@pbot.on_message(
+@legendpbot.on_message(
     filters.text
     & filters.group
     & filters.incoming
@@ -100,7 +100,7 @@ async def downvote(_, message):
     )
 
 
-@pbot.on_message(filters.command("karmastat") & filters.group)
+@legendpbot.on_message(filters.command("karmastat") & filters.group)
 @capture_err
 async def karma(_, message):
     if not message.reply_to_message:
@@ -143,7 +143,7 @@ async def karma(_, message):
         await message.reply_text(f"**ᴛᴏᴛᴀʟ ᴩᴏɪɴᴛs :** {karma}")
 
 
-@pbot.on_message(filters.command("karma") & ~filters.private)
+@legendpbot.on_message(filters.command("karma") & ~filters.private)
 @can_change_info
 async def captcha_state(_, message):
     usage = "**Usage:**\n/karma [ON|OFF]"

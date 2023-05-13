@@ -3,11 +3,11 @@ from asyncio import sleep
 from pyrogram import filters
 from pyrogram.types import Message
 
-from TeamLegend import pbot
+from TeamLegend import legendpbot
 from TeamLegend.helpers.utils.admins import can_restrict
 
 
-@pbot.on_message(filters.command(["zombies", "ghosts"]))
+@legendpbot.on_message(filters.command(["zombies", "ghosts"]))
 @can_restrict
 async def ban_zombies(_, message: Message):
     del_zom = 0
@@ -18,7 +18,7 @@ async def ban_zombies(_, message: Message):
         clean = None
     if clean != "clean":
         check = await message.reply_text("`Searching for deleted accounts...`")
-        async for user in pbot.get_chat_members(message.chat.id):
+        async for user in legendpbot.get_chat_members(message.chat.id):
             if user.user.is_deleted:
                 del_zom += 1
                 await sleep(1)
@@ -32,7 +32,7 @@ async def ban_zombies(_, message: Message):
     deleted_u = []
     banned = 0
     failed = 0
-    async for user in pbot.get_chat_members(message.chat.id):
+    async for user in legendpbot.get_chat_members(message.chat.id):
         if user.user.is_deleted:
             deleted_u.append(int(user.user.id))
     if len(deleted_u) > 0:
