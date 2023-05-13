@@ -6,7 +6,8 @@ from telegram import ChatPermissions, ParseMode, Update
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, run_async
 
-import TeamLegend.modules.fun_strings as fun_strings
+
+import TeamLegend.resources.strings.fun_strings as fun_strings
 from TeamLegend import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import is_user_admin
