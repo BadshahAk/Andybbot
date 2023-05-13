@@ -3,7 +3,7 @@ from typing import List, Optional
 from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
-from TeamLegend import LOGGER
+from TeamLegend import LOGS
 from TeamLegend.modules.users import get_user_id
 
 
@@ -81,7 +81,7 @@ def extract_user_and_text(
                 "to execute certain commands...)"
             )
         else:
-            LOGGER.exception("Exception %s on user %s", excp.message, user_id)
+            LOGS.exception("Exception %s on user %s", excp.message, user_id)
 
         return None, None
 
@@ -158,7 +158,7 @@ def extract_unt_fedban(
             )
             return None, None
         elif excp.message != "Chat not found":
-            LOGGER.exception("Exception %s on user %s", excp.message, user_id)
+            LOGS.exception("Exception %s on user %s", excp.message, user_id)
             return None, None
         elif not isinstance(user_id, int):
             return None, None
