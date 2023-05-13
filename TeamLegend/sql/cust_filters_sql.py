@@ -2,8 +2,8 @@ import threading
 
 from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText, distinct, func
 
-from TeamLegend.modules.helper_funcs.msg_types import Types
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.helpers.msg_types import Types
+from TeamLegend.sql import BASE, SESSION
 
 
 class CustomFilters(BASE):

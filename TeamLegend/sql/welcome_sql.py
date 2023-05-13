@@ -4,8 +4,8 @@ from typing import Union
 
 from sqlalchemy import BigInteger, Boolean, Column, Integer, String, UnicodeText
 
-from TeamLegend.modules.helper_funcs.msg_types import Types
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.helpers.msg_types import Types
+from TeamLegend.sql import BASE, SESSION
 
 DEFAULT_WELCOME = "Hey {first}, how are you?"
 DEFAULT_GOODBYE = "Nice knowing ya!"

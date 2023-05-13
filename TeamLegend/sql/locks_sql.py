@@ -3,7 +3,7 @@ import threading
 
 from sqlalchemy import Boolean, Column, String
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class Permissions(BASE):

@@ -3,7 +3,7 @@ import threading
 from sqlalchemy import Column, String
 from sqlalchemy.sql.sqltypes import BigInteger
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class Approvals(BASE):

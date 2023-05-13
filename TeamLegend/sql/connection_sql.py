@@ -4,7 +4,7 @@ from typing import Union
 
 from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class ChatAccessConnectionSettings(BASE):

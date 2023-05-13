@@ -11,7 +11,7 @@ from sqlalchemy import (
 )
 
 from TeamLegend import dispatcher
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class Users(BASE):

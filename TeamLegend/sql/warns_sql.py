@@ -3,7 +3,7 @@ import threading
 from sqlalchemy import BigInteger, Boolean, Column, String, UnicodeText, distinct, func
 from sqlalchemy.dialects import postgresql
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class Warns(BASE):

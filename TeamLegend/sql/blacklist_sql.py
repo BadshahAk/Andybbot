@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import BigInteger, Column, String, UnicodeText, distinct, func
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class BlackListFilters(BASE):

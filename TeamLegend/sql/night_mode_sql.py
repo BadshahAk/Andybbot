@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from TeamLegend.modules.sql import BASE, SESSION
+from TeamLegend.sql import BASE, SESSION
 
 
 class Nightmode(BASE):
