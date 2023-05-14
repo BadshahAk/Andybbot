@@ -6,14 +6,14 @@ from telethon import __version__ as tlhver
 
 from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, START_IMG, SUPPORT_CHAT, legendpbot
 
-
+ALIVE_PIC = "
 @legendpbot.on_message(filters.command("alive"))
 async def awake(_, message: Message):
-    TEXT = f"**ʜᴇʏ {message.from_user.mention},\n\nɪ ᴀᴍ {BOT_NAME}**\n━━━━━━━━━━━━━━━━━━━\n\n"
-    TEXT += f"» **ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ :** [ಕನ್ನಡಿಗ](tg://user?id={OWNER_ID})\n\n"
-    TEXT += f"» **ʟɪʙʀᴀʀʏ ᴠᴇʀsɪᴏɴ :** `{telever}` \n\n"
-    TEXT += f"» **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀsɪᴏɴ :** `{tlhver}` \n\n"
-    TEXT += f"» **ᴘʏʀᴏɢʀᴀᴍ ᴠᴇʀsɪᴏɴ :** `{pyrover}` \n━━━━━━━━━━━━━━━━━\n\n"
+    TEXT = f"**Hey {message.from_user.mention},\n\nI Am {BOT_NAME}**\n━━━━━━━━━━━━━━━━━━━\n\n"
+    TEXT += f"» **This Bot Is For [Team Legend](https://t.me/TeamLegendXD)\n\n"
+    TEXT += f"» **Telegram Version :** `{telever}` \n\n"
+    TEXT += f"» **Telethon Version :** `{tlhver}` \n\n"
+    TEXT += f"» **Pyrogram Version :** `{pyrover}` \n━━━━━━━━━━━━━━━━━\n\n"
     BUTTON = [
         [
             InlineKeyboardButton("ʜᴇʟᴘ", url=f"https://t.me/{BOT_USERNAME}?start=help"),
@@ -21,14 +21,18 @@ async def awake(_, message: Message):
         ]
     ]
     await message.reply_photo(
-        photo=START_IMG,
+        photo=ALIVE_PIC,
         caption=TEXT,
         reply_markup=InlineKeyboardMarkup(BUTTON),
     )
 
     
 __help__ = """
-Check /alive Is bot alive or not
- """
+*alive* is used to check bot is on or not
+
+This Plugin Can Be Used By All Member
+
+☞ /alive : _Check Bot is on or not_
+"""
 
 __mod_name__ = "Alive"
