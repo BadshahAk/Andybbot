@@ -10,7 +10,7 @@ from TeamLegend.core.clients import legendpbot
 ALIVE_PIC = "https://graph.org/file/f60051408d17fd505fa11.jpg"
 @legendpbot.on_message(filters.command("alive"))
 async def awake(_, message: Message):
-    TEXT = f"**Hey {message.from_user.mention},\n\nI Am {BOT_NAME}**\n━━━━━━━━━━━━━━━━━━━\n\n"
+    TEXT = f"**Hey {message.from_user.mention},\n\nI Am {BOT_NAME}**\n━━━━━━━━━━━━━━━━━━\n\n"
     TEXT += f"» **This Bot Is For [Team Legend](https://t.me/TeamLegendXD)\n\n"
     TEXT += f"» **Telegram Version :** `{telever}` \n\n"
     TEXT += f"» **Telethon Version :** `{tlhver}` \n\n"
@@ -31,7 +31,7 @@ async def awake(_, message: Message):
 __help__ = """
 *alive* is used to check bot is on or not
 
-This Plugin Can Be Used By All Member
+*🔰 User Commands:*
 
 ☞ /alive : _Check Bot is on or not_
 """
