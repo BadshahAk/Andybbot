@@ -4,9 +4,10 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from telegram import __version__ as telever
 from telethon import __version__ as tlhver
 
-from TeamLegend import BOT_NAME, BOT_USERNAME, OWNER_ID, START_IMG, SUPPORT_CHAT, legendpbot
+from TeamLegend import BOT_NAME, BOT_USERNAME
+from TeamLegend.core.clients import legendpbot
 
-ALIVE_PIC = "
+ALIVE_PIC = "https://graph.org/file/f60051408d17fd505fa11.jpg0"
 @legendpbot.on_message(filters.command("alive"))
 async def awake(_, message: Message):
     TEXT = f"**Hey {message.from_user.mention},\n\nI Am {BOT_NAME}**\n━━━━━━━━━━━━━━━━━━━\n\n"
