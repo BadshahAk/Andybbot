@@ -26,5 +26,9 @@ async def awake(_, message: Message):
         reply_markup=InlineKeyboardMarkup(BUTTON),
     )
 
+    
+__help__ = """
+Check /alive Is bot alive or not
+ """
 
-__mod_name__ = "Aʟɪᴠᴇ"
+__mod_name__ = "Alive"
