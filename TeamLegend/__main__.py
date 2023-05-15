@@ -27,7 +27,7 @@ from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
 import TeamLegend.sql.users_sql as sql
-from TeamLegend.Config (
+from TeamLegend.Config import (
     OWNER_ID,
     START_IMG,
     TOKEN,
