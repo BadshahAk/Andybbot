@@ -27,15 +27,14 @@ from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
 import TeamLegend.sql.users_sql as sql
-from TeamLegend.Config import (
-    BOT_NAME,
-    BOT_USERNAME,
+from TeamLegend.Config (
     OWNER_ID,
     START_IMG,
-    SUPPORT_CHAT,
     TOKEN,
-)
-from TeamLegend import StartTime
+    )
+
+from TeamLegend import StartTime, BOT_NAME, BOT_USERNAME
+
 from TeamLegend.core.clients import *
 
 from TeamLegend.modules import ALL_MODULES
@@ -694,7 +693,7 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 
 def main():
-    """if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
         try:
             dispatcher.bot.send_photo(
                 chat_id=f"@{SUPPORT_CHAT}",
@@ -726,7 +725,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(
-        Kannadiga_about_callback, pattern=r"kannadiga_"
+        legend_callback, pattern=r"legend_"
     )
     source_callback_handler = CallbackQueryHandler(
         Source_about_callback, pattern=r"source_"
