@@ -423,17 +423,18 @@ def Source_about_callback(update: Update, context: CallbackContext):
             disable_web_page_preview=True,
         )
 
+        
 HELP_STRINGS = f"""
 *🔰 {BOT_NAME} Advanced Features*
 
-ॐ /start : Start Me
-ॐ /help  : Available Command Section
-  ☞ In Pm:
-    • /help : Open Help Menu
-    • /help (module name): Redirect To Module
-  ☞ In Group:
-    • /help : 2 Option Available (Open in Private/Open Here)
-    • /help (module name): Redirect To Module in Private."""
+ॐ /start : _Start Me_
+ॐ /help  : _Available Command Menu_
+  ☞ *In Pm*:
+    • /help : _Open Help Menu_
+    • /help (module name): _Redirect To Module_
+  ☞ *In Group*:
+    • /help : _2 Option Available (Open in Private/Open Here)_
+    • /help (module name): _Redirect To Module in Private._"""
 
         
 @run_async
