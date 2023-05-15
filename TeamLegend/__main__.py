@@ -163,7 +163,7 @@ def start(update: Update, context: CallbackContext):
                 "CAACAgUAAxkBAAJYsmLWRvm70cE-mmxSNCovEf4v1ueJAAIcCAACbMK4VuL4EmZEkq8WKQQ"
             )
             update.effective_message.reply_photo(
-                START_IMG
+                START_IMG,
                 caption=f"Hello" #.format(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
