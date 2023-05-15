@@ -4,9 +4,6 @@ API_ID = os.environ.get("API_ID", 123)
 API_HASH = os.environ.get("API_HASH", None)
 ALLOW_CHATS = os.environ.get("ALLOW_CHATS", True)
 ALLOW_EXCL = os.environ.get("ALLOW_EXCL", False)
-BOT_NAME = os.environ.get("BOT_NAME", "TeamLegend")
-BOT_USERNAME = os.environ.get("BOT_USERNAME" "TeamLegendXDBot")
-
 
 CASH_API_KEY = os.environ.get("CASH_API_KEY", None)
 DB_URI = os.environ.get("DATABASE_URL")
