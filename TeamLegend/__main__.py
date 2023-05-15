@@ -469,7 +469,7 @@ def get_help(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="Open In Private"
+                            text="Open In Private",
                             url="https://t.me/{}?start=help".format(
                                 context.bot.username
                             ),
