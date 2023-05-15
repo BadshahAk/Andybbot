@@ -712,9 +712,9 @@ def main():
             )
         except Unauthorized:
             LOGS.warning(
-                f"Bot is not Able To Send Message To {EVENT_LOGS}"
-              
+                f"Bot is not Able To Send Message To {EVENT_LOGS}",
             )
+
         except BadRequest as e:
             LOGS.warning(e.message)
 
