@@ -43,35 +43,6 @@ from TeamLegend.helpers.chat_status import is_user_admin
 from TeamLegend.helpers.misc import paginate_modules
 from TeamLegend.helpers.function.time import get_readable_time
 
-PM_START_TEXT = """
-*ʜᴇʏ* {}, 🥀
-
-*๏ ᴛʜɪs ɪs* {} !
-➻ ᴛʜᴇ ᴍᴏsᴛ ᴩᴏᴡᴇʀғᴜʟ ᴛᴇʟᴇɢʀᴀᴍ ɢʀᴏᴜᴩ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ sᴏᴍᴇ ᴀᴡᴇsᴏᴍᴇ ᴀɴᴅ ᴜsᴇғᴜʟ ғᴇᴀᴛᴜʀᴇs.
-
-──────────────────
-*๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʜᴇʟᴩ ʙᴜᴛᴛᴏɴ ᴛᴏ ɢᴇᴛ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅs.*
-"""
-
-buttons = [
-    [
-        InlineKeyboardButton(
-            text="ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ",
-            url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
-        ),
-    ],
-    [
-        InlineKeyboardButton(text="ʜᴇʟᴩ & ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"),
-    ],
-    [
-        InlineKeyboardButton(text="❄ ᴀʙᴏᴜᴛ ❄", callback_data="legend_"),
-        InlineKeyboardButton(text="✨ sᴜᴩᴩᴏʀᴛ ✨", url=f"https://t.me/TeamLegendXD"),
-    ],
-    [
-        InlineKeyboardButton(text="🥀 ᴅᴇᴠᴇʟᴏᴩᴇʀ 🥀", url=f"tg://user?id={OWNER_ID}"),
-        InlineKeyboardButton(text="☁️ sᴏᴜʀᴄᴇ ☁️", callback_data="source_"),
-    ],
-]
 
 
 IMPORTED = {}
@@ -162,15 +133,16 @@ def start(update: Update, context: CallbackContext):
             # Send Start
             update.effective_message.reply_photo(
                 START_IMG,
-                caption=f"Hello", #.format(escape_markdown(first_name), BOT_NAME),
-                #reply_markup=InlineKeyboardMarkup(buttons),
+                caption=f"Hello {first_name}\n\nDon't Try to Waste Your Time Here Because This Bot Is Only For @TeamLegendXD"
+ 
                 parse_mode=ParseMode.MARKDOWN,
             )
     else:
+        first_name = update.effective_user.first_name
         update.effective_message.reply_photo(
             START_IMG,
-            caption="ɪ ᴀᴍ ᴀʟɪᴠᴇ ʙᴀʙʏ !\n<b>ɪ ᴅɪᴅɴ'ᴛ sʟᴇᴘᴛ sɪɴᴄᴇ​:</b> <code>{}</code>".format(
-                uptime
+            caption=f"Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
+                first_name, uptime
             ),
             parse_mode=ParseMode.HTML,
         )
