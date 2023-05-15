@@ -1,7 +1,7 @@
 import importlib
 import re
 import time
-from platform import python_version as y
+from platform import python_version
 from sys import argv
 
 from pyrogram import __version__ as pyrover
@@ -704,7 +704,7 @@ def main():
 ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
 ┏•❅────✧❅✦❅✧────❅•┓
-ㅤ★ **ᴘʏᴛʜᴏɴ :** `{y()}`
+ㅤ★ **ᴘʏᴛʜᴏɴ :** `{python_version()}`
 ㅤ★ **ʟɪʙʀᴀʀʏ :** `{telever}`
 ㅤ★ **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
 ㅤ★ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
