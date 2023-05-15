@@ -162,8 +162,9 @@ def start(update: Update, context: CallbackContext):
             update.effective_message.reply_sticker(
                 "CAACAgUAAxkBAAJYsmLWRvm70cE-mmxSNCovEf4v1ueJAAIcCAACbMK4VuL4EmZEkq8WKQQ"
             )
-            update.effective_message.reply_text(
-                PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+            update.effective_message.reply_photo(
+                START_IMG
+                caption=f"Hello" #.format(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
@@ -441,7 +442,7 @@ HELP_STRINGS = f"""
 @run_async
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
-    arags = update.effective_message.text.split(None, 1)
+    args = update.effective_message.text.split(None, 1)
 
     # ONLY send help in PM
     if chat.type != chat.PRIVATE:
