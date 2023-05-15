@@ -30,15 +30,10 @@ import TeamLegend.sql.users_sql as sql
 from TeamLegend.Config import (
     BOT_NAME,
     BOT_USERNAME,
-
     OWNER_ID,
     START_IMG,
     SUPPORT_CHAT,
     TOKEN,
-    
-  
-
-    
 )
 from TeamLegend import StartTime
 from TeamLegend.core.clients import *
@@ -78,13 +73,6 @@ buttons = [
     ],
 ]
 
-HELP_STRINGS = f"""
-*» {BOT_NAME} ᴇxᴄʟᴜsɪᴠᴇ ꜰᴇᴀᴛᴜʀᴇs*
-
-➲ /start : ꜱᴛᴀʀᴛꜱ ᴍᴇ | ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ʏᴏᴜ'ᴠᴇ ᴀʟʀᴇᴀᴅʏ ᴅᴏɴᴇ ɪᴛ.
-➲ /help  : ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅꜱ ꜱᴇᴄᴛɪᴏɴ.
-  ‣ ɪɴ ᴘᴍ : ᴡɪʟʟ ꜱᴇɴᴅ ʏᴏᴜ ʜᴇʟᴘ ꜰᴏʀ ᴀʟʟ ꜱᴜᴘᴘᴏʀᴛᴇᴅ ᴍᴏᴅᴜʟᴇꜱ.
-  ‣ ɪɴ ɢʀᴏᴜᴘ : ᴡɪʟʟ ʀᴇᴅɪʀᴇᴄᴛ ʏᴏᴜ ᴛᴏ ᴘᴍ, ᴡɪᴛʜ ᴀʟʟ ᴛʜᴀᴛ ʜᴇʟᴘ ᴍᴏᴅᴜʟᴇꜱ."""
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -132,17 +120,7 @@ for module_name in ALL_MODULES:
         USER_SETTINGS[imported_module.__mod_name__.lower()] = imported_module
 
 
-# do not async
-def send_help(chat_id, text, keyboard=None):
-    if not keyboard:
-        keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
-    dispatcher.bot.send_message(
-        chat_id=chat_id,
-        text=text,
-        parse_mode=ParseMode.MARKDOWN,
-        disable_web_page_preview=True,
-        reply_markup=keyboard,
-    )
+
 
 
 @run_async
@@ -322,9 +300,9 @@ def help_button(update, context):
 
 
 @run_async
-def Kannadiga_about_callback(update: Update, context: CallbackContext):
+def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "kannadiga_":
+    if query.data == "legend_":
         uptime = get_readable_time((time.time() - StartTime))
         query.message.edit_text(
             text=f"*ʜᴇʏ,*🥀\n  *ᴛʜɪs ɪs {BOT_NAME}*"
@@ -347,18 +325,18 @@ def Kannadiga_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴩᴩᴏʀᴛ", callback_data="kannadiga_support"
+                            text="Suppor", callback_data="legend_support"
                         ),
                         InlineKeyboardButton(
-                            text="ᴄᴏᴍᴍᴀɴᴅs", callback_data="help_back"
+                            text="Help Button", callback_data="help_back"
                         ),
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ᴅᴇᴠᴇʟᴏᴩᴇʀ", url=f"tg://user?id={OWNER_ID}"
+                            text="Owner", url=f"tg://user?id={OWNER_ID}"
                         ),
                         InlineKeyboardButton(
-                            text="sᴏᴜʀᴄᴇ",
+                            text="Source",
                             callback_data="source_",
                         ),
                     ],
@@ -368,7 +346,7 @@ def Kannadiga_about_callback(update: Update, context: CallbackContext):
                 ]
             ),
         )
-    elif query.data == "kannadiga_support":
+    elif query.data == "legend_support":
         query.message.edit_text(
             text="*๏ ᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴs ɢɪᴠᴇɴ ʙᴇʟᴏᴡ ᴛᴏ ɢᴇᴛ ʜᴇʟᴩ ᴀɴᴅ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀʙᴏᴜᴛ ᴍᴇ.*"
             f"\n\nɪғ ʏᴏᴜ ғᴏᴜɴᴅ ᴀɴʏ ʙᴜɢ ɪɴ {BOT_NAME} ᴏʀ ɪғ ʏᴏᴜ ᴡᴀɴɴᴀ ɢɪᴠᴇ ғᴇᴇᴅʙᴀᴄᴋ ᴀʙᴏᴜᴛ ᴛʜᴇ {BOT_NAME}, ᴩʟᴇᴀsᴇ ʀᴇᴩᴏʀᴛ ɪᴛ ᴀᴛ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ.",
@@ -377,10 +355,10 @@ def Kannadiga_about_callback(update: Update, context: CallbackContext):
                 [
                     [
                         InlineKeyboardButton(
-                            text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"
+                            text="sᴜᴩᴩᴏʀᴛ", url=f"https://t.me/TeamLegendXD"
                         ),
                         InlineKeyboardButton(
-                            text="ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/{SUPPORT_CHAT}"
+                            text="ᴜᴩᴅᴀᴛᴇs", url=f"https://t.me/TeamLegendXD"
                         ),
                     ],
                     [
@@ -398,7 +376,7 @@ def Kannadiga_about_callback(update: Update, context: CallbackContext):
                 ]
             ),
         )
-    elif query.data == "kannadiga_back":
+    elif query.data == "legend_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
             PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
@@ -447,23 +425,35 @@ def Source_about_callback(update: Update, context: CallbackContext):
             disable_web_page_preview=True,
         )
 
+HELP_STRINGS = f"""
+*🔰 {BOT_NAME} Advanced Features*
 
+ॐ /start : Start Me
+ॐ /help  : Available Command Section
+  ☞ In Pm:
+    • /help : Open Help Menu
+    • /help (module name): Redirect To Module
+  ☞ In Group:
+    • /help : 2 Option Available (Open in Private/Open Here)
+    • /help (module name): Redirect To Module in Private."""
+
+        
 @run_async
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
-    args = update.effective_message.text.split(None, 1)
+    arags = update.effective_message.text.split(None, 1)
 
     # ONLY send help in PM
     if chat.type != chat.PRIVATE:
         if len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
-            module = args[1].lower()
+            module = args[1].lower() #This Help You To Send Module Information In Group Open To Private
             update.effective_message.reply_text(
                 f"Contact me in PM to get help of {module.capitalize()}",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
-                                text="ʜᴇʟᴘ",
+                                text="Help",
                                 url="https://t.me/{}?start=ghelp_{}".format(
                                     context.bot.username, module
                                 ),
@@ -473,13 +463,13 @@ def get_help(update: Update, context: CallbackContext):
                 ),
             )
             return
-        update.effective_message.reply_text(
-            "» ᴄʜᴏᴏsᴇ ᴀɴ ᴏᴩᴛɪᴏɴ ғᴏʀ ɢᴇᴛᴛɪɴɢ ʜᴇʟᴩ.",
+        update.effective_message.reply_text( #This Help Directly To Send /help in Group
+            "☞ Choose An Option For Getting Help.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="ᴏᴩᴇɴ ɪɴ ᴩʀɪᴠᴀᴛᴇ",
+                            text="Open In Private"
                             url="https://t.me/{}?start=help".format(
                                 context.bot.username
                             ),
@@ -487,7 +477,7 @@ def get_help(update: Update, context: CallbackContext):
                     ],
                     [
                         InlineKeyboardButton(
-                            text="ᴏᴩᴇɴ ʜᴇʀᴇ",
+                            text="Open Here",
                             callback_data="help_back",
                         )
                     ],
@@ -496,8 +486,8 @@ def get_help(update: Update, context: CallbackContext):
         )
         return
 
-    elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE):
-        module = args[1].lower()
+    elif len(args) >= 2 and any(args[1].lower() == x for x in HELPABLE): 
+        module = args[1].lower() #This Help Directly You To Open Help /help <module>
         text = (
             "Here is the available help for the *{}* module:\n".format(
                 HELPABLE[module].__mod_name__
@@ -514,7 +504,18 @@ def get_help(update: Update, context: CallbackContext):
 
     else:
         send_help(chat.id, HELP_STRINGS)
-
+        
+# do not async
+def send_help(chat_id, text, keyboard=None):
+    if not keyboard:
+        keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
+    dispatcher.bot.send_message(
+        chat_id=chat_id,
+        text=text,
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
+        reply_markup=keyboard,
+    )
 
 def send_settings(chat_id, user_id, user=False):
     if user:
