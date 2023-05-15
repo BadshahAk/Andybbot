@@ -31,6 +31,7 @@ from TeamLegend.Config (
     OWNER_ID,
     START_IMG,
     TOKEN,
+    EVENT_LOGS,
     )
 
 from TeamLegend import StartTime, BOT_NAME, BOT_USERNAME
@@ -693,12 +694,12 @@ def migrate_chats(update: Update, context: CallbackContext):
 
 
 def main():
-    if SUPPORT_CHAT is not None and isinstance(SUPPORT_CHAT, str):
+    if EVENT_LOGS is not None:
         try:
             dispatcher.bot.send_photo(
-                chat_id=f"@{SUPPORT_CHAT}",
+                chat_id=EVENT_LOGS,
                 photo=START_IMG,
-                caption=f"
+                caption=f"""
 ㅤ🥀 {BOT_NAME} ɪs ᴀʟɪᴠᴇ ʙᴀʙʏ...
 
 ┏•❅────✧❅✦❅✧────❅•┓
@@ -706,16 +707,17 @@ def main():
 ㅤ★ **ʟɪʙʀᴀʀʏ :** `{telever}`
 ㅤ★ **ᴛᴇʟᴇᴛʜᴏɴ :** `{tlhver}`
 ㅤ★ **ᴩʏʀᴏɢʀᴀᴍ :** `{pyrover}`
-┗•❅────✧❅✦❅✧────❅•┛",
+┗•❅──l──✧❅✦❅✧────❅•┛""",
                 parse_mode=ParseMode.MARKDOWN,
             )
         except Unauthorized:
             LOGS.warning(
-                f"Bot isn't able to send message to @{SUPPORT_CHAT}, go and check!"
+                f"Bot i
+              "
             )
         except BadRequest as e:
             LOGS.warning(e.message)
-"""
+
     start_handler = CommandHandler("start", start)
 
     help_handler = CommandHandler("help", get_help)
