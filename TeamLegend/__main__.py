@@ -132,10 +132,9 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             username = update.effective_user.username
             update.effective_message.reply_text(
-                text="Hello {}\n\n<b>Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend<\b>\n↓ Click Below To Know About Owner & Admins".format(first_name),
+                text="*Hello {}*\n\n_Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend_\n↓ Click Below To Know About Owner & Admins".format(first_name),
                   
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.HTML,
             )
     else:
         first_name = update.effective_user.first_name
