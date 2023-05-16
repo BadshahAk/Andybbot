@@ -130,30 +130,31 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            # Send Start
+            mention_name = update.effective_user.mention
             update.effective_message.reply_photo(
                 START_IMG,
-                caption=f"Hello {first_name}\n\nDon't Try to Waste Your Time Here Because This Bot Is Only For @TeamLegendXD",
- 
+                caption=f"Hello {mention_name}\n\nDon't Try to Waste Your Time Here Because This Bot Is Only For @TeamLegendXD",
+                reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
             )
     else:
         first_name = update.effective_user.first_name
+        mention_name = update.effective_user.mention
         update.effective_message.reply_photo(
-            START_IMG,
-            caption="Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
-                first_name, uptime
+            text="Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
+                mention_name, uptime
             ),
+            reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.HTML,
         )
   
 buttons = [
     [
-        InlineKeyboardButton(text="Owner", url="https://t.me/LegendBot_Owner"),
+        InlineKeyboardButton(text="☞ Owner ☜", url="https://t.me/LegendBot_Owner"),
     ],
     [
-        InlineKeyboardButton(text="Team Legend", url="https://t.me/TeamLegendXD"),
-        InlineKeyboardButton(text="Update", url="https://t.me/LegendBot_AI"),
+        InlineKeyboardButton(text="❖ Team Legend ❖", url="https://t.me/TeamLegendXD"),
+        InlineKeyboardButton(text="✤ Update ✤", url="https://t.me/LegendBot_AI"),
     ],
 ]
 
