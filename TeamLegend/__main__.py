@@ -153,7 +153,7 @@ def legend_callback(update: Update, context: CallbackContext):
     if query.data == "legend_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-            "Hello" #PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+            "Hello", #PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
             # reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
