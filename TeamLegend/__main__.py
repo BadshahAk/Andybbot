@@ -130,16 +130,16 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-            userame = update.effective_user.username
+            username = update.effective_user.username
             update.effective_message.reply_text(
-                text=f"Hello [{first_name}](https://t.me/{userame})\n\n<b>Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend\nClick Below To Know About Owner & Admins",
+                text=f"Hello [{first_name}](https://t.me/{username})\n\n<b>Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend\nClick Below To Know About Owner & Admins",
                   
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.HTML,
             )
     else:
         first_name = update.effective_user.first_name
-        userame = update.effective_user.username
+        username = update.effective_user.username
         update.effective_message.reply_text(
             text="Hello [{}](https://t.me/{})\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
                 first_name, username, uptime
@@ -163,6 +163,7 @@ def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "legend_back":
         first_name = update.effective_user.first_name
+        username = update.effective_user.username
         query.message.edit_text(
             text="Hello [{}](https://t.me/{})\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
                 first_name, username, uptime
