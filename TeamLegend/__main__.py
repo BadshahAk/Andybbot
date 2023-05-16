@@ -135,6 +135,7 @@ def start(update: Update, context: CallbackContext):
                 text="Hello {}\n\n<b>Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend<\b>\n↓ Click Below To Know About Owner & Admins".format(first_name),
                   
                 reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.HTML,
             )
     else:
         first_name = update.effective_user.first_name
@@ -164,8 +165,8 @@ def legend_callback(update: Update, context: CallbackContext):
         first_name = update.effective_user.first_name
         username = update.effective_user.username
         query.message.edit_text(
-            text="Hello [{}](https://t.me/{})\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
-                first_name, username, uptime
+            text="Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
+                first_name, uptime
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
