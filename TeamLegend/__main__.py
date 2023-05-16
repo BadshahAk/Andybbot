@@ -146,7 +146,19 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
         )
-
+        
+@run_async
+def legend_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "legend_back":
+        first_name = update.effective_user.first_name
+        query.message.edit_text(
+            "Hello" #PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+            # reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+            timeout=60,
+            disable_web_page_preview=True,
+        )
 
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
@@ -570,7 +582,10 @@ def main():
             LOGS.warning(e.message)
 
     start_handler = CommandHandler("start", start)
+    about_callback_handler = CallbackQueryHandler(
+        legend_callback, pattern=r"legend_back"
 
+    )
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
 
@@ -581,6 +596,7 @@ def main():
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
