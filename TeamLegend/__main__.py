@@ -131,7 +131,7 @@ def start(update: Update, context: CallbackContext):
         else:
             first_name = update.effective_user.first_name
             mention_name = update.effective_user.username
-            update.effective_message.reply_photo(
+            update.effective_message.reply_text(
                 START_IMG,
                 caption=f"Hello {mention_name}\n\nDon't Try to Waste Your Time Here Because This Bot Is Only For @TeamLegendXD",
                 reply_markup=InlineKeyboardMarkup(buttons),
@@ -140,7 +140,7 @@ def start(update: Update, context: CallbackContext):
     else:
         first_name = update.effective_user.first_name
         mention_name = update.effective_user.username
-        update.effective_message.reply_photo(
+        update.effective_message.reply_text(
             text="Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
                 mention_name, uptime
             ),
