@@ -306,12 +306,15 @@ HELP_STRINGS = f"""
 
 ॐ /start : _Start Me_
 ॐ /help  : _Available Command Menu_
-  ☞ *In Pm*:
+
+☞ *In Pm*:
     • /help : _Open Help Menu_
     • /help (module name): _Redirect To Module_
+    • /settings : _This will help you to get settings of your in TeamLegendGroup_.
   ☞ *In Group*:
     • /help : _2 Option Available (Open in Private/Open Here)_
-    • /help (module name): _Redirect To Module in Private._"""
+    • /help (module name): _Redirect To Module in Private._
+    • /settings : _It will redirect to pm and check your setting_"""
 
         
 @run_async
@@ -534,7 +537,7 @@ def get_settings(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                text="sᴇᴛᴛɪɴɢs",
+                                text="❃ Settings ❃",
                                 url="t.me/{}?start=stngs_{}".format(
                                     context.bot.username, chat.id
                                 ),
