@@ -146,15 +146,25 @@ def start(update: Update, context: CallbackContext):
             ),
             parse_mode=ParseMode.HTML,
         )
-        
+  
+buttons = [
+    [
+        InlineKeyboardButton(text="Owner", url="https://t.me/LegendBot_Owner"),
+    ],
+    [
+        InlineKeyboardButton(text="Team Legend", url="https://t.me/TeamLegendXD"),
+        InlineKeyboardButton(text="Update", url="https://t.me/LegendBot_AI"),
+    ],
+]
+
 @run_async
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "legend_back":
         first_name = update.effective_user.first_name
         query.message.edit_text(
-            "Hello", #PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
-            # reply_markup=InlineKeyboardMarkup(buttons),
+            text="Hello", #PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
+            reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
             disable_web_page_preview=True,
