@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from TeamLegend.Config import DEV_USERS
+from TeamLegend.Config import DEV_USERS, OWNER_ID
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.admin_rights import user_can_changeinfo
@@ -598,9 +598,9 @@ def set_title(update: Update, context: CallbackContext):
 
 
 @run_async
-@bot_admin
-@can_pin
-@user_admin
+@bot_admin 
+@can_pin #check that bot can promote admin or not
+@user_admin #check that admin or dev or owner id
 @loggable
 def pin(update: Update, context: CallbackContext) -> str:
     bot, args = context.bot, context.args
@@ -608,6 +608,10 @@ def pin(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     msg = update.effective_message
     msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
+
+    if user.id not in DEV_USERS or OWNER_ID:
+    
+        return message.reply_text("» Dev User & Owner have Only Permission to Pin any message!")
 
     if msg.chat.username:
         # If chat has a username, use this format
@@ -661,8 +665,9 @@ def pin(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @bot_admin
-@can_pin
-@user_admin
+@can_pin #check that bot is admin or not
+
+@user_admin #check that user is admin or not
 @loggable
 def unpin(update: Update, context: CallbackContext):
     chat = update.effective_chat
@@ -670,6 +675,10 @@ def unpin(update: Update, context: CallbackContext):
     msg = update.effective_message
     msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
     unpinner = chat.get_member(user.id)
+
+    if user.id not in OWNER_ID:
+    
+        return message.reply_text("» Owners have Only Permission to UnPin any message !")
 
     if (
         not (unpinner.can_pin_messages or unpinner.status == "creator")
