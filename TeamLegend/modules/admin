@@ -36,26 +36,26 @@ def set_sticker(update: Update, context: CallbackContext):
 
     if user_can_changeinfo(chat, user, context.bot.id) is False:
         return msg.reply_text(
-            "» ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴩᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴄʜᴀɴɢᴇ ɢʀᴏᴜᴩ ɪɴғᴏ ʙᴀʙʏ !"
+            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
 
     if msg.reply_to_message:
         if not msg.reply_to_message.sticker:
             return msg.reply_text(
-                "» ʀᴇᴩʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ ᴛᴏ sᴇᴛ ɪᴛ ᴀs ɢʀᴏᴜᴩ sᴛɪᴄᴋᴇʀ ᴩᴀᴄᴋ !"
+                "» Reply to a sticker to set it as group sticker pack!"
             )
         stkr = msg.reply_to_message.sticker.set_name
         try:
             context.bot.set_chat_sticker_set(chat.id, stkr)
-            msg.reply_text(f"» sᴜᴄᴄᴇssғᴜʟʟʏ sᴇᴛ ɢʀᴏᴜᴩ sᴛɪᴄᴋᴇʀs ɪɴ {chat.title}!")
+            msg.reply_text(f"» Successfully Set Group Sticker in {chat.title}!")
         except BadRequest as excp:
             if excp.message == "Participants_too_few":
                 return msg.reply_text(
-                    "» ʏᴏᴜʀ ɢʀᴏᴜᴩ ɴᴇᴇᴅs ᴍɪɴɪᴍᴜᴍ 100 ᴍᴇᴍʙᴇʀs ғᴏʀ sᴇᴛᴛɪɴɢ ᴀ sᴛɪᴄᴋᴇʀ ᴩᴀᴄᴋ ᴀs ɢʀᴏᴜᴩ sᴛɪᴄᴋᴇʀ ᴩᴀᴄᴋ !"
+                    f"» Your Group need minimum 100 member to set sticker pack in {chat.title}!"
                 )
             msg.reply_text(f"ᴇʀʀᴏʀ ! {excp.message}.")
     else:
-        msg.reply_text("» ʀᴇᴩʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ ᴛᴏ sᴇᴛ ɪᴛ ᴀs ɢʀᴏᴜᴩ sᴛɪᴄᴋᴇʀ ᴩᴀᴄᴋ !")
+        msg.reply_text("» Reply to a sticker set to set as group sticker pack !")
 
 
 @run_async
