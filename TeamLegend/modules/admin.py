@@ -195,7 +195,7 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     promoter = chat.get_member(user.id)
 
-    if user.id not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         return message.reply_text("» Only @LegendBoy_OP have permission to promote anyone!")
         
 
