@@ -22,6 +22,7 @@ DEV_AND_MORE = DEV_USERS.append(int(OWNER_ID))
 
 
 def get_user_id(username):
+    """This function is used to extract user id"""
     # ensure valid userid
     if len(username) <= 5:
         return None
