@@ -36,12 +36,13 @@ def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
 
 
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
+    """This is used to Return True if Owner_Id and Dev Users and Administrator"""
+    
     if (
         chat.type == "private"
-        or user_id in DRAGONS
         or user_id in DEV_USERS
         or chat.all_members_are_administrators
-        or user_id in [777000, 1087968824]
+        or user_id in [777000, OWNER_ID]
     ):  # Count telegram and Group Anonymous as admin
         return True
     if not member:
@@ -185,6 +186,7 @@ def whitelist_plus(func):
 
 
 def user_admin(func):
+    """This is decorator used to Check that User Or OWNER_ID or DEV_USERS is Admin or Not"""
     @wraps(func)
     def is_admin(update: Update, context: CallbackContext, *args, **kwargs):
         context.bot
@@ -202,7 +204,8 @@ def user_admin(func):
                 pass
         else:
             update.effective_message.reply_text(
-                "Who dis non-admin telling me what to do? You want a punch?"
+                "You Are Not Admin or You Are not in the list of Dev Users"
+                
             )
 
     return is_admin
@@ -213,7 +216,7 @@ def user_admin_no_reply(func):
     def is_not_admin_no_reply(
         update: Update, context: CallbackContext, *args, **kwargs
     ):
-        context.bot
+        bot = context.bot
         user = update.effective_user
         chat = update.effective_chat
 
@@ -248,6 +251,7 @@ def user_not_admin(func):
 def bot_admin(func):
     @wraps(func)
     def is_admin(update: Update, context: CallbackContext, *args, **kwargs):
+        """This is decorator is used to check bot is admin or bot"""
         bot = context.bot
         chat = update.effective_chat
         update_chat_title = chat.title
