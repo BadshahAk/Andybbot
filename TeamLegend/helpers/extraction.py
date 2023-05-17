@@ -3,7 +3,7 @@ from typing import List, Optional
 from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
-from TeamLegend import LOGS
+from TeamLegend.core.clients import LOGS
 from TeamLegend.modules.users import get_user_id
 
 
@@ -19,12 +19,14 @@ def id_from_reply(message):
 
 
 def extract_user(message: Message, args: List[str]) -> Optional[int]:
+    """This function is used to return user id"""
     return extract_user_and_text(message, args)[0]
 
 
 def extract_user_and_text(
     message: Message, args: List[str]
 ) -> (Optional[int], Optional[str]):
+    """This is function used to return id and title"""
     prev_message = message.reply_to_message
     split_text = message.text.split(None, 1)
 
