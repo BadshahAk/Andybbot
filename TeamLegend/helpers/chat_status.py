@@ -293,6 +293,7 @@ def bot_can_delete(func):
 
 
 def can_pin(func):
+    """This is used to check that bot is admin or not"""
     @wraps(func)
     def pin_rights(update: Update, context: CallbackContext, *args, **kwargs):
         bot = context.bot
