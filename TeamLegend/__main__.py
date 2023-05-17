@@ -132,7 +132,7 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             username = update.effective_user.username
             update.effective_message.reply_text(
-                text="**Hello {}**\n\n➣ __Don't Try to Waste Your Time Here Because This Bot Is Only For Owner And Admin Of TeamLegend__\n➣ Click Below To Know About Owner & Admins".format(first_name),
+                text="Hello {}\n\n➣ ∂οиτ τяγ το ωαѕτє γουя τιмє нєяє ϐєϲαυѕє τнιѕ ϐοτ ιѕ οиℓγ ƒοя οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂\n➣ ϲℓιϲκ ϐєℓοω το κиοω αϐουτ οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂ ♨".format(first_name),
                   
                 reply_markup=InlineKeyboardMarkup(buttons),
             )
