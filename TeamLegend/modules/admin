@@ -195,11 +195,8 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     promoter = chat.get_member(user.id)
 
-    if (
-        not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in OWNER_ID
-    ):
-        return message.reply_text("» Only owner have permission to promote anyone!")
+    if user.id not in OWNER_ID:
+        return message.reply_text("» Only @LegendBoy_OP have permission to promote anyone!")
         
 
     user_id = extract_user(message, args)
@@ -283,9 +280,9 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
 
     if (
         not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in DEV_USERS
+        or user.id not in DEV_USERS
     ):
-        return message.reply_text("» Dev Users & Admins have Only Permission to low Promote anyone!")
+        return message.reply_text("» Dev Users have Only Permission to low Promote anyone!")
         
 
     user_id = extract_user(message, args)
@@ -360,14 +357,9 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
-
     promoter = chat.get_member(user.id)
-
-    if (
-        not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in OWNER_ID
-    ):
-        return message.reply_text("» Dev Users & Admins have Only Permission to low Promote anyone!")
+    if user.id not in OWNER_ID:
+        return message.reply_text("» Owners have Only Permission to full Promote anyone!")
         
 
     user_id = extract_user(message, args)
@@ -422,7 +414,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
         [
             [
                 InlineKeyboardButton(
-                    "↻ ᴅᴇᴍᴏᴛᴇ ↺",
+                    "↻ Demote ↺",
                     callback_data="demote_({})".format(user_member.user.id),
                 )
             ]
@@ -437,9 +429,9 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
 
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"#ғᴜʟʟᴩʀᴏᴍᴏᴛᴇᴅ\n"
-        f"<b>ᴩʀᴏᴍᴏᴛᴇʀ :</b> {mention_html(user.id, user.first_name)}\n"
-        f"<b>ᴜsᴇʀ :</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+        f"#Fullpromoted\n"
+        f"<b>Promoter :</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>User :</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
     )
 
     return log_message
@@ -459,12 +451,18 @@ def demote(update: Update, context: CallbackContext) -> str:
     message = update.effective_message
     user = update.effective_user
 
+    promoter = chat.get_member(user.id)
+    if (
+        not (promoter.can_promote_members or promoter.status == "creator")
+        and user.id not in OWNER_ID
+    ):
+        return message.reply_text("» Owners have Only Permission to Demote anyone!")
+
     user_id = extract_user(message, args)
     if not user_id:
-        message.reply_text(
-            "» I don't know who is that!",
+        return message.reply_text(
+            "» I don't who is that never seen in any chat where i am present !",
         )
-        return
 
     try:
         user_member = chat.get_member(user_id)
@@ -472,17 +470,16 @@ def demote(update: Update, context: CallbackContext) -> str:
         return
 
     if user_member.status == "creator":
-        message.reply_text(
-            "» ᴛʜᴀᴛ ᴜsᴇʀ ɪs ᴏᴡɴᴇʀ ᴏғ ᴛʜᴇ ᴄʜᴀᴛ ᴀɴᴅ ɪ ᴅᴏɴ'ᴛ ᴡᴀɴᴛ ᴛᴏ ᴩᴜᴛ ᴍʏsᴇʟғ ɪɴ ᴅᴀɴɢᴇʀ."
+        return message.reply_text(
+            "» Thats user is owner of this chat.I can't put myself in danger"
         )
-        return
-
+  
     if not user_member.status == "administrator":
-        message.reply_text("» ᴀᴄᴄᴏʀᴅɪɴɢ ᴛᴏ ᴍᴇ ᴛʜᴀᴛ ᴜsᴇʀ ɪs ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ʜᴇʀᴇ !")
+        message.reply_text("» According to me that user is not admin here !")
         return
 
     if user_id == bot.id:
-        message.reply_text("» ɪ ᴄᴀɴ'ᴛ ᴅᴇᴍᴏᴛᴇ ᴍʏsᴇʟғ, ʙᴜᴛ ɪғ ʏᴏᴜ ᴡᴀɴᴛ ɪ ᴄᴀɴ ʟᴇᴀᴠᴇ.")
+        message.reply_text("» How can i demote myself 😳")
         return
 
     try:
@@ -502,24 +499,21 @@ def demote(update: Update, context: CallbackContext) -> str:
 
         bot.sendMessage(
             chat.id,
-            f"» sᴜᴄᴄᴇssғᴜʟʟʏ ᴅᴇᴍᴏᴛᴇᴅ ᴀ ᴀᴅᴍɪɴ ɪɴ <b>{chat.title}</b>\n\nᴅᴇᴍᴏᴛᴇᴅ : <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nᴅᴇᴍᴏᴛᴇʀ : {mention_html(user.id, user.first_name)}",
+            f"» Successfully demoted a admin in <b>{chat.title}</b>\n\nDemoted : <b>{mention_html(user_member.user.id, user_member.user.first_name)}</b>\nDemoter : {mention_html(user.id, user.first_name)}",
             parse_mode=ParseMode.HTML,
         )
 
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"#ᴅᴇᴍᴏᴛᴇᴅ\n"
-            f"<b>ᴅᴇᴍᴏᴛᴇʀ :</b> {mention_html(user.id, user.first_name)}\n"
-            f"<b>ᴅᴇᴍᴏᴛᴇᴅ :</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
+            f"#Demoted\n"
+            f"<b>Demoter :</b> {mention_html(user.id, user.first_name)}\n"
+            f"<b>Demoted :</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
         )
 
         return log_message
     except BadRequest:
-        message.reply_text(
-            "» ғᴀɪʟᴇᴅ ᴛᴏ ᴅᴇᴍᴏᴛᴇ ᴍᴀʏʙᴇ ɪ'ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴏʀ ᴍᴀʏʙᴇ sᴏᴍᴇᴏɴᴇ ᴇʟsᴇ ᴩʀᴏᴍᴏᴛᴇᴅ ᴛʜᴀᴛ"
-            " ᴜsᴇʀ !",
-        )
-        return
+        return message.reply_text("» Failed to demote Or may be someone promoted.")
+       
 
 
 @run_async
@@ -530,7 +524,7 @@ def refresh_admin(update, _):
     except KeyError:
         pass
 
-    update.effective_message.reply_text("» sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇғʀᴇsʜᴇᴅ ᴀᴅᴍɪɴ ᴄᴀᴄʜᴇ !")
+    update.effective_message.reply_text("» Successfully refreshed admin cache !")
 
 
 @run_async
@@ -553,51 +547,52 @@ def set_title(update: Update, context: CallbackContext):
 
     if not user_id:
         message.reply_text(
-            "» ɪ ᴅᴏɴ'ᴛ ᴋɴᴏᴡ ᴡʜᴏ's ᴛʜᴀᴛ ᴜsᴇʀ, ɴᴇᴠᴇʀ sᴇᴇɴ ʜɪᴍ ɪɴ ᴀɴʏ ᴏғ ᴛʜᴇ ᴄʜᴀᴛs ᴡʜᴇʀᴇ ɪ ᴀᴍ ᴩʀᴇsᴇɴᴛ !",
+            "» I don't who is that never seen in any chat where i am present !",
         )
         return
 
     if user_member.status == "creator":
         message.reply_text(
-            "» ᴛʜᴀᴛ ᴜsᴇʀ ɪs ᴏᴡɴᴇʀ ᴏғ ᴛʜᴇ ᴄʜᴀᴛ ᴀɴᴅ ɪ ᴅᴏɴ'ᴛ ᴡᴀɴᴛ ᴛᴏ ᴩᴜᴛ ᴍʏsᴇʟғ ɪɴ ᴅᴀɴɢᴇʀ.",
+            "» That user is owner of the chat and i don't want to put myself in danger.",
         )
         return
 
     if user_member.status != "administrator":
         message.reply_text(
-            "» ɪ ᴄᴀɴ ᴏɴʟʏ sᴇᴛ ᴛɪᴛʟᴇ ғᴏʀ ᴀᴅᴍɪɴs !",
+            "» I can only set title for admins !",
         )
         return
 
     if user_id == bot.id:
         message.reply_text(
-            "» ɪ ᴄᴀɴ'ᴛ sᴇᴛ ᴛɪᴛʟᴇ ғᴏʀ ᴍʏsᴇʟғ, ᴍʏ ᴏᴡɴᴇʀ ᴅɪᴅɴ'ᴛ ᴛᴏʟᴅ ᴍᴇ ᴛᴏ ᴅᴏ sᴏ.",
+            "» I can't set title for myself, My owner didn't told me to do so. ",
         )
         return
 
     if not title:
         message.reply_text(
-            "» ʏᴏᴜ ᴛʜɪɴᴋ ᴛʜᴀᴛ sᴇᴛᴛɪɴɢ ʙʟᴀɴᴋ ᴛɪᴛʟᴇ ᴡɪʟʟ ᴄʜᴀɴɢᴇ sᴏᴍᴇᴛʜɪɴɢ ?"
+            "» You think that setting blank title will change something 🧐?"
         )
         return
 
     if len(title) > 16:
         message.reply_text(
-            "» ᴛʜᴇ ᴛɪᴛʟᴇ ʟᴇɴɢᴛʜ ɪs ʟᴏɴɢᴇʀ ᴛʜᴀɴ 16 ᴡᴏʀᴅs ᴏʀ ᴄʜᴀʀᴀᴄᴛᴇʀs sᴏ ᴛʀᴜɴᴄᴀᴛɪɴɢ ɪᴛ ᴛᴏ 16 ᴡᴏʀᴅs.",
+            "» Ufff🤨, The title length is longer than 16 word or character.",
         )
+
 
     try:
         bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
     except BadRequest:
         message.reply_text(
-            "» ᴍᴀʏʙᴇ ᴛʜᴀᴛ ᴜsᴇʀ ɪs ɴᴏᴛ ᴩʀᴏᴍᴏᴛᴇᴅ ʙʏ ᴍᴇ ᴏʀ ᴍᴀʏʙᴇ ʏᴏᴜ sᴇɴᴛ sᴏᴍᴇᴛʜɪɴɢ ᴛʜᴀᴛ ᴄᴀɴ'ᴛ ʙᴇ sᴇᴛ ᴀs ᴛɪᴛʟᴇ."
+            "» Maybe that user is not promoted by me or maybe you sent something that can't be set as title."
         )
         return
 
     bot.sendMessage(
         chat.id,
-        f"» sᴜᴄᴄᴇssғᴜʟʟʏ sᴇᴛ ᴛɪᴛʟᴇ ғᴏʀ <code>{user_member.user.first_name or user_id}</code> "
-        f"ᴛᴏ <code>{html.escape(title[:16])}</code>!",
+        f"» Successfully set title for <code>{user_member.user.first_name or user_id}</code> "
+        f"To <code>{html.escape(title[:16])}</code>!",
         parse_mode=ParseMode.HTML,
     )
 
@@ -627,7 +622,7 @@ def pin(update: Update, context: CallbackContext) -> str:
     prev_message = update.effective_message.reply_to_message
 
     if prev_message is None:
-        msg.reply_text("» ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴍᴇssᴀɢᴇ ᴛᴏ ᴩɪɴ ɪᴛ !")
+        msg.reply_text("» Reply to a message to Pin it !")
         return
 
     is_silent = True
@@ -644,7 +639,7 @@ def pin(update: Update, context: CallbackContext) -> str:
                 chat.id, prev_message.message_id, disable_notification=is_silent
             )
             msg.reply_text(
-                f"» sᴜᴄᴄᴇssғᴜʟʟʏ ᴩɪɴɴᴇᴅ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ.\nᴄʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ᴛᴏ sᴇᴇ ᴛʜᴇ ᴍᴇssᴀɢᴇ.",
+                f"» Successfully pinned that message\n☞ Click on button below to see that message.",
                 reply_markup=InlineKeyboardMarkup(
                     [[InlineKeyboardButton("ᴍᴇssᴀɢᴇ", url=f"{message_link}")]]
                 ),
@@ -657,8 +652,8 @@ def pin(update: Update, context: CallbackContext) -> str:
 
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
-            f"ᴩɪɴɴᴇᴅ-ᴀ-ᴍᴇssᴀɢᴇ\n"
-            f"<b>ᴩɪɴɴᴇᴅ ʙʏ :</b> {mention_html(user.id, html.escape(user.first_name))}"
+            f"Pinned a message\n"
+            f"<b>Pinned by :</b> {mention_html(user.id, html.escape(user.first_name))}"
         )
 
         return log_message
@@ -678,10 +673,10 @@ def unpin(update: Update, context: CallbackContext):
 
     if (
         not (unpinner.can_pin_messages or unpinner.status == "creator")
-        and user.id not in DRAGONS
+        and user.id not in OWNER_ID
     ):
         message.reply_text(
-            "» ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴩᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴩɪɴ/ᴜɴᴩɪɴ ᴍᴇssᴀɢᴇs ɪɴ ᴛʜɪs ᴄʜᴀᴛ !"
+            "» You don't have permission to unpin messages in this chat !"
         )
         return
 
@@ -701,7 +696,7 @@ def unpin(update: Update, context: CallbackContext):
         try:
             context.bot.unpinChatMessage(chat.id, prev_message.message_id)
             msg.reply_text(
-                f"» sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴᴩɪɴɴᴇᴅ <a href='{message_link}'> ᴛʜɪs ᴩɪɴɴᴇᴅ ᴍᴇssᴀɢᴇ</a>.",
+                f"» Successfully unpinned <a href='{message_link}'> This pinned message</a>.",
                 parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True,
             )
@@ -712,19 +707,19 @@ def unpin(update: Update, context: CallbackContext):
     if not prev_message and is_group:
         try:
             context.bot.unpinChatMessage(chat.id)
-            msg.reply_text("» sᴜᴄᴄᴇssғᴜʟʟʏ ᴜɴᴩɪɴɴᴇᴅ ᴛʜᴇ ʟᴀsᴛ ᴩɪɴɴᴇᴅ ᴍᴇssᴀɢᴇ.")
+            msg.reply_text("» Successfully unpinned last pinned message.")
         except BadRequest as excp:
             if excp.message == "Message to unpin not found":
                 msg.reply_text(
-                    "» ɪ ᴄᴀɴ'ᴛ ᴜɴᴩɪɴ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ, ᴍᴀʏʙᴇ ᴛʜᴀᴛ ᴍᴇssᴀɢᴇ ɪs ᴛᴏᴏ ᴏʟᴅ ᴏʀ ᴍᴀʏʙᴇ sᴏᴍᴇᴏɴᴇ ᴀʟʀᴇᴀᴅʏ ᴜɴᴩɪɴɴᴇᴅ ɪᴛ."
+                    "» I can't unpin that message, Maybe that message is too old or maybe someone already unpinned it."
                 )
             else:
                 raise
 
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
-        f"ᴜɴᴩɪɴɴᴇᴅ-ᴀ-ᴍᴇssᴀɢᴇ\n"
-        f"<b>ᴜɴᴩɪɴɴᴇᴅ ʙʏ :</b> {mention_html(user.id, html.escape(user.first_name))}"
+        f"Unpinned a message\n"
+        f"<b>Unpinned by :</b> {mention_html(user.id, html.escape(user.first_name))}"
     )
 
     return log_message
@@ -752,7 +747,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
             message_link = f"https://t.me/c/{link_chat_id}/{pinned_id}"
 
         msg.reply_text(
-            f"ᴩɪɴɴᴇᴅ ᴏɴ {html.escape(chat.title)}.",
+            f"☞ Pinned on {html.escape(chat.title)}.",
             reply_to_message_id=msg_id,
             parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
@@ -760,7 +755,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
                 [
                     [
                         InlineKeyboardButton(
-                            text="ᴍᴇssᴀɢᴇ",
+                            text="Message",
                             url=f"https://t.me/{link_chat_id}/{pinned_id}",
                         )
                     ]
@@ -770,7 +765,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
 
     else:
         msg.reply_text(
-            f"» ᴛʜᴇʀᴇ's ɴᴏ ᴩɪɴɴᴇᴅ ᴍᴇssᴀɢᴇ ɪɴ <b>{html.escape(chat.title)}!</b>",
+            f"» There is no pinned message in <b>{html.escape(chat.title)}!</b>",
             parse_mode=ParseMode.HTML,
         )
 
@@ -792,11 +787,11 @@ def invite(update: Update, context: CallbackContext):
             update.effective_message.reply_text(invitelink)
         else:
             update.effective_message.reply_text(
-                "» ɪ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴩᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴀᴄᴄᴇss ɪɴᴠɪᴛᴇ ʟɪɴᴋs !",
+                "» I don't have permission to access invite chat links !",
             )
     else:
         update.effective_message.reply_text(
-            "» ɪ ᴄᴀɴ ᴏɴʟʏ ɢɪᴠᴇ ɪɴᴠɪᴛᴇ ʟɪɴᴋs ғᴏʀ ɢʀᴏᴜᴩs ᴀɴᴅ ᴄʜᴀɴɴᴇʟs !",
+            "☞ I can only give invite links for group and channels !",
         )
 
 
@@ -811,7 +806,7 @@ def adminlist(update, context):
     if update.effective_message.chat.type == "private":
         send_message(
             update.effective_message,
-            "» ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ɪɴ ɢʀᴏᴜᴩ's ɴᴏᴛ ɪɴ ᴩᴍ.",
+            "» This command can only used in group not in pm.",
         )
         return
 
@@ -821,18 +816,18 @@ def adminlist(update, context):
 
     try:
         msg = update.effective_message.reply_text(
-            "» ғᴇᴛᴄʜɪɴɢ ᴀᴅᴍɪɴs ʟɪsᴛ...",
+            "» Fetching admin list....",
             parse_mode=ParseMode.HTML,
         )
     except BadRequest:
         msg = update.effective_message.reply_text(
-            "» ғᴇᴛᴄʜɪɴɢ ᴀᴅᴍɪɴs ʟɪsᴛ...",
+            "» Fetching admin list...",
             quote=False,
             parse_mode=ParseMode.HTML,
         )
 
     administrators = bot.getChatAdministrators(chat_id)
-    text = "ᴀᴅᴍɪɴs ɪɴ <b>{}</b>:".format(html.escape(update.effective_chat.title))
+    text = "Admins in <b>{}</b>:".format(html.escape(update.effective_chat.title))
 
     for admin in administrators:
         user = admin.user
@@ -856,13 +851,13 @@ def adminlist(update, context):
         # if user.username:
         #    name = escape_markdown("@" + user.username)
         if status == "creator":
-            text += "\n 🥀 ᴏᴡɴᴇʀ :"
+            text += "\❖ Owner :"
             text += "\n<code> • </code>{}\n".format(name)
 
             if custom_title:
                 text += f"<code> ┗━ {html.escape(custom_title)}</code>\n"
 
-    text += "\n💫 ᴀᴅᴍɪɴs :"
+    text += "\n✤ Admins :"
 
     custom_admin_list = {}
     normal_admin_list = []
@@ -959,19 +954,19 @@ def button(update: Update, context: CallbackContext) -> str:
         )
         if demoted:
             update.effective_message.edit_text(
-                f"ᴅᴇᴍᴏᴛᴇʀ : {mention_html(user.id, user.first_name)}\nᴜsᴇʀ : {mention_html(member.user.id, member.user.first_name)}!",
+                f"Demoter : {mention_html(user.id, user.first_name)}\nᴜsᴇʀ : {mention_html(member.user.id, member.user.first_name)}!",
                 parse_mode=ParseMode.HTML,
             )
-            query.answer("ᴅᴇᴍᴏᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ !")
+            query.answer("Demoted successfully !")
             return (
                 f"<b>{html.escape(chat.title)}:</b>\n"
                 f"#DEMOTE\n"
-                f"<b>ᴅᴇᴍᴏᴛᴇʀ :</b> {mention_html(user.id, user.first_name)}\n"
-                f"<b>ᴜsᴇʀ :</b> {mention_html(member.user.id, member.user.first_name)}"
+                f"<b>Demoter :</b> {mention_html(user.id, user.first_name)}\n"
+                f"<b>User :</b> {mention_html(member.user.id, member.user.first_name)}"
             )
     else:
         update.effective_message.edit_text(
-            "» ғᴀɪʟᴇᴅ ᴛᴏ ᴅᴇᴍᴏᴛᴇ, ᴍᴀʏʙᴇ ᴛʜᴀᴛ ᴜsᴇʀ ɪs ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴏʀ ᴍᴀʏʙᴇ ʟᴇғᴛ ᴛʜᴇ ɢʀᴏᴜᴩ !"
+            "» Failed to demote, Maybe that user is not admin or maybe left the group !"
         )
         return ""
 
@@ -981,19 +976,19 @@ __help__ = """
 » /admins*:* list of admins in the chat
 » /pinned*:* to get the current pinned message.
 
-*The Following Commands are Admins only:* 
+*The Following Commands are Dev User only:* 
 » /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
 » /unpin*:* unpins the currently pinned message
 » /invitelink*:* gets invitelink
-» /promote*:* promotes the user replied to
 » /lowpromote*:* promotes the user replied to with half rights
-» /fullpromote*:* promotes the user replied to with full rights
-» /demote*:* demotes the user replied to
 » /title <title here>*:* sets a custom title for an admin that the bot promoted
 » /admincache*:* force refresh the admins list
-» /del*:* deletes the message you replied to
-» /purge*:* deletes all messages between this and the replied to message.
-» /purge <integer X>*:* deletes the replied message, and X messages following it if replied to a message.
+
+
+*The Following Commands are Owner User only:*
+» /promote*:* promotes the user replied to
+» /fullpromote*:* promotes the user replied to with full rights
+» /demote*:* demotes the user replied to
 » /setgtitle <text>*:* set group title
 » /setgpic*:* reply to an image to set as group photo
 » /setdesc*:* Set group description
@@ -1042,9 +1037,9 @@ dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
 
-__mod_name__ = "Aᴅᴍɪɴs"
+__mod_name__ = "Admins"
 __command_list__ = [
-    "setdesc" "setsticker" "setgpic" "delgpic" "setgtitle" "adminlist",
+    "setdesc" "setsticker" "setgpic" "delgpic" "setgtitle" "title" "adminlist",
     "admins",
     "invitelink",
     "promote",
