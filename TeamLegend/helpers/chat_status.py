@@ -9,6 +9,7 @@ from telegram.ext import CallbackContext
 from TeamLegend.Config import (
     DEL_CMDS,
     DEMONS,
+    OWNER_ID,
     DEV_USERS,
     DRAGONS,
     SUPPORT_CHAT,
@@ -380,6 +381,8 @@ def user_can_ban(func):
 
 
 def connection_status(func):
+    """This function is used to common chat"""
+    
     @wraps(func)
     def connected_status(update: Update, context: CallbackContext, *args, **kwargs):
         conn = connected(
@@ -405,10 +408,10 @@ def connection_status(func):
 
     return connected_status
 
-"""
+
 
 # Workaround for circular import with connection.py
 from TeamLegend.modules import connection
 
 connected = connection.connected
-"""
+
