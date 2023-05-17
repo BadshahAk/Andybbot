@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from TeamLegend.Config import DEV_USERS, OWNER_ID
+from TeamLegend import DEV_USERS, OWNER_ID
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.admin_rights import user_can_changeinfo
@@ -358,7 +358,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     promoter = chat.get_member(user.id)
-    if user.id not in OWNER_ID:
+    if user.id != OWNER_ID:
         return message.reply_text("» Owners have Only Permission to full Promote anyone!")
         
 
@@ -517,7 +517,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
 
 @run_async
-@user_admin
+@user_admin # check administrator owner & dev
 def refresh_admin(update, _):
     try:
         ADMIN_CACHE.pop(update.effective_chat.id)
@@ -531,7 +531,8 @@ def refresh_admin(update, _):
 @connection_status
 @bot_admin
 @can_promote
-@user_admin
+@user_admin # check 3 people OWNER_ID ADMINSTRATOR & DEV USERS
+
 def set_title(update: Update, context: CallbackContext):
     bot = context.bot
     args = context.args
@@ -609,7 +610,7 @@ def pin(update: Update, context: CallbackContext) -> str:
     msg = update.effective_message
     msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
 
-    if user.id not in DEV_USERS or OWNER_ID:
+    if user.id not in DEV_USERS:
     
         return message.reply_text("» Dev User & Owner have Only Permission to Pin any message!")
 
@@ -781,7 +782,7 @@ def pinned(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @bot_admin
-@user_admin
+@user_admin # check dev user, owner & admin
 @connection_status
 def invite(update: Update, context: CallbackContext):
     bot = context.bot
