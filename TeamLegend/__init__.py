@@ -17,8 +17,8 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     )
     quit(1) 
 
-DRAGONS.add(OWNER_ID)
-DEV_USERS.add(OWNER_ID)
+
+
 
 print("[INFO]: Getting Bot Info...")
 
@@ -26,11 +26,10 @@ BOT_ID = dispatcher.bot.id
 BOT_NAME = dispatcher.bot.first_name
 BOT_USERNAME = dispatcher.bot.username
 
-DRAGONS = list(DRAGONS) + list(DEV_USERS)
+DEV_USERS.add(OWNER_ID)
+
 DEV_USERS = list(DEV_USERS)
-WOLVES = list(WOLVES)
-DEMONS = list(DEMONS)
-TIGERS = list(TIGERS)
+
 
 # Load at end to ensure all prev variables have been set
 from TeamLegend.helpers.handlers import (
