@@ -160,6 +160,7 @@ buttons = [
 @run_async
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
+    uptime = get_readable_time((time.time() - StartTime))
     if query.data == "legend_back":
         first_name = update.effective_user.first_name
         username = update.effective_user.username
