@@ -982,20 +982,20 @@ def button(update: Update, context: CallbackContext) -> str:
 
 
 __help__ = """
-*User Commands*:
-» /admins*:* list of admins in the chat
-» /pinned*:* to get the current pinned message.
+✘ *User Commands*:
+➣ /admins*:* list of admins in the chat
+➣ /pinned*:* to get the current pinned message.
 
-*The Following Commands are Dev User only:* 
-» /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
-» /unpin*:* unpins the currently pinned message
-» /invitelink*:* gets invitelink
-» /lowpromote*:* promotes the user replied to with half rights
-» /title <title here>*:* sets a custom title for an admin that the bot promoted
-» /admincache*:* force refresh the admins list
+✘ *Dev User Commands:* 
+➢ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
+➢ /unpin*:* unpins the currently pinned message
+➢ /invitelink*:* gets invitelink
+➢ /lowpromote*:* promotes the user replied to with half rights
+➢ /title <title here>*:* sets a custom title for an admin that the bot promoted
+➢ /admincache*:* force refresh the admins list
 
 
-*The Following Commands are Owner User only:*
+✘ *Owner User Commands:*
 » /promote*:* promotes the user replied to
 » /fullpromote*:* promotes the user replied to with full rights
 » /demote*:* demotes the user replied to
