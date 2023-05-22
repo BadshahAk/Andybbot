@@ -33,7 +33,7 @@ def set_sticker(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -607,7 +607,7 @@ def pin(update: Update, context: CallbackContext) -> str:
 
     if user.id not in DEV_USERS:
     
-        return message.reply_text("» Dev User & Owner have Only Permission to Pin any message!")
+        return msg.reply_text("» Dev User & Owner have Only Permission to Pin any message!")
 
     if msg.chat.username:
         # If chat has a username, use this format
