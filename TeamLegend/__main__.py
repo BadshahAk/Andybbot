@@ -169,7 +169,7 @@ def legend_callback(update: Update, context: CallbackContext):
                 first_name, uptime
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN,
+            parse_mode=ParseMode.HTML,
             timeout=60,
             disable_web_page_preview=True,
         )
@@ -297,11 +297,10 @@ def help_button(update, context):
 
 
 
-      
-        
-     
 
-        
+
+
+     
 HELP_STRINGS = f"""
 *🔰 {BOT_NAME} Advanced Features*
 
