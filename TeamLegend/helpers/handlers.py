@@ -6,7 +6,7 @@ from pyrate_limiter import (
     RequestRate,
 )
 from telegram import Update
-from telegram.ext import CommandHandler, filters, MessageHandler, RegexHandler
+from telegram.ext import CommandHandler, filters, MessageHandler, StringRegexHandler
 
 import TeamLegend.sql.blacklistusers_sql as sql
 from TeamLegend.Config import ALLOW_EXCL, DEV_USERS, OWNER_ID
@@ -118,7 +118,7 @@ class CustomCommandHandler(CommandHandler):
                 context.update(check_result[1])
 
 
-class CustomRegexHandler(RegexHandler):
+class CustomRegexHandler(StringRegexHandler):
     def __init__(self, pattern, callback, friendly="", **kwargs):
         super().__init__(pattern, callback, **kwargs)
 
