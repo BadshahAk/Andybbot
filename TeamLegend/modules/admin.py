@@ -984,7 +984,6 @@ def button(update: Update, context: CallbackContext) -> str:
 __help__ = """
 ✘ *User Commands*:
 ➣ /admins*:* list of admins in the chat
-➣ /pinned*:* to get the current pinned message.
 
 ✘ *Dev User Commands:* 
 ➢ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
@@ -996,13 +995,13 @@ __help__ = """
 
 
 ✘ *Owner User Commands:*
-» /promote*:* promotes the user replied to
-» /fullpromote*:* promotes the user replied to with full rights
-» /demote*:* demotes the user replied to
-» /setgtitle <text>*:* set group title
-» /setgpic*:* reply to an image to set as group photo
-» /setdesc*:* Set group description
-» /setsticker*:* Set group sticker
+➣ /promote*:* promotes the user replied to
+➣ /fullpromote*:* promotes the user replied to with full rights
+➣ /demote*:* demotes the user replied to
+➣ /setgtitle <text>*:* set group title
+➣ /setgpic*:* reply to an image to set as group photo
+➣ /setdesc*:* Set group description
+➣ /setsticker*:* Set group sticker
 """
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
@@ -1015,7 +1014,6 @@ ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
 
 PIN_HANDLER = CommandHandler("pin", pin)
 UNPIN_HANDLER = CommandHandler("unpin", unpin)
-PINNED_HANDLER = CommandHandler("pinned", pinned)
 
 INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 
@@ -1038,7 +1036,6 @@ dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
-dispatcher.add_handler(PINNED_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
 dispatcher.add_handler(FULLPROMOTE_HANDLER)
