@@ -276,12 +276,10 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
 
-    promoter = chat.get_member(user.id)
-
-    if (
-        not (promoter.can_promote_members or promoter.status == "creator")
-        or user.id not in DEV_USERS
-    ):
+   
+    if user.id not in DEV_USERS:
+    
+    
         return message.reply_text("» Dev Users have Only Permission to low Promote anyone!")
         
 
@@ -358,8 +356,8 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     promoter = chat.get_member(user.id)
-    if user.id != OWNER_ID:
-        return message.reply_text("» Owners have Only Permission to full Promote anyone!")
+    if str(user.id) != OWNER_ID:
+        return message.reply_text("➢ Owners have Only Permission to full Promote anyone!")
         
 
     user_id = extract_user(message, args)
@@ -452,10 +450,7 @@ def demote(update: Update, context: CallbackContext) -> str:
     user = update.effective_user
 
     promoter = chat.get_member(user.id)
-    if (
-        not (promoter.can_promote_members or promoter.status == "creator")
-        and user.id not in OWNER_ID
-    ):
+    if str(user.id) not in OWNER_ID:
         return message.reply_text("» Owners have Only Permission to Demote anyone!")
 
     user_id = extract_user(message, args)
@@ -518,6 +513,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
 @run_async
 @user_admin # check administrator owner & dev
+@bot_admin
 def refresh_admin(update, _):
     try:
         ADMIN_CACHE.pop(update.effective_chat.id)
@@ -539,7 +535,9 @@ def set_title(update: Update, context: CallbackContext):
 
     chat = update.effective_chat
     message = update.effective_message
-
+    user = update.effective_user
+    if user.id not in DEV_USERS:
+        return message.reply_text("Dev User & Owner Have Only Permission to change title")
     user_id, title = extract_user_and_text(message, args)
     try:
         user_member = chat.get_member(user_id)
@@ -677,18 +675,11 @@ def unpin(update: Update, context: CallbackContext):
     msg_id = msg.reply_to_message.message_id if msg.reply_to_message else msg.message_id
     unpinner = chat.get_member(user.id)
 
-    if user.id not in OWNER_ID:
+    if str(user.id) not in OWNER_ID:
     
         return message.reply_text("» Owners have Only Permission to UnPin any message !")
 
-    if (
-        not (unpinner.can_pin_messages or unpinner.status == "creator")
-        and user.id not in OWNER_ID
-    ):
-        message.reply_text(
-            "» You don't have permission to unpin messages in this chat !"
-        )
-        return
+    
 
     if msg.chat.username:
         # If chat has a username, use this format
@@ -735,49 +726,7 @@ def unpin(update: Update, context: CallbackContext):
     return log_message
 
 
-@run_async
-@bot_admin
-def pinned(update: Update, context: CallbackContext) -> str:
-    bot = context.bot
-    msg = update.effective_message
-    msg_id = (
-        update.effective_message.reply_to_message.message_id
-        if update.effective_message.reply_to_message
-        else update.effective_message.message_id
-    )
 
-    chat = bot.getChat(chat_id=msg.chat.id)
-    if chat.pinned_message:
-        pinned_id = chat.pinned_message.message_id
-        if msg.chat.username:
-            link_chat_id = msg.chat.username
-            message_link = f"https://t.me/{link_chat_id}/{pinned_id}"
-        elif (str(msg.chat.id)).startswith("-100"):
-            link_chat_id = (str(msg.chat.id)).replace("-100", "")
-            message_link = f"https://t.me/c/{link_chat_id}/{pinned_id}"
-
-        msg.reply_text(
-            f"☞ Pinned on {html.escape(chat.title)}.",
-            reply_to_message_id=msg_id,
-            parse_mode=ParseMode.HTML,
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(
-                            text="Message",
-                            url=f"https://t.me/{link_chat_id}/{pinned_id}",
-                        )
-                    ]
-                ]
-            ),
-        )
-
-    else:
-        msg.reply_text(
-            f"» There is no pinned message in <b>{html.escape(chat.title)}!</b>",
-            parse_mode=ParseMode.HTML,
-        )
 
 
 @run_async
@@ -787,7 +736,10 @@ def pinned(update: Update, context: CallbackContext) -> str:
 def invite(update: Update, context: CallbackContext):
     bot = context.bot
     chat = update.effective_chat
-
+    user = update.effective_user
+    if str(user.id) not in DEV_USERS:
+        return update.effective_message.reply_text("Owner & Dev User Have Only Permission to Used This Command")
+    
     if chat.username:
         update.effective_message.reply_text(f"https://t.me/{chat.username}")
     elif chat.type in [chat.SUPERGROUP, chat.CHANNEL]:
@@ -987,7 +939,6 @@ __help__ = """
 
 ✘ *Dev User Commands:* 
 ➢ /pin*:* silently pins the message replied to - add `'loud'` or `'notify'` to give notifs to users
-➢ /unpin*:* unpins the currently pinned message
 ➢ /invitelink*:* gets invitelink
 ➢ /lowpromote*:* promotes the user replied to with half rights
 ➢ /title <title here>*:* sets a custom title for an admin that the bot promoted
@@ -996,12 +947,14 @@ __help__ = """
 
 ✘ *Owner User Commands:*
 ➣ /promote*:* promotes the user replied to
+➢ /unpin*:* unpins the currently pinned message
 ➣ /fullpromote*:* promotes the user replied to with full rights
 ➣ /demote*:* demotes the user replied to
 ➣ /setgtitle <text>*:* set group title
 ➣ /setgpic*:* reply to an image to set as group photo
 ➣ /setdesc*:* Set group description
 ➣ /setsticker*:* Set group sticker
+➢ /delgpic *:* Delete Default Group Photo
 """
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
