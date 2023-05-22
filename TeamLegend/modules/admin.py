@@ -6,7 +6,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
 
-from TeamLegend import DEV_USERS, OWNER_ID
+from TeamLegend.Config import DEV_USERS, OWNER_ID
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.admin_rights import user_can_changeinfo
@@ -52,7 +52,7 @@ def set_sticker(update: Update, context: CallbackContext):
                 return msg.reply_text(
                     f"» Your Group need minimum 100 member to set sticker pack in {chat.title}!"
                 )
-            msg.reply_text(f"ᴇʀʀᴏʀ ! {excp.message}.")
+            msg.reply_text(f"Error ! {excp.message}.")
     else:
         msg.reply_text("» Reply to a sticker set to set as group sticker pack !")
 
@@ -65,7 +65,7 @@ def setchatpic(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
 
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -103,7 +103,7 @@ def rmchatpic(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
 
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
