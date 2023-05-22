@@ -13,7 +13,7 @@ logging.getLogger("telethon").setLevel(logging.ERROR)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 LOGS = logging.getLogger("__name__")
 
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+updater = tg.Updater(TOKEN)
 legendtbot = TelegramClient("Group_t_Bot", API_ID, API_HASH)
 
 legendpbot = Client("Group_p_Bot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN)
