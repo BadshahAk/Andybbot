@@ -104,7 +104,7 @@ def rmchatpic(update: Update, context: CallbackContext):
     user = update.effective_user
 
     if str(user.id) not in str(OWNER_ID):
-        msg.reply_text(
+        return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
     try:
@@ -123,7 +123,7 @@ def set_desc(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -152,7 +152,7 @@ def setchat_title(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
     args = context.args
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -160,7 +160,6 @@ def setchat_title(update: Update, context: CallbackContext):
     title = " ".join(args)
     if not title:
         return msg.reply_text("» Enter Some Text To set it as New Chat Title !")
-        
         
 
     try:
@@ -231,7 +230,7 @@ def promote(update: Update, context: CallbackContext) -> str:
             can_edit_messages=bot_member.can_edit_messages,
             can_delete_messages=bot_member.can_delete_messages,
             can_invite_users=bot_member.can_invite_users,
-            can_manage_voice_chats=bot_member.can_manage_voice_chats,
+            can_manage_video_chats=bot_member.can_manage_voice_chats,
             can_pin_messages=bot_member.can_pin_messages,
         )
     except BadRequest as err:
