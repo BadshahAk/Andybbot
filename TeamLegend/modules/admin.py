@@ -33,8 +33,7 @@ def set_sticker(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
+    if str(user.id) not in OWNER_ID:
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -66,7 +65,7 @@ def setchatpic(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
 
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
+    if str(user.id) not in OWNER_ID:
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -104,8 +103,8 @@ def rmchatpic(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
 
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
-        return msg.reply_text(
+    if str(user.id) not in OWNER_ID:
+        msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
     try:
@@ -124,8 +123,7 @@ def set_desc(update: Update, context: CallbackContext):
     msg = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
+    if str(user.id) not in OWNER_ID:
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -154,8 +152,7 @@ def setchat_title(update: Update, context: CallbackContext):
     msg = update.effective_message
     user = update.effective_user
     args = context.args
-
-    if user_can_changeinfo(chat, user, context.bot.id) is False:
+    if str(user.id) not in OWNER_ID:
         return msg.reply_text(
             "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
         )
@@ -813,8 +810,8 @@ def adminlist(update, context):
         # if user.username:
         #    name = escape_markdown("@" + user.username)
         if status == "creator":
-            text += "\❖ Owner :"
-            text += "\n<code> • </code>{}\n".format(name)
+            text += "\n❖ Owner :"
+            text += "\n<code> ➣ </code>{}\n".format(name)
 
             if custom_title:
                 text += f"<code> ┗━ {html.escape(custom_title)}</code>\n"
@@ -850,11 +847,11 @@ def adminlist(update, context):
                 normal_admin_list.append(name)
 
     for admin in normal_admin_list:
-        text += "\n<code> • </code>{}".format(admin)
+        text += "\n<code> ➙ </code>{}".format(admin)
 
     for admin_group in custom_admin_list.copy():
         if len(custom_admin_list[admin_group]) == 1:
-            text += "\n<code> • </code>{} | <code>{}</code>".format(
+            text += "\n<code> ➙ </code>{} | <code>{}</code>".format(
                 custom_admin_list[admin_group][0],
                 html.escape(admin_group),
             )
@@ -864,7 +861,7 @@ def adminlist(update, context):
     for admin_group, value in custom_admin_list.items():
         text += "\n🔮 <code>{}</code>".format(admin_group)
         for admin in value:
-            text += "\n<code> • </code>{}".format(admin)
+            text += "\n<code> ➙ </code>{}".format(admin)
         text += "\n"
 
     try:
