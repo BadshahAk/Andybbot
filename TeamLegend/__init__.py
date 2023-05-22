@@ -21,10 +21,10 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 
 
 print("[INFO]: Getting Bot Info...")
-GET_ME = Bot.get_me()
-BOT_ID = GET_ME.id
-BOT_NAME = GET_ME.first_name
-BOT_USERNAME = GET_Me.username
+#GET_ME = Bot.get_me
+BOT_ID = Bot.idd
+BOT_NAME = Bot.first_name
+BOT_USERNAME = Bot.username
 
 
 
