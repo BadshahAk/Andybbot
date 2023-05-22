@@ -6,10 +6,10 @@ from pyrate_limiter import (
     RequestRate,
 )
 from telegram import Update
-from telegram.ext import CommandHandler, Filters, MessageHandler, RegexHandler
+from telegram.ext import CommandHandler, filters, MessageHandler, RegexHandler
 
 import TeamLegend.sql.blacklistusers_sql as sql
-from TeamLegend import ALLOW_EXCL, DEMONS, DEV_USERS, DRAGONS, TIGERS, WOLVES
+from TeamLegend.Config import ALLOW_EXCL, DEV_USERS, OWNER_ID
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")
@@ -21,10 +21,8 @@ class AntiSpam:
     def __init__(self):
         self.whitelist = (
             (DEV_USERS or [])
-            + (DRAGONS or [])
-            + (WOLVES or [])
-            + (DEMONS or [])
-            + (TIGERS or [])
+            + (OWNER_ID or [])
+            
         )
         # Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
@@ -63,7 +61,7 @@ class CustomCommandHandler(CommandHandler):
 
         if allow_edit is False:
             self.filters &= ~(
-                Filters.update.edited_message | Filters.update.edited_channel_post
+                filters.update.edited_message | filters.update.edited_channel_post
             )
 
     def check_update(self, update):
@@ -87,7 +85,8 @@ class CustomCommandHandler(CommandHandler):
                     args = message.text.split()[1:]
                     command = fst_word[1:].split("@")
                     command.append(message.bot.username)
-                    if user_id == 1087968824:
+                    if user_id == 5591734243:
+                    
                         user_id = update.effective_chat.id
                     if not (
                         command[0].lower() in self.command
@@ -129,7 +128,7 @@ class CustomMessageHandler(MessageHandler):
         super().__init__(filters, callback, **kwargs)
         if allow_edit is False:
             self.filters &= ~(
-                Filters.update.edited_message | Filters.update.edited_channel_post
+                filters.update.edited_message | filters.update.edited_channel_post
             )
 
         def check_update(self, update):
