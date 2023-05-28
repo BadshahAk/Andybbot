@@ -21,7 +21,7 @@ class AntiSpam:
     def __init__(self):
         self.whitelist = (
             (list(DEV_USERS) or [])
-            + (list(OWNER_ID) or [])
+            + (OWNER_ID or [])
             
         )
         # Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
