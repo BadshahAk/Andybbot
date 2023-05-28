@@ -20,7 +20,7 @@ from telegram.ext import (
     CallbackContext,
     CallbackQueryHandler,
     CommandHandler,
-    Filters,
+    filters,
     MessageHandler,
 )
 from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
@@ -208,10 +208,7 @@ def error_callback(update: Update, context: CallbackContext):
     error = context.error
     try:
         raise error
-    except Unauthorized:
-        print("no nono1")
-        print(error)
-        # remove update.message.chat_id from conversation list
+
     except BadRequest:
         print("no nono2")
         print("BadRequest caught")
@@ -605,7 +602,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     
-    migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
+    migrate_handler = MessageHandler(filters.status_update.migrate, migrate_chats)
 
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_callback_handler)
