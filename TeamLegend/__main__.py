@@ -14,7 +14,7 @@ from telegram.error import (
     NetworkError,
     TelegramError,
     TimedOut,
-    Unauthorized,
+
 )
 from telegram.ext import (
     CallbackContext,
@@ -590,11 +590,6 @@ def main():
 ┗•❅──l──✧❅✦❅✧────❅•┛""",
                 parse_mode=ParseMode.MARKDOWN,
             )
-        except Unauthorized:
-            LOGS.warning(
-                f"Bot is not Able To Send Message To {EVENT_LOGS}",
-            )
-
         except BadRequest as e:
             LOGS.warning(e.message)
 
