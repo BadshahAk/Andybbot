@@ -6,7 +6,7 @@ from sys import argv
 
 from pyrogram import __version__ as pyrover
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.ext.Defaults import parse_mode
+from telegram.constants import ParseMode
 from telegram import __version__ as telever
 from telegram.error import (
     BadRequest,
