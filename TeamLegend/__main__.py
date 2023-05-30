@@ -25,7 +25,7 @@ from telegram.ext import (
     ApplicationHandlerStop,
 )
 
-from telegram.utils.helpers import escape_markdown
+from telegram.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
 import TeamLegend.sql.users_sql as sql
