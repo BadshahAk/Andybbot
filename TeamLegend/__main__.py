@@ -23,7 +23,7 @@ from telegram.ext import (
     filters,
     MessageHandler,
 )
-from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
+from telegram.ext import import ApplicationHandlerStop, run_async
 from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
@@ -567,7 +567,7 @@ def migrate_chats(update: Update, context: CallbackContext):
         mod.__migrate__(old_chat, new_chat)
 
     LOGS.info("Successfully migrated!")
-    raise DispatcherHandlerStop
+    raise ApplicationHandlerStop
 
 
 def main():
