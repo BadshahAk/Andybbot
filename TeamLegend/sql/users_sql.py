@@ -10,7 +10,8 @@ from sqlalchemy import (
     func,
 )
 
-from TeamLegend import dispatcher
+from TeamLegend import BOT_ID, BOT_USERMAME
+from TeamLegend.core.clients import dispatcher
 from TeamLegend.sql import BASE, SESSION
 
 
@@ -78,7 +79,7 @@ INSERTION_LOCK = threading.RLock()
 
 def ensure_bot_in_db():
     with INSERTION_LOCK:
-        bot = Users(dispatcher.bot.id, dispatcher.bot.username)
+        bot = Users(BOT_ID, BOT_USERNAME)
         SESSION.merge(bot)
         SESSION.commit()
 
