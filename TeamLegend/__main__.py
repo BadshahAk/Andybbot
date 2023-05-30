@@ -22,7 +22,7 @@ from telegram.ext import (
     CommandHandler,
     filters,
     MessageHandler,
-    ApplicationHandler,
+    ApplicationHandlerStop,
 )
 from telegram import run_async
 from telegram.utils.helpers import escape_markdown
