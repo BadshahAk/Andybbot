@@ -24,7 +24,7 @@ from telegram.ext import (
     MessageHandler,
     ApplicationHandlerStop,
 )
-from telegram import run_async
+
 from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
@@ -96,7 +96,7 @@ for module_name in ALL_MODULES:
 
 
 
-@run_async
+
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -159,7 +159,7 @@ buttons = [
     ],
 ]
 
-@run_async
+
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     uptime = get_readable_time((time.time() - StartTime))
@@ -231,7 +231,7 @@ def error_callback(update: Update, context: CallbackContext):
         # handle all other telegram related errors
 
 
-@run_async
+
 def help_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -316,7 +316,7 @@ HELP_STRINGS = f"""
     • /settings : _It will redirect to pm and check your setting_"""
 
         
-@run_async
+
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
@@ -436,7 +436,7 @@ def send_settings(chat_id, user_id, user=False):
             )
 
 
-@run_async
+
 def settings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
@@ -520,7 +520,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGS.exception("Exception in settings buttons. %s", str(query.data))
 
 
-@run_async
+
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
