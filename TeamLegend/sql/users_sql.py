@@ -9,8 +9,11 @@ from sqlalchemy import (
     UniqueConstraint,
     func,
 )
+from telegram import Bot
+BOT_ID = Bot.id
+BOT_USERNAME = Bot.username
 
-from TeamLegend import BOT_ID, BOT_USERMAME
+
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.sql import BASE, SESSION
 
