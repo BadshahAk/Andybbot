@@ -22,8 +22,9 @@ from telegram.ext import (
     CommandHandler,
     filters,
     MessageHandler,
+    ApplicationHandler,
 )
-from telegram.ext import ApplicationHandlerStop, run_async
+from telegram import run_async
 from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
