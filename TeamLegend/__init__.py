@@ -1,7 +1,7 @@
 
 import sys
 import time
-from telegram import Bot
+from telegram import ext as tg
 from aiohttp import ClientSession
 from pyrogram import Client, errors
 from telethon import TelegramClient
@@ -21,12 +21,14 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
 
 
 print("[INFO]: Getting Bot Info...")
-#GET_ME = Bot.get_me
-BOT_ID = Bot.id
-BOT_NAME = Bot.first_name
-BOT_USERNAME = Bot.username
 
+BOT_ID = dispatcher.bot.id
+BOT_NAME = dispatcher.bot.first_name
+BOT_USERNAME = dispatcher.bot.username
 
+DEV_USERS.add(OWNER_ID)
+
+DEV_USERS = list(DEV_USERS)
 
 
 # Load at end to ensure all prev variables have been set
@@ -35,9 +37,8 @@ from TeamLegend.helpers.handlers import (
     CustomMessageHandler,
     CustomRegexHandler,
 )
-"""
+
 # make sure the regex handler can take extra kwargs
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
-"""

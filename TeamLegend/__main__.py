@@ -5,8 +5,7 @@ from platform import python_version
 from sys import argv
 
 from pyrogram import __version__ as pyrover
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
-from telegram.constants import ParseMode
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Update
 from telegram import __version__ as telever
 from telegram.error import (
     BadRequest,
@@ -14,18 +13,17 @@ from telegram.error import (
     NetworkError,
     TelegramError,
     TimedOut,
-
+    Unauthorized,
 )
 from telegram.ext import (
     CallbackContext,
     CallbackQueryHandler,
     CommandHandler,
-    filters,
+    Filters,
     MessageHandler,
-    ApplicationHandlerStop,
 )
-
-from telegram.helpers import escape_markdown
+from telegram.ext.dispatcher import DispatcherHandlerStop, run_async
+from telegram.utils.helpers import escape_markdown
 from telethon import __version__ as tlhver
 
 import TeamLegend.sql.users_sql as sql
@@ -96,7 +94,7 @@ for module_name in ALL_MODULES:
 
 
 
-
+@run_async
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -159,7 +157,7 @@ buttons = [
     ],
 ]
 
-
+@run_async
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     uptime = get_readable_time((time.time() - StartTime))
@@ -209,7 +207,10 @@ def error_callback(update: Update, context: CallbackContext):
     error = context.error
     try:
         raise error
-
+    except Unauthorized:
+        print("no nono1")
+        print(error)
+        # remove update.message.chat_id from conversation list
     except BadRequest:
         print("no nono2")
         print("BadRequest caught")
@@ -231,7 +232,7 @@ def error_callback(update: Update, context: CallbackContext):
         # handle all other telegram related errors
 
 
-
+@run_async
 def help_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
@@ -316,7 +317,7 @@ HELP_STRINGS = f"""
     • /settings : _It will redirect to pm and check your setting_"""
 
         
-
+@run_async
 def get_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
@@ -436,7 +437,7 @@ def send_settings(chat_id, user_id, user=False):
             )
 
 
-
+@run_async
 def settings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
@@ -520,7 +521,7 @@ def settings_button(update: Update, context: CallbackContext):
             LOGS.exception("Exception in settings buttons. %s", str(query.data))
 
 
-
+@run_async
 def get_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
@@ -568,7 +569,7 @@ def migrate_chats(update: Update, context: CallbackContext):
         mod.__migrate__(old_chat, new_chat)
 
     LOGS.info("Successfully migrated!")
-    raise ApplicationHandlerStop
+    raise DispatcherHandlerStop
 
 
 def main():
@@ -588,6 +589,11 @@ def main():
 ┗•❅──l──✧❅✦❅✧────❅•┛""",
                 parse_mode=ParseMode.MARKDOWN,
             )
+        except Unauthorized:
+            LOGS.warning(
+                f"Bot is not Able To Send Message To {EVENT_LOGS}",
+            )
+
         except BadRequest as e:
             LOGS.warning(e.message)
 
@@ -603,7 +609,7 @@ def main():
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     
-    migrate_handler = MessageHandler(filters.status_update.migrate, migrate_chats)
+    migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_callback_handler)
