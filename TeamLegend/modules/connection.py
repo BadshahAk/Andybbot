@@ -4,8 +4,8 @@ import time
 from telegram import Bot, InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.constants import ParseMode
 
-from telegram.error import BadRequest, Unauthorized
-from telegram.ext import CallbackQueryHandler, CommandHandler, run_async
+from telegram.error import BadRequest
+from telegram.ext import CallbackQueryHandler, CommandHandler
 
 import TeamLegend.sql.connection_sql as sql
 from TeamLegend import DEV_USERS, DRAGONS, dispatcher
@@ -16,7 +16,7 @@ user_admin = chat_status.user_admin
 
 
 @user_admin
-@run_async
+
 @typing_action
 def allow_connections(update, context) -> str:
     chat = update.effective_chat
@@ -63,7 +63,7 @@ def allow_connections(update, context) -> str:
         )
 
 
-@run_async
+
 @typing_action
 def connection_chat(update, context):
     chat = update.effective_chat
@@ -87,7 +87,7 @@ def connection_chat(update, context):
     send_message(update.effective_message, message, parse_mode="markdown")
 
 
-@run_async
+
 @typing_action
 def connect_chat(update, context):
     chat = update.effective_chat
@@ -314,7 +314,7 @@ CONN_HELP = """
  • Export and Imports of chat backup."""
 
 
-@run_async
+
 def help_connect_chat(update, context):
     context.args
 
@@ -325,7 +325,7 @@ def help_connect_chat(update, context):
         send_message(update.effective_message, CONN_HELP, parse_mode="markdown")
 
 
-@run_async
+
 def connect_button(update, context):
     query = update.callback_query
     chat = update.effective_chat
