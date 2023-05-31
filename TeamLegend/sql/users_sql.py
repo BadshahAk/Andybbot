@@ -12,7 +12,7 @@ from sqlalchemy import (
 
 
 from TeamLegend import BOT_ID, BOT_NAME
-from TeamLegeclients import dispatcher
+from TeamLegend.core.clients import dispatcher
 from TeamLegend.sql import BASE, SESSION
 
 
