@@ -733,7 +733,7 @@ def invite(update: Update, context: CallbackContext):
     bot = context.bot
     chat = update.effective_chat
     user = update.effective_user
-    if str(user.id) not in DEV_USERS:
+    if str(user.id) not in DEV_USERS or OWNER_ID:
         return update.effective_message.reply_text("Owner & Dev User Have Only Permission to Used This Command")
     
     if chat.username:
