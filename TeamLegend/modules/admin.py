@@ -352,7 +352,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     chat = update.effective_chat
     user = update.effective_user
     promoter = chat.get_member(user.id)
-    if str(user.id) not in OWNER_ID:
+    if str(user.id) not in str(OWNER_ID):
         print(OWNER_ID)
         print(str(user.id))
                   
