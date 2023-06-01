@@ -3,8 +3,7 @@ from threading import RLock
 from time import perf_counter
 
 from cachetools import TTLCache
-from telegram import Chat, ChatMember, Update
-from telegram.constants import ParseMode
+from telegram import Chat, ChatMember, ParseMode, Update
 from telegram.ext import CallbackContext
 
 from TeamLegend.Config import (

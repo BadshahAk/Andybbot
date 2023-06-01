@@ -6,10 +6,10 @@ from pyrate_limiter import (
     RequestRate,
 )
 from telegram import Update
-from telegram.ext import CommandHandler, filters, MessageHandler, StringRegexHandler
+from telegram.ext import CommandHandler, Filters, MessageHandler, RegexHandler
 
 import TeamLegend.sql.blacklistusers_sql as sql
-from TeamLegend.Config import ALLOW_EXCL, DEV_USERS, OWNER_ID
+from TeamLegend import ALLOW_EXCL, DEMONS, DEV_USERS, DRAGONS, TIGERS, WOLVES
 
 if ALLOW_EXCL:
     CMD_STARTERS = ("/", "!")
@@ -20,9 +20,11 @@ else:
 class AntiSpam:
     def __init__(self):
         self.whitelist = (
-            (str(DEV_USERS) or [])
-            + (str(OWNER_ID) or [])
-            
+            (DEV_USERS or [])
+            + (DRAGONS or [])
+            + (WOLVES or [])
+            + (DEMONS or [])
+            + (TIGERS or [])
         )
         # Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
         Duration.CUSTOM = 15  # Custom duration, 15 seconds
@@ -61,7 +63,7 @@ class CustomCommandHandler(CommandHandler):
 
         if allow_edit is False:
             self.filters &= ~(
-                filters.update.edited_message | filters.update.edited_channel_post
+                Filters.update.edited_message | Filters.update.edited_channel_post
             )
 
     def check_update(self, update):
@@ -85,8 +87,7 @@ class CustomCommandHandler(CommandHandler):
                     args = message.text.split()[1:]
                     command = fst_word[1:].split("@")
                     command.append(message.bot.username)
-                    if user_id == 5591734243:
-                    
+                    if user_id == 1087968824:
                         user_id = update.effective_chat.id
                     if not (
                         command[0].lower() in self.command
@@ -118,7 +119,7 @@ class CustomCommandHandler(CommandHandler):
                 context.update(check_result[1])
 
 
-class CustomRegexHandler(StringRegexHandler):
+class CustomRegexHandler(RegexHandler):
     def __init__(self, pattern, callback, friendly="", **kwargs):
         super().__init__(pattern, callback, **kwargs)
 
@@ -128,7 +129,7 @@ class CustomMessageHandler(MessageHandler):
         super().__init__(filters, callback, **kwargs)
         if allow_edit is False:
             self.filters &= ~(
-                filters.update.edited_message | filters.update.edited_channel_post
+                Filters.update.edited_message | Filters.update.edited_channel_post
             )
 
         def check_update(self, update):
