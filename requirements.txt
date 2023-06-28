@@ -34,8 +34,7 @@ pykeyboard==0.1.5
 pynewtonmath==1.0.1
 pyrate-limiter==2.10.0
 pyrogram==2.0.102 #used everywhere
-python-telegram-bot==13.9
-
+python-telegram-bot==13.9 #used everywhere
 regex==2023.3.23
 requests==2.28.2
 secureme==0.0.4
