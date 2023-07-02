@@ -1,4 +1,3 @@
-
 import sys
 import time
 from telegram import ext as tg
@@ -30,7 +29,7 @@ DEV_USERS.add(OWNER_ID)
 
 DEV_USERS = list(DEV_USERS)
 
-
+"""
 # Load at end to ensure all prev variables have been set
 from TeamLegend.helpers.handlers import (
     CustomCommandHandler,
@@ -42,3 +41,4 @@ from TeamLegend.helpers.handlers import (
 tg.RegexHandler = CustomRegexHandler
 tg.CommandHandler = CustomCommandHandler
 tg.MessageHandler = CustomMessageHandler
+"""
