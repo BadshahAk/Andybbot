@@ -396,7 +396,7 @@ def adminlist(update, context):
 
         # if user.username:
         #    name = escape_markdown("@" + user.username)
-             text += "\n 🧑‍💻 admin:"
+             text += "\n admin:"
              text += "\n<code> • </code>{}\n".format(name)
         if status == "creator":
             text += "\n 👑 Creator:"
