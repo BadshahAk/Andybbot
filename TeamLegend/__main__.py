@@ -115,7 +115,7 @@ def start(update: Update, context: CallbackContext):
                 )
 
             elif args[0].lower() == "markdownhelp":
-                IMPORTED["Exᴛʀᴀs"].markdown_help_sender(update)
+                IMPORTED["Extras"].markdown_help_sender(update)
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -129,16 +129,23 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            first_name = update.effective_user.first_name
-            username = update.effective_user.username
-            update.effective_message.reply_text(
-                text="Hello {}\n\n➣ ∂οиτ τяγ το ωαѕτє γουя τιмє нєяє ϐєϲαυѕє τнιѕ ϐοτ ιѕ οиℓγ ƒοя οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂\n➣ ϲℓιϲκ ϐєℓοω το κиοω αϐουτ οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂ ♨".format(first_name),
-                  
-                reply_markup=InlineKeyboardMarkup(buttons),
-            )
+            meme = update.effective_user
+            first_name = meme.first_name
+            username = meme.username
+            user_id = meme.id
+            if str(user_id) not in str(DEV_USERS):
+                update.effective_message.reply_text(
+                    text="Hello {}\n\n➣ ∂οиτ τяγ το ωαѕτє γουя τιмє нєяє ϐєϲαυѕє τнιѕ ϐοτ ιѕ οиℓγ ƒοя οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂\n➣ ϲℓιϲκ ϐєℓοω το κиοω αϐουτ οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂ ♨".format(first_name),
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                )
+            else:
+                update.effective_message.reply_text(
+                    text="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).I know you are developers of my bot and my good friends. \nKeep Enjoying 🧑‍💻.".format(first_name),
+                    reply_markup=InlineKeyboardMarkup(buttons),
+                )
+
     else:
         first_name = update.effective_user.first_name
-
         update.effective_message.reply_text(
             text="Hello {} \n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
                 first_name, uptime
