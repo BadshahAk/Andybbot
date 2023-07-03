@@ -17,17 +17,12 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 6:
     quit(1) 
 
 
-
-
 print("[INFO]: Getting Bot Info...")
 
 BOT_ID = dispatcher.bot.id
 BOT_NAME = dispatcher.bot.first_name
 BOT_USERNAME = dispatcher.bot.username
 
-DEV_USERS.add(OWNER_ID)
-
-DEV_USERS = list(DEV_USERS)
 
 """
 # Load at end to ensure all prev variables have been set
