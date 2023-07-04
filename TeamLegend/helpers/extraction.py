@@ -24,8 +24,7 @@ def extract_user(message: Message, args: List[str]) -> Optional[int]:
 
 
 def extract_user_and_text(
-    message: Message, args: List[str])
- -> Tuple[(Optional[int], Optional[str])]:
+    message: Message, args: List[str]) -> Tuple[(Optional[int], Optional[str])]:
      """This is function used to return id and title"""
     prev_message = message.reply_to_message
     split_text = message.text.split(None, 1)
