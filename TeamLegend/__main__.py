@@ -147,10 +147,16 @@ def start(update: Update, context: CallbackContext):
             text="Hello {}, LegendBot assistant is here :) PM me if you have any questions or doubts about using me.".format(
                 first_name
             ),
-            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_markup=InlineKeyboardMarkup(grp_start_button),
             parse_mode=ParseMode.HTML,
         )
-  
+
+grp_start_button = [
+    [
+        InlineKeyboardButton(text="☞ How To Use ☜", url="https://t.me/TeamLegendXDBot?start=help"),
+    ],
+]  
+
 buttons = [
     [
         InlineKeyboardButton(text="☞ Update ☜", url="https://t.me/LegendBot_AI"),
@@ -297,12 +303,6 @@ def help_button(update, context):
 
     except BadRequest:
         pass
-
-
-
-
-
-
 
      
 HELP_STRINGS = f"""
