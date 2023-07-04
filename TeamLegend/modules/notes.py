@@ -21,7 +21,8 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown, mention_markdown
 
 import TeamLegend.sql.notes_sql as sql
-from TeamLegend import LEGEND, EVENT_LOGS, LOGS, SUPPORT_CHAT, dispatcher
+from TeamLegend.Config import EVENT_LOGS, LOGS, SUPPORT_CHAT
+from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import connection_status, user_admin
 from TeamLegend.helpers.misc import build_keyboard, revert_buttons
