@@ -93,7 +93,7 @@ for module_name in ALL_MODULES:
 
 
 
-@run_async
+
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -603,7 +603,7 @@ def main():
         except BadRequest as e:
             LOGS.warning(e.message)
 
-    start_handler = CommandHandler("start", start)
+    start_handler = CommandHandler("start", start, pass_args=True, run_async=True)
     about_callback_handler = CallbackQueryHandler(
         legend_callback, pattern=r"legend_back"
 
