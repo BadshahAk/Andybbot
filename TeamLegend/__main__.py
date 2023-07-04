@@ -645,7 +645,7 @@ def main():
     start_handler = CommandHandler("start", start, pass_args=False, run_async=True)
     about_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"legend_back", run_async=True)
     Source_callback_handler = CallbackQueryHandler(source_about_callback, pattern=r"source_now", run_async=True)
-    Status_about_callback = CallbackQueryHandler(status_about_callback, pattern=r"status_now", run_async=True)
+    Status_callback_handler = CallbackQueryHandler(status_about_callback, pattern=r"status_now", run_async=True)
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
     settings_handler = CommandHandler("settings", get_settings, run_async=True)
