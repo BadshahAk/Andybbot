@@ -38,11 +38,10 @@ from TeamLegend import StartTime, BOT_NAME, BOT_USERNAME
 
 from TeamLegend.core.clients import *
 
-from TeamLegend.modules import ALL_MODULES
 from TeamLegend.helpers.chat_status import is_user_admin
 from TeamLegend.helpers.misc import paginate_modules
 from TeamLegend.helpers.function.time import get_readable_time
-
+from TeamLegend.modules import ALL_MODULES
 
 
 IMPORTED = {}
