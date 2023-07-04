@@ -131,12 +131,14 @@ def start(update: Update, context: CallbackContext):
             username = meme.username
             user_id = meme.id
             if str(user_id) not in str(DEV_USERS):
-                update.effective_message.reply_text(
-                    text="Hello {}\n\n➣ ∂οиτ τяγ το ωαѕτє γουя τιмє нєяє ϐєϲαυѕє τнιѕ ϐοτ ιѕ οиℓγ ƒοя οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂\n➣ ϲℓιϲκ ϐєℓοω το κиοω αϐουτ οωиєя & α∂мιиѕ οƒ τєαм ℓєgєи∂ ♨".format(first_name),
+                update.effective_message.reply_photo(
+                    "https://graph.org/file/f60051408d17fd505fa11.jpg",
+                    caption="Hello {}\n\n➣ Sorry who are you, your user id not in our database.So, don't try to waste time your time here.This bot mainly made to handle team legend's Group. ".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
             else:
-                update.effective_message.reply_text(
+                update.effective_message.reply_photo(
+                    "https://graph.org/file/f60051408d17fd505fa11.jpg",
                     text="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
@@ -159,27 +161,53 @@ grp_start_button = [
 
 buttons = [
     [
-        InlineKeyboardButton(text="☞ Update ☜", url="https://t.me/LegendBot_AI"),
+        InlineKeyboardButton(text="Updates", url="https://t.me/LegendBot_AI"),
+        InlineKeyboardButton(text="Support", url="https://t.me/LegendBot_OP"),
     ],
     [
-        InlineKeyboardButton(text="❖ Admins ❖", url="https://t.me/TeamLegendXD"),
-        InlineKeyboardButton(text="✤ Owner ✤", url="https://t.me/LegendBot_Owner"),
+        InlineKeyboardButton(text="Help me", url="https://t.me/TeamLegendXDBot?start=help"),
+        InlineKeyboardButton(text="About me", callback_data="about_me"),
     ],
 ]
 
-@run_async
+about_me_button = [
+    [
+        InlineKeyboardButton(text="Status", callback_data="status_now"),
+        InlineKeyboardButton(text="Source", callback_data="source_now"),
+    ],
+    [
+        InlineKeyboardButton(text="Home", callback_data="legend_back"),
+    ],
+]
+                             
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     uptime = get_readable_time((time.time() - StartTime))
     if query.data == "legend_back":
-        first_name = update.effective_user.first_name
-        username = update.effective_user.username
+        send_help(query.id, HELP_STRINGS)
+    elif query.data == "about_me":
         query.message.edit_text(
-            text="Hello {}\n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
-                first_name, uptime
-            ),
+            text="""
+★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
+★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
+★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
+★ Language : [Python 3](https://docs.python.org)
+★ Database : [Mongo DB](https://cloud.mongodb.com/)
+★ Version : V1.0
+"""
+            reply_markup=InlineKeyboardMarkup(about_me_button),
+            timeout=60,
+            disable_web_page_preview=True,
+        )
+    elif query.data == "source_now":
+        query.message.edit_text(
+            text="""
+            🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
+            Note:
+            This is Open source but don't try to deploy because it's totally based on LegendBot Group.
+            Contact Owner only for reporting bugs
+            """
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.HTML,
             timeout=60,
             disable_web_page_preview=True,
         )
