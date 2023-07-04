@@ -137,7 +137,7 @@ def start(update: Update, context: CallbackContext):
                 )
             else:
                 update.effective_message.reply_text(
-                    text=f"Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
+                    text="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
 
@@ -601,7 +601,7 @@ def main():
         except BadRequest as e:
             LOGS.warning(e.message)
 
-    start_handler = CommandHandler("start", start, pass_args=True, run_async=True)
+    start_handler = CommandHandler("start", start, pass_args=False, run_async=True)
     about_callback_handler = CallbackQueryHandler(
         legend_callback, pattern=r"legend_back"
 
