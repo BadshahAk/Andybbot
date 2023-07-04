@@ -194,7 +194,7 @@ def legend_callback(update: Update, context: CallbackContext):
 ★ Language : [Python 3](https://docs.python.org)
 ★ Database : [Mongo DB](https://cloud.mongodb.com/)
 ★ Version : V1.0
-"""
+""",
             reply_markup=InlineKeyboardMarkup(about_me_button),
             timeout=60,
             disable_web_page_preview=True,
