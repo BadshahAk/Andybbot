@@ -29,6 +29,7 @@ from telethon import __version__ as tlhver
 import TeamLegend.sql.users_sql as sql
 from TeamLegend.Config import (
     OWNER_ID,
+    DEV_USERS,
     START_IMG,
     TOKEN,
     EVENT_LOGS,
