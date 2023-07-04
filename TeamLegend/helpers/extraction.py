@@ -98,7 +98,7 @@ def extract_text(message) -> str:
 
 def extract_unt_fedban(
     message: Message, args: List[str]
-) -> Tuple[(Optional[int], Optional[str])]:
+) -> (Optional[int], Optional[str]):
     prev_message = message.reply_to_message
     split_text = message.text.split(None, 1)
 
