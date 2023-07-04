@@ -92,9 +92,6 @@ for module_name in ALL_MODULES:
 
 
 
-
-
-
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
@@ -147,8 +144,8 @@ def start(update: Update, context: CallbackContext):
     else:
         first_name = update.effective_user.first_name
         update.effective_message.reply_text(
-            text="Hello {} \n\n┏•❅────✧❅✦❅✧────❅•┓\n <b>⇛ I Am Alive Baby!</b>\n <b>⇛ I didn't Slept since: </b><code>{}</code>\n┗•❅──l──✧❅✦❅✧────❅•┛".format(
-                first_name, uptime
+            text="Hello {}, LegendBot assistant is here :) PM me if you have any questions or doubts about using me.".format(
+                first_name
             ),
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.HTML,
