@@ -206,7 +206,7 @@ def legend_callback(update: Update, context: CallbackContext):
             Note:
             This is Open source but don't try to deploy because it's totally based on LegendBot Group.
             Contact Owner only for reporting bugs
-            """
+            """,
             reply_markup=InlineKeyboardMarkup(buttons),
             timeout=60,
             disable_web_page_preview=True,
