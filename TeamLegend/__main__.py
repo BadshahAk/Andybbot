@@ -165,7 +165,7 @@ buttons = [
         InlineKeyboardButton(text="Support", url="https://t.me/LegendBot_OP"),
     ],
     [
-        InlineKeyboardButton(text="Help me", url="https://t.me/TeamLegendXDBot?start=help"),
+        InlineKeyboardButton(text="Help me", callback_data="help_back"),
         InlineKeyboardButton(text="About me", callback_data="about_me"),
     ],
 ]
@@ -176,32 +176,33 @@ about_me_button = [
         InlineKeyboardButton(text="Source", callback_data="source_now"),
     ],
     [
-        InlineKeyboardButton(text="Home", callback_data="legend_back"),
+        InlineKeyboardButton(text="Home", callback_data="help_back"),
     ],
 ]
                              
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    uptime = get_readable_time((time.time() - StartTime))
-    if query.data == "legend_back":
-        send_help(query.id, HELP_STRINGS)
-    elif query.data == "about_me":
+    if query.data == "about_me":
         query.message.edit_text(
             text="""
-★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
-★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
-★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
-★ Language : [Python 3](https://docs.python.org)
-★ Database : [Mongo DB](https://cloud.mongodb.com/)
-★ Version : V1.0
-""",
+            ★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
+            ★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
+            ★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
+            ★ Language : [Python 3](https://docs.python.org)
+            ★ Database : [Mongo DB](https://cloud.mongodb.com/)
+            ★ Version : V1.0
+            """,
             reply_markup=InlineKeyboardMarkup(about_me_button),
             timeout=60,
             disable_web_page_preview=True,
         )
-    elif query.data == "source_now":
+
+    
+def source_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "source_now":
         query.message.edit_text(
-            text="""
+            text=f"""
             🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
             Note:
             This is Open source but don't try to deploy because it's totally based on LegendBot Group.
@@ -212,6 +213,22 @@ def legend_callback(update: Update, context: CallbackContext):
             disable_web_page_preview=True,
         )
 
+
+def status_about_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    if query.data == "status_now":
+        query.message.edit_text(
+            text=f"""
+            🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
+            Note:
+            This is Open source but don't try to deploy because it's totally based on LegendBot Group.
+            Contact Owner only for reporting bugs
+            """,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            timeout=60,
+            disable_web_page_preview=True,
+        )
+        
 def error_handler(update, context):
     """Log the error and send a telegram message to notify the developer."""
     # Log the error before we do anything else, so we can see it even if something breaks.
@@ -277,9 +294,6 @@ def help_button(update, context):
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
     back_match = re.match(r"help_back", query.data)
-
-    print(query.message.chat.id)
-
     try:
         if mod_match:
             module = mod_match.group(1)
@@ -625,30 +639,28 @@ def main():
             LOGS.warning(
                 f"Bot is not Able To Send Message To {EVENT_LOGS}",
             )
-
         except BadRequest as e:
             LOGS.warning(e.message)
 
     start_handler = CommandHandler("start", start, pass_args=False, run_async=True)
-    about_callback_handler = CallbackQueryHandler(
-        legend_callback, pattern=r"legend_back", run_async=True
-    )
+    about_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"legend_back", run_async=True)
+    Source_callback_handler = CallbackQueryHandler(source_about_callback, pattern=r"source_now", run_async=True)
+    Status_about_callback = CallbackQueryHandler(status_about_callback, pattern=r"status_now", run_async=True)
     help_handler = CommandHandler("help", get_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
     settings_handler = CommandHandler("settings", get_settings, run_async=True)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_", run_async=True)
-
-    
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(about_callback_handler)
+    dispatcher.add_handler(Source_callback_handler)
+    dispatcher.add_handler(Status_callback_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(settings_handler)
     dispatcher.add_handler(help_callback_handler)
     dispatcher.add_handler(settings_callback_handler)
     dispatcher.add_handler(migrate_handler)
-
     dispatcher.add_error_handler(error_callback)
 
     LOGS.info("Using long polling.")
