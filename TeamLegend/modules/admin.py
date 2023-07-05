@@ -302,7 +302,6 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
             can_change_info=False,
             can_edit_messages=False,
             can_delete_messages=False,
-            can_invite_users=False,
             can_restrict_members=False,
             can_pin_messages=False,
             can_promote_members=False,
