@@ -221,10 +221,11 @@ def source_about_callback(update: Update, context: CallbackContext):
     if query.data == "source_":
         query.message.edit_caption(
             caption=f"""
-            🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
-            Note:
-            This is Open source but don't try to deploy because it's totally based on LegendBot Group.
-            Contact Owner only for reporting bugs
+👑 *Owner* : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
+
+➣ *Note* :
+• This is Open source but don't try to deploy because it's totally based on LegendBot Group.
+• Contact Owner only for reporting bugs
             """,
             reply_markup=InlineKeyboardMarkup(source_button),
             parse_mode=ParseMode.MARKDOWN,
@@ -234,9 +235,17 @@ def source_about_callback(update: Update, context: CallbackContext):
 
 def status_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
+    uptime = get_readable_time((time.time() - StartTime))
     if query.data == "status_":
         query.answer(
-            text=f"🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)",
+            text=f"""
+╭──────────────
+┣─ » ★ Owner:『𖤍 Lêɠêɳ̃dẞογ ࿐』
+┣─ » ★ Uptime : {uptime}
+┣─ » ★ Python : {python_version()}
+┣─ » ★ Telegram : {telever}
+╰──────────────
+"""
             show_alert=True,
         )
         
