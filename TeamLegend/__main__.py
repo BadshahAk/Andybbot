@@ -245,7 +245,7 @@ def status_about_callback(update: Update, context: CallbackContext):
 ┣─ » ★ Python : {python_version()}
 ┣─ » ★ Telegram : {telever}
 ╰──────────────
-"""
+            """,
             show_alert=True,
         )
         
