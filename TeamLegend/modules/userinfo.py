@@ -19,8 +19,8 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 
 import TeamLegend.sql.userinfo_sql as sql
-from TeamLegend import DEV_USERS, OWNER_ID
-
+from TeamLegend.Config import DEV_USERS, OWNER_ID
+from TeamLegend import INFOPIC
 from TeamLegend.core.clients import dispatcher
 from TeamLegend import legendtbot as LegendTC
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
@@ -154,7 +154,7 @@ def get_id(update: Update, context: CallbackContext):
 
 @LegendTC.on(
     events.NewMessage(
-        pattern="/ginfo ", from_users=(DEV_USERS)
+        pattern="/ginfo ", from_users=(str(DEV_USERS))
     )
 )
 async def group_info(event) -> None:
