@@ -20,16 +20,11 @@ from telethon.tl.types import ChannelParticipantsAdmins
 
 import TeamLegend.sql.userinfo_sql as sql
 from TeamLegend import (
-    DEMONS,
     DEV_USERS,
-    DRAGONS,
-    INFOPIC,
     OWNER_ID,
-    TIGERS,
-    WOLVES,
-    dispatcher,
-)
-from TeamLegend import legendtbot as KannadigaTelethonClient
+
+from TeamLegend.core.clients import dispatcher
+from TeamLegend import legendtbot as LegendTC
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import sudo_plus
