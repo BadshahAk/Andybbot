@@ -177,24 +177,36 @@ about_me_button = [
         InlineKeyboardButton(text="Source", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="Home", callback_data="help_back"),
+        InlineKeyboardButton(text="Home", callback_data="legend_back"),
     ],
 ]
-                             
+
+
 def legend_callback(update: Update, context: CallbackContext):
+    query = update.callback_query
+    first_name = update.effective_user.first_name
+    if query.data == "legend_back":
+        update.effective_message.edit_caption(
+            caption="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.MARKDOWN,
+        )
+
+        
+def about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "about_":
         query.message.edit_caption(
             caption="""
-★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
-★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
-★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
-★ Language : [Python 3](https://docs.python.org)
-★ Database : [Mongo DB](https://cloud.mongodb.com/)
-★ Version : V1.0
+★ *My Name* : [Assistant](https://t.me/LegendBoyXDBot)
+★ *Creator's* : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
+★ *Library* : [PTB](https://t.me/https://docs.python-telegram-bot.org)
+★ *Language* : [Python 3](https://docs.python.org)
+★ *Database* : [Mongo DB](https://cloud.mongodb.com/)
+★ *Version* : _V1.0_
             """,
             reply_markup=InlineKeyboardMarkup(about_me_button),
-            parse_mode=ParseMode.MARKDOWN_V2,
+            parse_mode=ParseMode.MARKDOWN,
             timeout=60,
         )
 
@@ -226,7 +238,7 @@ def status_about_callback(update: Update, context: CallbackContext):
             Contact Owner only for reporting bugs
             """,
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN_V2,
+            parse_mode=ParseMode.MARKDOWN,
             timeout=60,
         )
         
@@ -643,7 +655,8 @@ def main():
             LOGS.warning(e.message)
 
     start_handler = CommandHandler("start", start, pass_args=True, run_async=True)
-    about_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"about_", run_async=True)
+    legend_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"legend_back", run_async=True)
+    about_callback_handler = CallbackQueryHandler(about_callback, pattern=r"about_", run_async=True)
     Source_callback_handler = CallbackQueryHandler(source_about_callback, pattern=r"source_", run_async=True)
     Status_callback_handler = CallbackQueryHandler(status_about_callback, pattern=r"status_", run_async=True)
     help_handler = CommandHandler("help", get_help)
@@ -653,6 +666,7 @@ def main():
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
 
     dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(legend_callback_handler)
     dispatcher.add_handler(about_callback_handler)
     dispatcher.add_handler(Source_callback_handler)
     dispatcher.add_handler(Status_callback_handler)
