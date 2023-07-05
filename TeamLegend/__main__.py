@@ -184,7 +184,7 @@ def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "about_":
         query.message.edit_caption(
-            text="""
+            caption="""
             ★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
             ★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
             ★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
