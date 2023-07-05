@@ -17,8 +17,8 @@ async def awake(_, message: Message):
     TEXT += f"» **Pyrogram Version :** `{pyrover}` \n━━━━━━━━━━━━━━━━━\n\n"
     BUTTON = [
         [
-            InlineKeyboardButton("ʜᴇʟᴘ", url=f"https://t.me/{BOT_USERNAME}?start=help"),
-            InlineKeyboardButton("sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/TeamLegendXD"),
+            InlineKeyboardButton("Uᴘᴅᴀᴛᴇ", url=f"https://t.me/TeamLegendBots"),
+            InlineKeyboardButton("Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/LegendBot_OP"),
         ]
     ]
     await message.reply_photo(
