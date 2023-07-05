@@ -141,7 +141,7 @@ def start(update: Update, context: CallbackContext):
                     "https://graph.org/file/f60051408d17fd505fa11.jpg",
                     caption="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
-                    parse_mode=ParseMode.MARKDOWN_V2
+                    parse_mode=ParseMode.MARKDOWN_V2,
                 )
 
     else:
@@ -194,7 +194,7 @@ def legend_callback(update: Update, context: CallbackContext):
 ★ Version : V1.0
             """,
             reply_markup=InlineKeyboardMarkup(about_me_button),
-            parse_mode=ParseMode.MARKDOWN_V2
+            parse_mode=ParseMode.MARKDOWN_V2,
             timeout=60,
         )
 
@@ -210,7 +210,7 @@ def source_about_callback(update: Update, context: CallbackContext):
             Contact Owner only for reporting bugs
             """,
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN_V2
+            parse_mode=ParseMode.MARKDOWN_V2,
             timeout=60,
         )
 
@@ -226,7 +226,7 @@ def status_about_callback(update: Update, context: CallbackContext):
             Contact Owner only for reporting bugs
             """,
             reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN_V2
+            parse_mode=ParseMode.MARKDOWN_V2,
             timeout=60,
         )
         
