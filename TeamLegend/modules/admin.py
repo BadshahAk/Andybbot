@@ -876,38 +876,49 @@ __help__ = """
 """
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
-SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker)
-SETCHATPIC_HANDLER = CommandHandler("setgpic", setchatpic)
-RMCHATPIC_HANDLER = CommandHandler("delgpic", rmchatpic)
-SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title)
-ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
-PIN_HANDLER = CommandHandler("pin", pin)
-UNPIN_HANDLER = CommandHandler("unpin", unpin)
-INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
-PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
-FULLPROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote)
-LOW_PROMOTE_HANDLER = DisableAbleCommandHandler("lowpromote", lowpromote)
-DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
-SET_TITLE_HANDLER = CommandHandler("title", set_title)
+ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
+
+PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
+UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
+UNPINALL_HANDLER = CommandHandler("unpinall", unpinall, filters=Filters.chat_type.groups, run_async=True)
+UNPINALL_BTN_HANDLER = CallbackQueryHandler(unpinallbtn, pattern=r"unpinallbtn_")
+INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite, run_async=True)
+PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
+FULL_PROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote, run_async=True)
+DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)
+SET_TITLE_HANDLER = CommandHandler("title", set_title, run_async=True)
 ADMIN_REFRESH_HANDLER = CommandHandler(
-    ["admincache", "reload", "refresh"],
-    refresh_admin,
+    "admincache", refresh_admin, filters=Filters.chat_type.groups, run_async=True
 )
-dispatcher.add_handler(SET_DESC_HANDLER)
-dispatcher.add_handler(SET_STICKER_HANDLER)
-dispatcher.add_handler(SETCHATPIC_HANDLER)
-dispatcher.add_handler(RMCHATPIC_HANDLER)
-dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
+CHAT_PIC_HANDLER = CommandHandler("setgpic", setchatpic, filters=Filters.chat_type.groups, run_async=True)
+DEL_CHAT_PIC_HANDLER = CommandHandler(
+    "delgpic", rmchatpic, filters=Filters.chat_type.groups, run_async=True)
+SETCHAT_TITLE_HANDLER = CommandHandler(
+    "setgtitle", setchat_title, filters=Filters.chat_type.groups, run_async=True
+)
+SETSTICKET_HANDLER = CommandHandler(
+    "setsticker", set_sticker, filters=Filters.chat_type.groups, run_async=True)
+SETDESC_HANDLER = CommandHandler(
+    "setdesc",
+    set_desc,
+    filters=Filters.chat_type.groups, run_async=True)
+
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
+dispatcher.add_handler(UNPINALL_HANDLER)
+dispatcher.add_handler(UNPINALL_BTN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
-dispatcher.add_handler(FULLPROMOTE_HANDLER)
-dispatcher.add_handler(LOW_PROMOTE_HANDLER)
+dispatcher.add_handler(FULL_PROMOTE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
+dispatcher.add_handler(CHAT_PIC_HANDLER)
+dispatcher.add_handler(DEL_CHAT_PIC_HANDLER)
+dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
+dispatcher.add_handler(SETSTICKET_HANDLER)
+dispatcher.add_handler(SETDESC_HANDLER)
 
 __mod_name__ = "Admins"
 __command_list__ = [
