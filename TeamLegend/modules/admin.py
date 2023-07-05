@@ -131,8 +131,11 @@ def set_desc(update: Update, context: CallbackContext):
     tesc = msg.text.split(None, 1)
     if len(tesc) >= 2:
         desc = tesc[1]
+    elif msg.reply_to_message:
+        desc = msg.text
     else:
         return msg.reply_text("» You want to set an empty Description 🤨!")
+
     try:
         if len(desc) > 255:
             return msg.reply_text(
@@ -178,7 +181,6 @@ def setchat_title(update: Update, context: CallbackContext):
 @bot_admin # used to check bot is admin or not
 @can_promote # used to check that bot have permission to promote or demote
 @user_admin # Ths is used to check Owner id or Dev Id or Administrator
-
 @loggable # used to send message in log chat 
 
 def promote(update: Update, context: CallbackContext) -> str:
