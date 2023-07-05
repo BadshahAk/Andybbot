@@ -133,13 +133,13 @@ def start(update: Update, context: CallbackContext):
             if str(user_id) not in str(DEV_USERS):
                 update.effective_message.reply_photo(
                     "https://graph.org/file/f60051408d17fd505fa11.jpg",
-                    caption="Hello {}\n\n➣ Sorry who are you, your user id not in our database.So, don't try to waste time your time here.This bot mainly made to handle team legend's Group. ".format(first_name),
+                    caption="*Hello* {}\n\n➣ _Sorry who are you, your user id not in our database.So, don't try to waste time your time here.This bot mainly made to handle team legend's Group.*".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
             else:
                 update.effective_message.reply_photo(
                     "https://graph.org/file/f60051408d17fd505fa11.jpg",
-                    caption="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
+                    caption="*Hello* {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
                     reply_markup=InlineKeyboardMarkup(buttons),
                     parse_mode=ParseMode.MARKDOWN,
                 )
@@ -156,34 +156,34 @@ def start(update: Update, context: CallbackContext):
 
 grp_start_button = [
     [
-        InlineKeyboardButton(text="☞ How To Use ☜", url="https://t.me/TeamLegendXDBot?start=help"),
+        InlineKeyboardButton(text="☞ Hᴏᴡ ᴛᴏ Usᴇ ☜", url="https://t.me/TeamLegendXDBot?start=help"),
     ],
 ]  
 
 buttons = [
     [
-        InlineKeyboardButton(text="Updates", url="https://t.me/LegendBot_AI"),
-        InlineKeyboardButton(text="Support", url="https://t.me/LegendBot_OP"),
+        InlineKeyboardButton(text=" Uᴘᴅᴀᴛᴇs ", url="https://t.me/LegendBot_AI"),
+        InlineKeyboardButton(text=" Sᴜᴘᴘᴏʀᴛ ", url="https://t.me/LegendBot_OP"),
     ],
     [
-        InlineKeyboardButton(text="Help me", callback_data="help_back"),
-        InlineKeyboardButton(text="About me", callback_data="about_"),
+        InlineKeyboardButton(text=" Hᴇʟᴘ Mᴇ", callback_data="help_back"),
+        InlineKeyboardButton(text=" Aʙᴏᴜᴛ Mᴇ", callback_data="about_"),
     ],
 ]
 
 about_me_button = [
     [
-        InlineKeyboardButton(text="Status", callback_data="status_"),
-        InlineKeyboardButton(text="Source", callback_data="source_"),
+        InlineKeyboardButton(text=" Sᴛᴀᴛᴜs ", callback_data="status_"),
+        InlineKeyboardButton(text=" Sᴏᴜʀᴄᴇ ", callback_data="source_"),
     ],
     [
-        InlineKeyboardButton(text="Home", callback_data="legend_back"),
+        InlineKeyboardButton(text=" Hᴏᴍᴇ ", callback_data="legend_back"),
     ],
 ]
 
 source_button = [
     [
-        InlineKeyboardButton(text="Back", callback_data="about_"),
+        InlineKeyboardButton(text=" Bᴀᴄᴋ ", callback_data="about_"),
     ],
 ]
         
@@ -192,7 +192,7 @@ def legend_callback(update: Update, context: CallbackContext):
     first_name = update.effective_user.first_name
     if query.data == "legend_back":
         update.effective_message.edit_caption(
-            caption="Hello {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
+            caption="*Hello* {}\n\nA Smart Robot with Many Amazing Feature Which is made by [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner).\nI know you are developers of my bot and my good friends. \n\nKeep Enjoying 🧑‍💻.".format(first_name),
             reply_markup=InlineKeyboardMarkup(buttons),
             parse_mode=ParseMode.MARKDOWN,
         )
@@ -240,10 +240,10 @@ def status_about_callback(update: Update, context: CallbackContext):
         query.answer(
             text=f"""
 ╭──────────────
-┣─ » ★ Owner:『𖤍 Lêɠêɳ̃dẞογ ࿐』
-┣─ » ★ Uptime : {uptime}
-┣─ » ★ Python : {python_version()}
-┣─ » ★ Telegram : {telever}
+┣─ »★ Owner:『𖤍 Lêɠêɳ̃dẞογ ࿐』
+┣─ »★ Uptime : {uptime}
+┣─ »★ Python : {python_version()}
+┣─ »★ Telegram : {telever}
 ╰──────────────
             """,
             show_alert=True,
