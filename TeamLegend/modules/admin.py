@@ -5,7 +5,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, Upda
 from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, run_async
 from telegram.utils.helpers import mention_html
-
+from TeamLegend import owner_name, owner_tg
 from TeamLegend.Config import DEV_USERS, OWNER_ID
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.modules.disable import DisableAbleCommandHandler
@@ -35,26 +35,26 @@ def set_sticker(update: Update, context: CallbackContext):
     user = update.effective_user
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
+            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
         )
 
     if msg.reply_to_message:
         if not msg.reply_to_message.sticker:
             return msg.reply_text(
-                "» Reply to a sticker to set it as group sticker pack!"
+                "» Rᴇᴘʟʏ Tᴏ A Sᴛɪᴄᴋᴇʀ Tᴏ Sᴇᴛ As Gʀᴏᴜᴘ Sᴛɪᴄᴋᴇʀ !"
             )
         stkr = msg.reply_to_message.sticker.set_name
         try:
             context.bot.set_chat_sticker_set(chat.id, stkr)
-            msg.reply_text(f"» Successfully Set Group Sticker in {chat.title}!")
+            msg.reply_text(f"» Sᴜᴄᴄᴇssғᴜʟʟʏ sᴇᴛ Gʀᴏᴜᴘ Sᴛɪᴄᴋᴇʀ ɪɴ {chat.title}!")
         except BadRequest as excp:
             if excp.message == "Participants_too_few":
                 return msg.reply_text(
-                    f"» Your Group need minimum 100 member to set sticker pack in {chat.title}!"
+                    f"» Yᴏᴜʀ Gʀᴏᴜᴘ Nᴇᴇᴅ Mɪɴɪᴍᴜᴍ 100 Mᴇᴍʙᴇʀ ᴛᴏ sᴇᴛ sᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ ɪɴ {chat.title}!"
                 )
             msg.reply_text(f"Error ! {excp.message}.")
     else:
-        msg.reply_text("» Reply to a sticker set to set as group sticker pack !")
+        msg.reply_text("» Rᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ sᴇᴛ ᴛᴏ sᴇᴛ ᴀs ɢʀᴏᴜᴘ sᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ !")
 
 
 @run_async
@@ -67,7 +67,7 @@ def setchatpic(update: Update, context: CallbackContext):
 
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
+            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!"
         )
 
     if msg.reply_to_message:
@@ -105,7 +105,7 @@ def rmchatpic(update: Update, context: CallbackContext):
 
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
+            "☞ ☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
         )
     try:
         context.bot.delete_chat_photo(int(chat.id))
@@ -125,7 +125,7 @@ def set_desc(update: Update, context: CallbackContext):
     user = update.effective_user
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
+            "☞ ☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
         )
 
     tesc = msg.text.split(None, 1)
@@ -157,7 +157,7 @@ def setchat_title(update: Update, context: CallbackContext):
     args = context.args
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Only @LegendBoy_OP Have Permission To Change The Sticker"
+            "☞ ☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
         )
 
     title = " ".join(args)
@@ -958,11 +958,10 @@ __help__ = """
 ➢ /delgpic *:* Delete Default Group Photo
 """
 
-
+SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
 SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker)
 SETCHATPIC_HANDLER = CommandHandler("setgpic", setchatpic)
 RMCHATPIC_HANDLER = CommandHandler("delgpic", rmchatpic)
-SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
 SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title)
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
