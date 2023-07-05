@@ -26,7 +26,7 @@ BOT_USERNAME = dispatcher.bot.username
 
 # Aʙᴏᴜᴛ Oᴡɴᴇʀ
 owner_name = "『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」"
-owner_tg = "https://t.me/LegendBoyOP"
+owner_tg = "https://t.me/LegendBoy_OP"
 owner_id = 5591734243
 """
 # Load at end to ensure all prev variables have been set
