@@ -651,6 +651,56 @@ def unpin(update: Update, context: CallbackContext):
 
     return log_message
 
+@bot_admin
+@can_pin
+@user_admin
+def unpinall(update: Update, context: CallbackContext):
+    member = update.effective_chat.get_member(update.effective_user.id)
+    if str(user.id) not in str(DEV_USERS):
+        return update.effective_message.reply_text("➣ Owner & Dev User Have Only Permission to Used This Command")
+    
+    context.bot.send_message(
+        chat_id=update.effective_chat.id,
+        text="Are you sure you want to unpin all messages?",
+        reply_markup=InlineKeyboardMarkup([[
+            InlineKeyboardButton(text="Yes", callback_data="unpinallbtn_yes"),
+            InlineKeyboardButton(text="No", callback_data="unpinallbtn_no"),
+        ]]),
+    )
+
+@bot_admin
+@loggable
+def unpinallbtn(update: Update, context: CallbackContext):
+    bot = context.bot
+    chat = update.effective_chat
+    query = update.callback_query
+    user = update.effective_user
+    reply = query.data.split("_")[1]
+    if str(user.id) not in str(DEV_USERS):
+        return update.effective_message.reply_text("➣ Owner & Dev User Have Only Permission to Used This Command")
+    if reply == 'yes':
+        try:
+            unpinned =  bot.unpinAllChatMessages(chat.id)
+            if unpinned:
+                query.message.edit_text("Successfully unpinned all messages!")
+            else:
+                query.message.edit_text("Failed to unpin all messages")
+        except BadRequest as excp:
+            if excp.message == "Chat_not_modified":
+                pass
+            else:
+                raise
+        
+    else:
+        query.message.edit_text("Unpin of all pinned messages has been cancelled.")
+        return
+    log_message = "<b>{}:</b>" \
+                  "\n#UNPINNEDALL" \
+                  "\n<b>Admin:</b> {}".format(
+                      html.escape(chat.title),
+                      mention_html(user.id, user.first_name),
+                  )
+    return log_message
 
 @bot_admin
 @user_admin # check dev user, owner & admin
