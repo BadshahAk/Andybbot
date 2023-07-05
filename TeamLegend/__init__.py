@@ -24,6 +24,10 @@ BOT_NAME = dispatcher.bot.first_name
 BOT_USERNAME = dispatcher.bot.username
 
 
+# Aʙᴏᴜᴛ Oᴡɴᴇʀ
+Owner_Name = "『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」"
+Owner_tg = "https://t.me/LegendBoyOP"
+Owner_id = 5591734243
 """
 # Load at end to ensure all prev variables have been set
 from TeamLegend.helpers.handlers import (
