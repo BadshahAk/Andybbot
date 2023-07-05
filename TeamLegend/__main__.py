@@ -181,7 +181,12 @@ about_me_button = [
     ],
 ]
 
-
+source_button = [
+    [
+        InlineKeyboardButton(text="Back", callback_data="about_"),
+    ],
+]
+        
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     first_name = update.effective_user.first_name
@@ -221,7 +226,7 @@ def source_about_callback(update: Update, context: CallbackContext):
             This is Open source but don't try to deploy because it's totally based on LegendBot Group.
             Contact Owner only for reporting bugs
             """,
-            reply_markup=InlineKeyboardMarkup(buttons),
+            reply_markup=InlineKeyboardMarkup(source_button),
             parse_mode=ParseMode.MARKDOWN,
             timeout=60,
         )
@@ -230,16 +235,9 @@ def source_about_callback(update: Update, context: CallbackContext):
 def status_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "status_":
-        query.message.edit_caption(
-            caption=f"""
-            🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
-            Note:
-            This is Open source but don't try to deploy because it's totally based on LegendBot Group.
-            Contact Owner only for reporting bugs
-            """,
-            reply_markup=InlineKeyboardMarkup(buttons),
-            parse_mode=ParseMode.MARKDOWN,
-            timeout=60,
+        query.answer(
+            text=f"🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)",
+            show_alert=True,
         )
         
 def error_handler(update, context):
