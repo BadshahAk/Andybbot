@@ -36,7 +36,7 @@ def set_sticker(update: Update, context: CallbackContext):
     user = update.effective_user
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ",
+            f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ",
             parse_mode=ParseMode.MARKDOWN,
         )
 
@@ -69,7 +69,7 @@ def setchatpic(update: Update, context: CallbackContext):
 
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!",
+            f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!",
             parse_mode=ParseMode.MARKDOWN,
         )
 
