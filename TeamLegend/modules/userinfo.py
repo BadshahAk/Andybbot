@@ -19,9 +19,7 @@ from telethon.tl.functions.channels import GetFullChannelRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 
 import TeamLegend.sql.userinfo_sql as sql
-from TeamLegend import (
-    DEV_USERS,
-    OWNER_ID,
+from TeamLegend import DEV_USERS, OWNER_ID,
 
 from TeamLegend.core.clients import dispatcher
 from TeamLegend import legendtbot as LegendTC
