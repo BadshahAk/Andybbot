@@ -120,7 +120,7 @@ def make_bar(per):
     return "■" * done + "□" * (10 - done)
 
 
-@run_async
+
 def get_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -134,7 +134,7 @@ def get_id(update: Update, context: CallbackContext):
             user2 = message.reply_to_message.forward_from
 
             msg.reply_text(
-                f"<b>ᴛᴇʟᴇɢʀᴀᴍ ɪᴅ:</b>,"
+                f"<b>Tᴇʟᴇɢʀᴀᴍ Iᴅ:</b>,"
                 f"• {html.escape(user2.first_name)} - <code>{user2.id}</code>.\n"
                 f"• {html.escape(user1.first_name)} - <code>{user1.id}</code>.",
                 parse_mode=ParseMode.HTML,
@@ -150,18 +150,18 @@ def get_id(update: Update, context: CallbackContext):
     else:
         if chat.type == "private":
             msg.reply_text(
-                f"ʏᴏᴜʀ ᴜsᴇʀ ɪᴅ ɪs <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
+                f"Yᴏᴜʀ Usᴇʀ ɪᴅ ɪs <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
             )
 
         else:
             msg.reply_text(
-                f"ᴛʜɪs ɢʀᴏᴜᴩ's ɪᴅ ɪs <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
+                f"Tʜɪs Gʀᴏᴜᴩ's ɪᴅ ɪs <code>{chat.id}</code>.", parse_mode=ParseMode.HTML
             )
 
 
-@KannadigaTelethonClient.on(
+@LegendTC.on(
     events.NewMessage(
-        pattern="/ginfo ", from_users=(TIGERS or []) + (DRAGONS or []) + (DEMONS or [])
+        pattern="/ginfo ", from_users=(DEV_USERS)
     )
 )
 async def group_info(event) -> None:
@@ -177,27 +177,27 @@ async def group_info(event) -> None:
             "Can't for some reason, maybe it is a private one or that I am banned there."
         )
         return
-    msg = f"**ɪᴅ**: `{entity.id}`"
-    msg += f"\n**ᴛɪᴛʟᴇ**: `{entity.title}`"
-    msg += f"\n**ᴅᴄ**: `{entity.photo.dc_id}`"
-    msg += f"\n**ᴠɪᴅᴇᴏ ᴩғᴩ**: `{entity.photo.has_video}`"
-    msg += f"\n**sᴜᴩᴇʀɢʀᴏᴜᴩ**: `{entity.megagroup}`"
-    msg += f"\n**ʀᴇsᴛʀɪᴄᴛᴇᴅ**: `{entity.restricted}`"
-    msg += f"\n**sᴄᴀᴍ**: `{entity.scam}`"
-    msg += f"\n**sʟᴏᴡᴍᴏᴅᴇ**: `{entity.slowmode_enabled}`"
+    msg = f"**Iᴅ**: `{entity.id}`"
+    msg += f"\n**Tɪᴛʟᴇ**: `{entity.title}`"
+    msg += f"\n**Dᴄ**: `{entity.photo.dc_id}`"
+    msg += f"\n**Vɪᴅᴇᴏ ᴩғᴩ**: `{entity.photo.has_video}`"
+    msg += f"\n**Sᴜᴩᴇʀɢʀᴏᴜᴩ**: `{entity.megagroup}`"
+    msg += f"\n**Rᴇsᴛʀɪᴄᴛᴇᴅ**: `{entity.restricted}`"
+    msg += f"\n**Sᴄᴀᴍ**: `{entity.scam}`"
+    msg += f"\n**Sʟᴏᴡᴍᴏᴅᴇ**: `{entity.slowmode_enabled}`"
     if entity.username:
-        msg += f"\n**ᴜsᴇʀɴᴀᴍᴇ**: {entity.username}"
-    msg += "\n\n**ᴍᴇᴍʙᴇʀ sᴛᴀᴛs:**"
-    msg += f"\nᴀᴅᴍɪɴs: `{len(totallist)}`"
-    msg += f"\nᴜsᴇʀs: `{totallist.total}`"
-    msg += "\n\n**ᴀᴅᴍɪɴs ʟɪsᴛ:**"
+        msg += f"\n**Usᴇʀɴᴀᴍᴇ**: {entity.username}"
+    msg += "\n\n**Mᴇᴍʙᴇʀ Sᴛᴀᴛs:**"
+    msg += f"\nAᴅᴍɪɴs: `{len(totallist)}`"
+    msg += f"\nUsᴇʀs: `{totallist.total}`"
+    msg += "\n\n**Aᴅᴍɪɴs Lɪsᴛ:**"
     for x in totallist:
         msg += f"\n• [{x.id}](tg://user?id={x.id})"
-    msg += f"\n\n**ᴅᴇsᴄʀɪᴩᴛɪᴏɴ**:\n`{ch_full.full_chat.about}`"
+    msg += f"\n\n**Dᴇsᴄʀɪᴩᴛɪᴏɴ**:\n`{ch_full.full_chat.about}`"
     await event.reply(msg)
 
 
-@run_async
+
 def gifid(update: Update, context: CallbackContext):
     msg = update.effective_message
     if msg.reply_to_message and msg.reply_to_message.animation:
@@ -209,7 +209,7 @@ def gifid(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Please reply to a gif to get its ID.")
 
 
-@run_async
+
 def info(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -240,18 +240,18 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>ᴀᴩᴩʀᴀɪsɪɴɢ...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"ㅤ ㅤㅤ      ✦ ᴜsᴇʀ ɪɴғᴏ ✦\n•❅─────✧❅✦❅✧─────❅•\n"
-        f"➻ <b>ᴜsᴇʀ ɪᴅ:</b> <code>{user.id}</code>\n"
-        f"➻ <b>ғɪʀsᴛ ɴᴀᴍᴇ:</b> {html.escape(user.first_name)}"
+        f"ㅤ ㅤㅤ      ✦ Usᴇʀ Iɴғᴏ ✦\n•❅─────✧❅✦❅✧─────❅•\n"
+        f"➻ <b>Usᴇʀ Iᴅ:</b> <code>{user.id}</code>\n"
+        f"➻ <b>Fɪʀsᴛ Nᴀᴍᴇ:</b> {html.escape(user.first_name)}"
     )
 
     if user.last_name:
-        text += f"\n➻ <b>ʟᴀsᴛ ɴᴀᴍᴇ:</b> {html.escape(user.last_name)}"
+        text += f"\n➻ <b>Lᴀsᴛ Nᴀᴍᴇ:</b> {html.escape(user.last_name)}"
 
     if user.username:
-        text += f"\n➻ <b>ᴜsᴇʀɴᴀᴍᴇ:</b> @{html.escape(user.username)}"
+        text += f"\n➻ <b>Usᴇʀɴᴀᴍᴇ:</b> @{html.escape(user.username)}"
 
-    text += f"\n➻ <b>ʟɪɴᴋ:</b> {mention_html(user.id, 'link')}"
+    text += f"\n➻ <b>Lɪɴᴋ:</b> {mention_html(user.id, 'link')}"
 
     if chat.type != "private" and user_id != bot.id:
         _stext = "\n➻ <b>ᴩʀᴇsᴇɴᴄᴇ:</b> <code>{}</code>"
@@ -268,23 +268,14 @@ def info(update: Update, context: CallbackContext):
                     text += _stext.format("ᴅᴇᴛᴇᴄᴛᴇᴅ")
                 elif status in {"administrator", "creator"}:
                     text += _stext.format("ᴀᴅᴍɪɴ")
-    if user_id not in [bot.id, 777000, 1087968824]:
+    if user_id not in [bot.id, 777000]:
         userhp = hpmanager(user)
-        text += f"\n\n<b>ʜᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
+        text += f"\n\n<b>Hᴇᴀʟᴛʜ:</b> <code>{userhp['earnedhp']}/{userhp['totalhp']}</code>\n[<i>{make_bar(int(userhp['percentage']))} </i>{userhp['percentage']}%]"
 
     if user.id == OWNER_ID:
         text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ɢᴏᴅ</b>.\n"
     elif user.id in DEV_USERS:
         text += "\n\nᴛʜɪs ᴜsᴇʀ ɪs ᴀ ᴍᴇᴍʙᴇʀ ᴏғ <b>ᴀɴᴏɴ ᴀssᴏᴄɪᴀᴛɪᴏɴ</b>.\n"
-    elif user.id in DRAGONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅʀᴀɢᴏɴ</b>.\n"
-    elif user.id in DEMONS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴅᴇᴍᴏɴ</b>.\n"
-    elif user.id in TIGERS:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴛɪɢᴇʀ</b>.\n"
-    elif user.id in WOLVES:
-        text += "\n\nᴛʜᴇ ᴅɪsᴀsᴛᴇʀ ʟᴇᴠᴇʟ ᴏғ ᴛʜɪs ᴜsᴇʀ ɪs <b>ᴡᴏʟғ</b>.\n"
-
     try:
         user_member = chat.get_member(user.id)
         if user_member.status == "administrator":
@@ -294,7 +285,7 @@ def info(update: Update, context: CallbackContext):
             result = result.json()["result"]
             if "custom_title" in result.keys():
                 custom_title = result["custom_title"]
-                text += f"\n\nᴛɪᴛʟᴇ:\n<b>{custom_title}</b>"
+                text += f"\n\nTɪᴛʟᴇ:\n<b>{custom_title}</b>"
     except BadRequest:
         pass
 
@@ -319,10 +310,10 @@ def info(update: Update, context: CallbackContext):
                     [
                         [
                             InlineKeyboardButton(
-                                "ʜᴇᴀʟᴛʜ", url="https://t.me/kannadiga_xd"
+                                "Hᴇᴀʟᴛʜ", url="https://t.me/LegendBot_AI"
                             ),
                             InlineKeyboardButton(
-                                "ᴅɪꜱᴀꜱᴛᴇʀ", url="https://t.me/kannadiga_xd"
+                                "Dɪꜱᴀꜱᴛᴇʀ", url="https://t.me/LegendBot_OP"
                             ),
                         ],
                     ]
@@ -345,7 +336,7 @@ def info(update: Update, context: CallbackContext):
     rep.delete()
 
 
-@run_async
+
 def about_me(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -373,25 +364,24 @@ def about_me(update: Update, context: CallbackContext):
         update.effective_message.reply_text("There isnt one, use /setme to set one.")
 
 
-@run_async
 def set_about_me(update: Update, context: CallbackContext):
     message = update.effective_message
     user_id = message.from_user.id
-    if user_id in [777000, 6181817811]:
+    if user_id in [777000]:
         message.reply_text("Error! Unauthorized")
         return
     bot = context.bot
     if message.reply_to_message:
         repl_message = message.reply_to_message
         repl_user_id = repl_message.from_user.id
-        if repl_user_id in [bot.id, 777000, 6181817811] and (user_id in DEV_USERS):
+        if repl_user_id in [bot.id, 777000, OWNER_ID] and (user_id in DEV_USERS):
             user_id = repl_user_id
     text = message.text
     info = text.split(None, 1)
     if len(info) == 2:
         if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
             sql.set_user_me_info(user_id, info[1])
-            if user_id in [777000, 6181817811]:
+            if user_id in [777000, OWNER_ID]:
                 message.reply_text("Authorized...Information updated!")
             elif user_id == bot.id:
                 message.reply_text("I have updated my info with the one you provided!")
@@ -405,15 +395,14 @@ def set_about_me(update: Update, context: CallbackContext):
             )
 
 
-@run_async
+
 @sudo_plus
 def stats(update: Update, context: CallbackContext):
-    stats = "<b>🧐 ᴄᴜʀʀᴇɴᴛ sᴛᴀᴛs:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
+    stats = "<b>🧐 Cᴜʀʀᴇɴᴛ sᴛᴀᴛs:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
 
 
-@run_async
 def about_bio(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
@@ -443,7 +432,7 @@ def about_bio(update: Update, context: CallbackContext):
         )
 
 
-@run_async
+
 def set_about_bio(update: Update, context: CallbackContext):
     message = update.effective_message
     sender_id = update.effective_user.id
@@ -503,37 +492,39 @@ def __user_info__(user_id):
 
 
 __help__ = """
+✘ *User Commands*:
 *ID:*
- ❍ /id*:* get the current group id. If used by replying to a message, gets that user's id.
- ❍ /gifid*:* reply to a gif to me to tell you its file ID.
+ ➣ /id*:* get the current group id. If used by replying to a message, gets that user's id.
+ ➣ /gifid*:* reply to a gif to me to tell you its file ID.
 
 *Self added information:* 
- ❍ /setme <text>*:* will set your info
- ❍ /me*:* will get your or another user's info.
+ ➣ /setme <text>*:* will set your info
+ ➣ /me*:* will get your or another user's info.
 *Examples:* 💡
  ➩ /setme I am a wolf.
  ➩ /me @username(defaults to yours if no user specified)
 
 *Information others add on you:* 
- ❍ /bio*:* will get your or another user's bio. This cannot be set by yourself.
- ❍ /setbio <text>*:* while replying, will save another user's bio 
+ ➣ /bio*:* will get your or another user's bio. This cannot be set by yourself.
+ ➣ /setbio <text>*:* while replying, will save another user's bio 
 *Examples:* 💡
  ➩ /bio @username(defaults to yours if not specified).`
  ➩ /setbio This user is a wolf` (reply to the user)
 
 *Overall Information about you:*
- ❍ /info*:* get information about a user. 
- ❍ /myinfo*:* Shows info about the user who sent this command.
+ ➣ /info*:* get information about a user. 
+ ➣ /myinfo*:* Shows info about the user who sent this command.
+
+ ✘ *Dev Users*:
+ ➣ /grpinfo*:* Get all details about this group
 """
 
 SET_BIO_HANDLER = DisableAbleCommandHandler("setbio", set_about_bio)
 GET_BIO_HANDLER = DisableAbleCommandHandler("bio", about_bio)
-
 STATS_HANDLER = CommandHandler("stats", stats)
 ID_HANDLER = DisableAbleCommandHandler("id", get_id)
 GIFID_HANDLER = DisableAbleCommandHandler("gifid", gifid)
 INFO_HANDLER = DisableAbleCommandHandler(("info", "book"), info)
-
 SET_ABOUT_HANDLER = DisableAbleCommandHandler("setme", set_about_me)
 GET_ABOUT_HANDLER = DisableAbleCommandHandler("me", about_me)
 
@@ -546,8 +537,8 @@ dispatcher.add_handler(GET_BIO_HANDLER)
 dispatcher.add_handler(SET_ABOUT_HANDLER)
 dispatcher.add_handler(GET_ABOUT_HANDLER)
 
-__mod_name__ = "Iɴꜰᴏs"
-__command_list__ = ["setbio", "bio", "setme", "me", "info"]
+__mod_name__ = "Infos"
+__command_list__ = ["setbio", "bio", "setme", "me", "info", "id", "me", "stats"]
 __handlers__ = [
     ID_HANDLER,
     GIFID_HANDLER,
