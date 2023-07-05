@@ -185,12 +185,12 @@ def legend_callback(update: Update, context: CallbackContext):
     if query.data == "about_":
         query.message.edit_caption(
             caption="""
-            ★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
-            ★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
-            ★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
-            ★ Language : [Python 3](https://docs.python.org)
-            ★ Database : [Mongo DB](https://cloud.mongodb.com/)
-            ★ Version : V1.0
+★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
+★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
+★ Library : [PTB](https://t.me/https://docs.python-telegram-bot.org)
+★ Language : [Python 3](https://docs.python.org)
+★ Database : [Mongo DB](https://cloud.mongodb.com/)
+★ Version : V1.0
             """,
             reply_markup=InlineKeyboardMarkup(about_me_button),
             timeout=60,
@@ -200,7 +200,7 @@ def legend_callback(update: Update, context: CallbackContext):
 def source_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "source_":
-        query.message.edit_text(
+        query.message.edit_caption(
             text=f"""
             🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
             Note:
@@ -209,14 +209,13 @@ def source_about_callback(update: Update, context: CallbackContext):
             """,
             reply_markup=InlineKeyboardMarkup(buttons),
             timeout=60,
-            disable_web_page_preview=True,
         )
 
 
 def status_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "status_":
-        query.message.edit_text(
+        query.message.edit_caption(
             text=f"""
             🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
             Note:
@@ -225,7 +224,6 @@ def status_about_callback(update: Update, context: CallbackContext):
             """,
             reply_markup=InlineKeyboardMarkup(buttons),
             timeout=60,
-            disable_web_page_preview=True,
         )
         
 def error_handler(update, context):
@@ -302,7 +300,7 @@ def help_button(update, context):
                 )
                 + HELPABLE[module].__help__
             )
-            query.message.edit_text(
+            query.message.edit_caption(
                 text=text,
                 parse_mode=ParseMode.MARKDOWN,
                 disable_web_page_preview=True,
@@ -313,7 +311,7 @@ def help_button(update, context):
 
         elif prev_match:
             curr_page = int(prev_match.group(1))
-            query.message.edit_text(
+            query.message.edit_caption(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -323,7 +321,7 @@ def help_button(update, context):
 
         elif next_match:
             next_page = int(next_match.group(1))
-            query.message.edit_text(
+            query.message.edit_caption(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -332,7 +330,7 @@ def help_button(update, context):
             )
 
         elif back_match:
-            query.message.edit_text(
+            query.message.edit_caption(
                 text=HELP_STRINGS,
                 parse_mode=ParseMode.MARKDOWN,
                 reply_markup=InlineKeyboardMarkup(
@@ -433,9 +431,10 @@ def get_help(update: Update, context: CallbackContext):
 def send_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
-    dispatcher.bot.send_message(
+    dispatcher.bot.send_photo(
         chat_id=chat_id,
-        text=text,
+        photo=START_IMG,
+        caption=text,
         parse_mode=ParseMode.MARKDOWN,
         disable_web_page_preview=True,
         reply_markup=keyboard,
