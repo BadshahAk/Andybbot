@@ -194,7 +194,6 @@ def legend_callback(update: Update, context: CallbackContext):
             """,
             reply_markup=InlineKeyboardMarkup(about_me_button),
             timeout=60,
-            disable_web_page_preview=True,
         )
 
     
