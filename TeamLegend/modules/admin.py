@@ -958,10 +958,11 @@ __help__ = """
 ➢ /delgpic *:* Delete Default Group Photo
 """
 
-SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
+
 SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker)
 SETCHATPIC_HANDLER = CommandHandler("setgpic", setchatpic)
 RMCHATPIC_HANDLER = CommandHandler("delgpic", rmchatpic)
+SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
 SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title)
 
 ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
