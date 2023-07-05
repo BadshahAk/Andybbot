@@ -183,7 +183,7 @@ about_me_button = [
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "about_":
-        query.message.edit_text(
+        query.message.edit_caption(
             text="""
             ★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
             ★ Creator's : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
