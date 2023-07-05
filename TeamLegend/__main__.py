@@ -166,14 +166,14 @@ buttons = [
     ],
     [
         InlineKeyboardButton(text="Help me", callback_data="help_back"),
-        InlineKeyboardButton(text="About me", callback_data="about_me"),
+        InlineKeyboardButton(text="About me", callback_data="about_"),
     ],
 ]
 
 about_me_button = [
     [
-        InlineKeyboardButton(text="Status", callback_data="status_now"),
-        InlineKeyboardButton(text="Source", callback_data="source_now"),
+        InlineKeyboardButton(text="Status", callback_data="status_"),
+        InlineKeyboardButton(text="Source", callback_data="source_"),
     ],
     [
         InlineKeyboardButton(text="Home", callback_data="help_back"),
@@ -182,7 +182,7 @@ about_me_button = [
                              
 def legend_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "about_me":
+    if query.data == "about_":
         query.message.edit_text(
             text="""
             ★ My Name : [Assistant](https://t.me/LegendBoyXDBot)
@@ -200,7 +200,7 @@ def legend_callback(update: Update, context: CallbackContext):
     
 def source_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "source_now":
+    if query.data == "source_":
         query.message.edit_text(
             text=f"""
             🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
@@ -216,7 +216,7 @@ def source_about_callback(update: Update, context: CallbackContext):
 
 def status_about_callback(update: Update, context: CallbackContext):
     query = update.callback_query
-    if query.data == "status_now":
+    if query.data == "status_":
         query.message.edit_text(
             text=f"""
             🧿 Owner: [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
@@ -642,12 +642,12 @@ def main():
         except BadRequest as e:
             LOGS.warning(e.message)
 
-    start_handler = CommandHandler("start", start, pass_args=False, run_async=True)
-    about_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"legend_back", run_async=True)
-    Source_callback_handler = CallbackQueryHandler(source_about_callback, pattern=r"source_now", run_async=True)
-    Status_callback_handler = CallbackQueryHandler(status_about_callback, pattern=r"status_now", run_async=True)
+    start_handler = CommandHandler("start", start, pass_args=True, run_async=True)
+    about_callback_handler = CallbackQueryHandler(legend_callback, pattern=r"about_", run_async=True)
+    Source_callback_handler = CallbackQueryHandler(source_about_callback, pattern=r"source_", run_async=True)
+    Status_callback_handler = CallbackQueryHandler(status_about_callback, pattern=r"status_", run_async=True)
     help_handler = CommandHandler("help", get_help)
-    help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
+    help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*", run_async=True)
     settings_handler = CommandHandler("settings", get_settings, run_async=True)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_", run_async=True)
     migrate_handler = MessageHandler(Filters.status_update.migrate, migrate_chats)
