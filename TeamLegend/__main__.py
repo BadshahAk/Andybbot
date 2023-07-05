@@ -408,21 +408,15 @@ def get_help(update: Update, context: CallbackContext):
             )
             return
         update.effective_message.reply_text( #This Help Directly To Send /help in Group
-            "☞ Choose An Option For Getting Help.",
+            "➣ Cʟɪᴄᴋ Bᴇʟᴏᴡ Tᴏ Mᴏᴠᴇ ᴛᴏ Pʀɪᴠᴀᴛᴇ Cʜᴀᴛs & Oᴘᴇɴ Hᴇʟᴘ Mᴇɴᴜ.",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            text="Open In Private",
+                            text="Hᴏᴡ Tᴏ Usᴇ Mᴇ",
                             url="https://t.me/{}?start=help".format(
                                 context.bot.username
                             ),
-                        )
-                    ],
-                    [
-                        InlineKeyboardButton(
-                            text="Open Here",
-                            callback_data="help_back",
                         )
                     ],
                 ]
