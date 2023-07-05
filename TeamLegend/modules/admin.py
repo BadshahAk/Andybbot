@@ -36,7 +36,8 @@ def set_sticker(update: Update, context: CallbackContext):
     user = update.effective_user
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
+            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ",
+            parse_mode=ParseMode.MARKDOWN,
         )
 
     if msg.reply_to_message:
@@ -974,6 +975,7 @@ __command_list__ = [
     "lowpromote",
     "demote",
     "admincache",
+    "unpinall",
 ]
 __handlers__ = [
     SET_DESC_HANDLER,
