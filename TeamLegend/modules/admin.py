@@ -68,7 +68,8 @@ def setchatpic(update: Update, context: CallbackContext):
 
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!"
+            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!",
+            parse_mode=ParseMode.MARKDOWN,
         )
 
     if msg.reply_to_message:
@@ -915,6 +916,7 @@ __help__ = """
 ✘ *Owner User Commands:*
 ➣ /promote*:* promotes the user replied to
 ➢ /unpin*:* unpins the currently pinned message
+➢ /unpinall*:* unpin all the message
 ➣ /fullpromote*:* promotes the user replied to with full rights
 ➣ /demote*:* demotes the user replied to
 ➣ /setgtitle <text>*:* set group title
@@ -932,6 +934,8 @@ SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title)
 ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
 PIN_HANDLER = CommandHandler("pin", pin)
 UNPIN_HANDLER = CommandHandler("unpin", unpin)
+UNPINALL_HANDLER = CommandHandler("unpinall", unpinall, filters=Filters.chat_type.groups, run_async=True)
+UNPINALL_BTN_HANDLER = CallbackQueryHandler(unpinallbtn, pattern=r"unpinallbtn_")
 INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
 PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
 FULLPROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote)
@@ -950,6 +954,8 @@ dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
+dispatcher.add_handler(UNPINALL_HANDLER)
+dispatcher.add_handler(UNPINALL_BTN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
 dispatcher.add_handler(FULLPROMOTE_HANDLER)
@@ -978,6 +984,7 @@ __handlers__ = [
     ADMINLIST_HANDLER,
     PIN_HANDLER,
     UNPIN_HANDLER,
+    UNPINALL_HANDLER,
     INVITE_HANDLER,
     PROMOTE_HANDLER,
     FULLPROMOTE_HANDLER,
