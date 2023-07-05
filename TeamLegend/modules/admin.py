@@ -24,9 +24,9 @@ from TeamLegend.helpers.extraction import (
     extract_user_and_text,
 )
 from TeamLegend.modules.log_channel import loggable
+from TeamLegend.helpers.alternate import typing_action
 
-
-@run_async
+@typing_action
 @bot_admin
 @user_admin
 def set_sticker(update: Update, context: CallbackContext):
@@ -57,7 +57,7 @@ def set_sticker(update: Update, context: CallbackContext):
         msg.reply_text("» Rᴇᴘʟʏ ᴛᴏ ᴀ sᴛɪᴄᴋᴇʀ sᴇᴛ ᴛᴏ sᴇᴛ ᴀs ɢʀᴏᴜᴘ sᴛɪᴄᴋᴇʀ ᴘᴀᴄᴋ !")
 
 
-@run_async
+
 @bot_admin
 @user_admin
 def setchatpic(update: Update, context: CallbackContext):
@@ -95,7 +95,6 @@ def setchatpic(update: Update, context: CallbackContext):
         msg.reply_text("» Reply to a photo or file photo to set as Group pic!")
 
 
-@run_async
 @bot_admin
 @user_admin
 def rmchatpic(update: Update, context: CallbackContext):
@@ -116,7 +115,7 @@ def rmchatpic(update: Update, context: CallbackContext):
         return
 
 
-@run_async
+
 @bot_admin
 @user_admin
 def set_desc(update: Update, context: CallbackContext):
@@ -147,7 +146,7 @@ def set_desc(update: Update, context: CallbackContext):
         msg.reply_text(f"Error ! {excp.message}.")
 
 
-@run_async
+
 @bot_admin
 @user_admin
 def setchat_title(update: Update, context: CallbackContext):
@@ -173,7 +172,7 @@ def setchat_title(update: Update, context: CallbackContext):
         
 
 
-@run_async
+
 @connection_status
 @bot_admin # used to check bot is admin or not
 @can_promote # used to check that bot have permission to promote or demote
@@ -247,7 +246,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@run_async
+
 @connection_status
 @bot_admin
 @can_promote
@@ -311,7 +310,7 @@ def lowpromote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@run_async
+
 @connection_status
 @bot_admin
 @can_promote
@@ -391,7 +390,7 @@ def fullpromote(update: Update, context: CallbackContext) -> str:
     return log_message
 
 
-@run_async
+
 @connection_status
 @bot_admin
 @can_promote
@@ -461,7 +460,6 @@ def demote(update: Update, context: CallbackContext) -> str:
        
 
 
-@run_async
 @user_admin # check administrator owner & dev
 @bot_admin
 def refresh_admin(update, _):
@@ -473,7 +471,7 @@ def refresh_admin(update, _):
     update.effective_message.reply_text("» Successfully refreshed admin cache !")
 
 
-@run_async
+
 @connection_status
 @bot_admin
 @can_promote
@@ -540,7 +538,7 @@ def set_title(update: Update, context: CallbackContext):
     )
 
 
-@run_async
+
 @bot_admin 
 @can_pin #check that bot can promote admin or not
 @user_admin #check that admin or dev or owner id
@@ -599,7 +597,7 @@ def pin(update: Update, context: CallbackContext) -> str:
         return log_message
 
 
-@run_async
+
 @bot_admin
 @can_pin #check that bot is admin or not
 @user_admin #check that user is admin or not
@@ -652,7 +650,7 @@ def unpin(update: Update, context: CallbackContext):
 
     return log_message
 
-@run_async
+
 @bot_admin
 @user_admin # check dev user, owner & admin
 @connection_status
@@ -680,7 +678,7 @@ def invite(update: Update, context: CallbackContext):
         )
 
 
-@run_async
+
 @connection_status
 def adminlist(update, context):
     chat = update.effective_chat  # type: Optional[Chat] -> unused variable
@@ -792,7 +790,7 @@ def adminlist(update, context):
         return
 
 
-@run_async
+
 @bot_admin
 @can_promote
 @user_admin
@@ -876,49 +874,38 @@ __help__ = """
 """
 
 SET_DESC_HANDLER = CommandHandler("setdesc", set_desc)
-ADMINLIST_HANDLER = DisableAbleCommandHandler("admins", adminlist, run_async=True)
-
-PIN_HANDLER = CommandHandler("pin", pin, filters=Filters.chat_type.groups, run_async=True)
-UNPIN_HANDLER = CommandHandler("unpin", unpin, filters=Filters.chat_type.groups, run_async=True)
-UNPINALL_HANDLER = CommandHandler("unpinall", unpinall, filters=Filters.chat_type.groups, run_async=True)
-UNPINALL_BTN_HANDLER = CallbackQueryHandler(unpinallbtn, pattern=r"unpinallbtn_")
-INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite, run_async=True)
-PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote, run_async=True)
-FULL_PROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote, run_async=True)
-DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote, run_async=True)
-SET_TITLE_HANDLER = CommandHandler("title", set_title, run_async=True)
+SET_STICKER_HANDLER = CommandHandler("setsticker", set_sticker)
+SETCHATPIC_HANDLER = CommandHandler("setgpic", setchatpic)
+RMCHATPIC_HANDLER = CommandHandler("delgpic", rmchatpic)
+SETCHAT_TITLE_HANDLER = CommandHandler("setgtitle", setchat_title)
+ADMINLIST_HANDLER = DisableAbleCommandHandler(["admins", "staff"], adminlist)
+PIN_HANDLER = CommandHandler("pin", pin)
+UNPIN_HANDLER = CommandHandler("unpin", unpin)
+INVITE_HANDLER = DisableAbleCommandHandler("invitelink", invite)
+PROMOTE_HANDLER = DisableAbleCommandHandler("promote", promote)
+FULLPROMOTE_HANDLER = DisableAbleCommandHandler("fullpromote", fullpromote)
+LOW_PROMOTE_HANDLER = DisableAbleCommandHandler("lowpromote", lowpromote)
+DEMOTE_HANDLER = DisableAbleCommandHandler("demote", demote)
+SET_TITLE_HANDLER = CommandHandler("title", set_title)
 ADMIN_REFRESH_HANDLER = CommandHandler(
-    "admincache", refresh_admin, filters=Filters.chat_type.groups, run_async=True
+    ["admincache", "reload", "refresh"],
+    refresh_admin,
 )
-CHAT_PIC_HANDLER = CommandHandler("setgpic", setchatpic, filters=Filters.chat_type.groups, run_async=True)
-DEL_CHAT_PIC_HANDLER = CommandHandler(
-    "delgpic", rmchatpic, filters=Filters.chat_type.groups, run_async=True)
-SETCHAT_TITLE_HANDLER = CommandHandler(
-    "setgtitle", setchat_title, filters=Filters.chat_type.groups, run_async=True
-)
-SETSTICKET_HANDLER = CommandHandler(
-    "setsticker", set_sticker, filters=Filters.chat_type.groups, run_async=True)
-SETDESC_HANDLER = CommandHandler(
-    "setdesc",
-    set_desc,
-    filters=Filters.chat_type.groups, run_async=True)
-
+dispatcher.add_handler(SET_DESC_HANDLER)
+dispatcher.add_handler(SET_STICKER_HANDLER)
+dispatcher.add_handler(SETCHATPIC_HANDLER)
+dispatcher.add_handler(RMCHATPIC_HANDLER)
+dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
 dispatcher.add_handler(ADMINLIST_HANDLER)
 dispatcher.add_handler(PIN_HANDLER)
 dispatcher.add_handler(UNPIN_HANDLER)
-dispatcher.add_handler(UNPINALL_HANDLER)
-dispatcher.add_handler(UNPINALL_BTN_HANDLER)
 dispatcher.add_handler(INVITE_HANDLER)
 dispatcher.add_handler(PROMOTE_HANDLER)
-dispatcher.add_handler(FULL_PROMOTE_HANDLER)
+dispatcher.add_handler(FULLPROMOTE_HANDLER)
+dispatcher.add_handler(LOW_PROMOTE_HANDLER)
 dispatcher.add_handler(DEMOTE_HANDLER)
 dispatcher.add_handler(SET_TITLE_HANDLER)
 dispatcher.add_handler(ADMIN_REFRESH_HANDLER)
-dispatcher.add_handler(CHAT_PIC_HANDLER)
-dispatcher.add_handler(DEL_CHAT_PIC_HANDLER)
-dispatcher.add_handler(SETCHAT_TITLE_HANDLER)
-dispatcher.add_handler(SETSTICKET_HANDLER)
-dispatcher.add_handler(SETDESC_HANDLER)
 
 __mod_name__ = "Admins"
 __command_list__ = [
