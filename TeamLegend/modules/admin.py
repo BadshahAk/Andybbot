@@ -38,6 +38,7 @@ def set_sticker(update: Update, context: CallbackContext):
         return msg.reply_text(
             f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ",
             parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
         )
 
     if msg.reply_to_message:
@@ -71,6 +72,7 @@ def setchatpic(update: Update, context: CallbackContext):
         return msg.reply_text(
             f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Gʀᴏᴜᴘ Pɪᴄ!",
             parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
         )
 
     if msg.reply_to_message:
@@ -107,7 +109,9 @@ def rmchatpic(update: Update, context: CallbackContext):
 
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
+            f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Rᴇᴍᴏᴠᴇ ᴛʜᴇ ᴘɪᴄ Oғ Gʀᴏᴜᴘ",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
         )
     try:
         context.bot.delete_chat_photo(int(chat.id))
@@ -127,7 +131,9 @@ def set_desc(update: Update, context: CallbackContext):
     user = update.effective_user
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
+            f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Dᴇsᴄʀɪᴘᴛɪᴏɴ Oғ Tʜᴇ Gʀᴏᴜᴘ",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
         )
 
     tesc = msg.text.split(None, 1)
@@ -159,7 +165,9 @@ def setchat_title(update: Update, context: CallbackContext):
     args = context.args
     if str(user.id) not in str(OWNER_ID):
         return msg.reply_text(
-            "☞ Oɴʟʏ [owner_name](owner_tg) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Sᴛɪᴄᴋᴇʀ Oғ Tʜᴇ Gʀᴏᴜᴘ"
+            f"☞ Oɴʟʏ [{owner_name}]({owner_tg}) Hᴀᴠᴇ Pᴇʀᴍɪssɪᴏɴ ᴛᴏ Cʜᴀɴɢᴇ Tʜᴇ Tɪᴛʟᴇ Oғ Tʜᴇ Pʀᴏᴍᴏᴛᴇᴅ Mᴇᴍʙᴇʀ",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
         )
     title = " ".join(args)
     if not title:
@@ -189,7 +197,11 @@ def promote(update: Update, context: CallbackContext) -> str:
     user = update.effective_user
     promoter = chat.get_member(user.id)
     if str(user.id) not in str(OWNER_ID):
-        return message.reply_text("» Only @LegendBoy_OP have permission to promote anyone!")
+        return message.reply_text(
+            f"» Only [{owner_name}]({owner_tg}) have permission to promote anyone!",
+            parse_mode=ParseMode.MARKDOWN,
+            disable_web_page_preview=True,
+        )
     user_id = extract_user(message, args)
     if not user_id:
         return message.reply_text(
