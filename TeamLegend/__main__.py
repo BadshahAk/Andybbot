@@ -203,8 +203,8 @@ def about_callback(update: Update, context: CallbackContext):
     if query.data == "about_":
         query.message.edit_caption(
             caption="""
-★ *My Name* : [Assistant](https://t.me/LegendBoyXDBot)
-★ *Creator's* : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner
+★ *My Name* : [Assistant](https://t.me/TeamLegendXDBot)
+★ *Creator's* : [『𖤍 Lêɠêɳ̃dẞογ ࿐』➙「🇮🇳」](https://t.me/LegendBot_Owner)
 ★ *Library* : [PTB](https://t.me/https://docs.python-telegram-bot.org)
 ★ *Language* : [Python 3](https://docs.python.org)
 ★ *Database* : [Mongo DB](https://cloud.mongodb.com/)
