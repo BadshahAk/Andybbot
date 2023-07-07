@@ -21,7 +21,7 @@ from TeamLegend import INFOPIC
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
 from TeamLegend.modules.disable import DisableAbleCommandHandler
-from TeamLegend.helpers.chat_status import is_user_admin
+from TeamLegend.helpers.chat_status import user_admin
 from TeamLegend.helpers.extraction import extract_user
 from TeamLegend.sql.afk_sql import check_afk_status, is_afk
 from TeamLegend.sql.global_bans_sql import is_user_gbanned
@@ -148,7 +148,7 @@ def get_id(update: Update, context: CallbackContext):
             )
 
 
-@is_user_admin
+@user_admin
 def group_info(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
