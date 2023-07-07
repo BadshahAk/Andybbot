@@ -16,7 +16,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown, mention_html
 
 import TeamLegend.sql.userinfo_sql as sql
-from TeamLegend.Config import DEV_USERS
+from TeamLegend.Config import DEV_USERS, OWNER_ID
 from TeamLegend import INFOPIC
 from TeamLegend.core.clients import dispatcher
 from TeamLegend.__main__ import STATS, TOKEN, USER_INFO
