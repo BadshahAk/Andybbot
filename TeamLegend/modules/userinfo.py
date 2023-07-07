@@ -337,7 +337,7 @@ def info(update: Update, context: CallbackContext):
     rep.delete()
 
 
-@sudo_plus
+@user_admin
 def stats(update: Update, context: CallbackContext):
     stats = "<b>🧐 Cᴜʀʀᴇɴᴛ sᴛᴀᴛs :</b>\n\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
