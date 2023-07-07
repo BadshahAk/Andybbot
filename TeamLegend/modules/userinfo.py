@@ -253,7 +253,7 @@ def info(update: Update, context: CallbackContext):
     rep = message.reply_text("<code>ᴀᴩᴩʀᴀɪsɪɴɢ...</code>", parse_mode=ParseMode.HTML)
 
     text = (
-        f"ㅤ ㅤㅤ      ✦ Usᴇʀ Iɴғᴏ ✦\n•❅─────✧❅✦❅✧─────❅•\n"
+        f"ㅤ ㅤㅤ    ✦ Usᴇʀ Iɴғᴏ ✦\n•❅─────✧❅✦❅✧─────❅•\n"
         f"➻ <b>Usᴇʀ Iᴅ:</b> <code>{user.id}</code>\n"
         f"➻ <b>Fɪʀsᴛ Nᴀᴍᴇ:</b> {html.escape(user.first_name)}"
     )
