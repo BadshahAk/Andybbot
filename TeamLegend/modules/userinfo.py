@@ -207,7 +207,7 @@ def group_info(update: Update, context: CallbackContext):
             msg += f"\n`Admins:` `{len(totaladmin)}`"
             if entity.invite_link:
                 msg += f"\n**Link**: {entity.invite_link}"
-            message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
+            message.reply_text(msg, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 
