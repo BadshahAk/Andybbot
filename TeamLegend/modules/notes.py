@@ -26,10 +26,10 @@ from TeamLegend.core.clients import dispatcher, LOGS
 from TeamLegend.modules.disable import DisableAbleCommandHandler
 from TeamLegend.helpers.chat_status import connection_status, user_admin
 from TeamLegend.helpers.misc import build_keyboard, revert_buttons
-from TeamLegend.helpers.msg_types import get_note_type
 from TeamLegend.helpers.string_handling import (
     escape_invalid_curly_brackets,
 )
+from TeamLegend.helpers.string_handling import button_markdown_parser
 
 FILE_MATCHER = re.compile(r"^###file_id(!photo)?###:(.*?)(?:\s|$)")
 STICKER_MATCHER = re.compile(r"^###sticker(!photo)?###:")
@@ -244,7 +244,70 @@ def slash_get(update: Update, context: CallbackContext):
 def save(update: Update, context: CallbackContext):
     chat_id = update.effective_chat.id
     msg = update.effective_message  # type: Optional[Message]
+    data_type = None
+    content = None
+    text = ""
+    raw_text = msg.text or msg.caption
+    args = raw_text.split(None, 2)  # use python's maxsplit to separate cmd and args
+    try:
+        note_name = args[1]
+    except IndexError:
+        msg.reply_text("You need to give the note a name!")
+    buttons = []
+    # determine what the contents of the filter are - text, image, sticker, etc
+    if len(args) >= 3:
+        offset = len(args[2]) - len(
+            raw_text
+        )  # set correct offset relative to command + notename
+        text, buttons = button_markdown_parser(
+            args[2],
+            entities=msg.parse_entities() or msg.parse_caption_entities(),
+            offset=offset,
+        )
+        if buttons:
+            data_type = Types.BUTTON_TEXT
+        else:
+            data_type = Types.TEXT
 
+    elif msg.reply_to_message:
+        entities = msg.reply_to_message.parse_entities()
+        msgtext = msg.reply_to_message.text or msg.reply_to_message.caption
+        if len(args) >= 2 and msg.reply_to_message.text:  # not caption, text
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            if buttons:
+                data_type = Types.BUTTON_TEXT
+            else:
+                data_type = Types.TEXT
+
+        elif msg.reply_to_message.sticker:
+            content = msg.reply_to_message.sticker.file_id
+            data_type = Types.STICKER
+
+        elif msg.reply_to_message.document:
+            content = msg.reply_to_message.document.file_id
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            data_type = Types.DOCUMENT
+
+        elif msg.reply_to_message.photo:
+            content = msg.reply_to_message.photo[-1].file_id  # last elem = best quality
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            data_type = Types.PHOTO
+
+        elif msg.reply_to_message.audio:
+            content = msg.reply_to_message.audio.file_id
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            data_type = Types.AUDIO
+
+        elif msg.reply_to_message.voice:
+            content = msg.reply_to_message.voice.file_id
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            data_type = Types.VOICE
+
+        elif msg.reply_to_message.video:
+            content = msg.reply_to_message.video.file_id
+            text, buttons = button_markdown_parser(msgtext, entities=entities)
+            data_type = Types.VIDEO
+    return note_name, text, data_type, content, buttons
     note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
@@ -515,7 +578,7 @@ A button can be added to a note by using standard markdown link syntax - the lin
  *Note:* Note names are case-insensitive, and they are automatically converted to lowercase before getting saved.
 """
 
-__mod_name__ = "Nᴏᴛᴇs"
+__mod_name__ = "Notes"
 
 GET_HANDLER = CommandHandler("get", cmd_get)
 HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get)
