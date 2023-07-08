@@ -203,7 +203,7 @@ def get(update, context, notename, show_none=True, no_format=False):
         message.reply_text("This note doesn't exist")
 
 
-@run_async
+
 @connection_status
 def cmd_get(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
@@ -215,7 +215,7 @@ def cmd_get(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Get rekt")
 
 
-@run_async
+
 @connection_status
 def hash_get(update: Update, context: CallbackContext):
     message = update.effective_message.text
@@ -224,7 +224,7 @@ def hash_get(update: Update, context: CallbackContext):
     get(update, context, no_hash, show_none=False)
 
 
-@run_async
+
 @connection_status
 def slash_get(update: Update, context: CallbackContext):
     message, chat_id = update.effective_message.text, update.effective_chat.id
@@ -239,7 +239,7 @@ def slash_get(update: Update, context: CallbackContext):
         update.effective_message.reply_text("Wrong Note ID 😾")
 
 
-@run_async
+
 @user_admin
 @connection_status
 def save(update: Update, context: CallbackContext):
@@ -523,9 +523,7 @@ HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get)
 SLASH_GET_HANDLER = MessageHandler(Filters.regex(r"^/\d+$"), slash_get)
 SAVE_HANDLER = CommandHandler("save", save)
 DELETE_HANDLER = CommandHandler("clear", clear)
-
 LIST_HANDLER = DisableAbleCommandHandler(["notes", "saved"], list_notes, admin_ok=True)
-
 CLEARALL = DisableAbleCommandHandler("removeallnotes", clearall)
 CLEARALL_BTN = CallbackQueryHandler(clearall_btn, pattern=r"notes_.*")
 
