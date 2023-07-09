@@ -41,6 +41,19 @@ MYVOICE_MATCHER = re.compile(r"^###voice(!photo)?###:")
 MYVIDEO_MATCHER = re.compile(r"^###video(!photo)?###:")
 MYVIDEONOTE_MATCHER = re.compile(r"^###video_note(!photo)?###:")
 
+
+@unique
+class Types(IntEnum):
+    TEXT = 0
+    BUTTON_TEXT = 1
+    STICKER = 2
+    DOCUMENT = 3
+    PHOTO = 4
+    AUDIO = 5
+    VOICE = 6
+    VIDEO = 7
+
+
 ENUM_FUNC_MAP = {
     sql.Types.TEXT.value: dispatcher.bot.send_message,
     sql.Types.BUTTON_TEXT.value: dispatcher.bot.send_message,
@@ -307,13 +320,10 @@ def save(update: Update, context: CallbackContext):
             content = msg.reply_to_message.video.file_id
             text, buttons = button_markdown_parser(msgtext, entities=entities)
             data_type = Types.VIDEO
-    return note_name, text, data_type, content, buttons
-    note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
         msg.reply_text("Dude, there's no note")
         return
-
     sql.add_note_to_db(
         chat_id, note_name, text, data_type, buttons=buttons, file=content,
     )
