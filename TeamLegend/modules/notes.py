@@ -272,7 +272,10 @@ def save(update: Update, context: CallbackContext):
     if len(args) >= 3:
         offset = len(args[2]) - len(
             raw_text
-        )  # set correct offset relative to command + notename
+        )# set correct offset relative to command + notename
+        print(args[2])
+        print(offset)
+        print(msg.parse_entities() or msg.parse_caption_entities())
         text, buttons = button_markdown_parser(
             args[2],
             entities=msg.parse_entities() or msg.parse_caption_entities(),
