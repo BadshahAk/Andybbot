@@ -289,6 +289,8 @@ def save(update: Update, context: CallbackContext):
     elif msg.reply_to_message:
         entities = msg.reply_to_message.parse_entities()
         msgtext = msg.reply_to_message.text or msg.reply_to_message.caption
+        print(entities)
+        print(msgtext)
         if len(args) >= 2 and msg.reply_to_message.text:  # not caption, text
             text, buttons = button_markdown_parser(msgtext, entities=entities)
             if buttons:
