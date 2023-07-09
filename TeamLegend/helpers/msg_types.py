@@ -4,7 +4,6 @@ from telegram import Message
 
 from TeamLegend.helpers.string_handling import button_markdown_parser
 
-
 @unique
 class Types(IntEnum):
     TEXT = 0
@@ -155,6 +154,3 @@ def get_filter_type(msg: Message):
         content = None
 
     return text, data_type, content
-
-
-##
