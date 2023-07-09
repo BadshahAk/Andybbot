@@ -1,3 +1,4 @@
+from enum import IntEnum, unique
 import ast
 import re
 from io import BytesIO
