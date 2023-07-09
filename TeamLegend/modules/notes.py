@@ -291,6 +291,7 @@ def save(update: Update, context: CallbackContext):
         msgtext = msg.reply_to_message.text or msg.reply_to_message.caption
         print(entities)
         print(msgtext)
+        print(msg)
         if len(args) >= 2 and msg.reply_to_message.text:  # not caption, text
             text, buttons = button_markdown_parser(msgtext, entities=entities)
             if buttons:
@@ -335,26 +336,9 @@ def save(update: Update, context: CallbackContext):
     )
 
     msg.reply_text(
-        f"Yas! Added `{note_name}`.\nGet it with /get `{note_name}`, or `#{note_name}`",
+        f"Saved note {note_name}",
         parse_mode=ParseMode.MARKDOWN,
     )
-
-    if msg.reply_to_message and msg.reply_to_message.from_user.is_bot:
-        if text:
-            msg.reply_text(
-                "Seems like you're trying to save a message from a bot. Unfortunately, "
-                "bots can't forward bot messages, so I can't save the exact message. "
-                "\nI'll save all the text I can, but if you want more, you'll have to "
-                "forward the message yourself, and then save it.",
-            )
-        else:
-            msg.reply_text(
-                "Bots are kinda handicapped by telegram, making it hard for bots to "
-                "interact with other bots, so I can't save this message "
-                "like I usually would - do you mind forwarding it and "
-                "then saving that new message? Thanks!",
-            )
-        return
 
 
 @run_async
